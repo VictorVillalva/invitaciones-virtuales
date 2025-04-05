@@ -7,6 +7,7 @@ import SobreAnimation from "../ui/SobreAnimation";
 import TextoInspirador from '../ui/TextoInspirador';
 import GaleriaFotos from '../ui/GaleriaFotos';
 import Itinerario from '../ui/Itinerario';
+import CodigoVestimenta from '../ui/CodigoVestimenta';
 
 
 export default function Premium() {
@@ -37,6 +38,12 @@ export default function Premium() {
                         </div>
                         <section className='Itinerario'>
                             <Itinerario />
+                        </section>
+                        <div className="separador flex" data-aos="fade-up">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='CodigoVestimenta'>
+                            <CodigoVestimenta />
                         </section>
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
