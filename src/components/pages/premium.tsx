@@ -4,6 +4,7 @@ import separador from "@/assets/images/DanielaMedelXV/Separador.png"
 import ApartaFecha from "../ui/ApartaFecha";
 import Header from "../ui/Header";
 import SobreAnimation from "../ui/SobreAnimation";
+import TextoInspirador from '../ui/TextoInspirador';
 
 
 export default function Premium() {
@@ -20,6 +21,9 @@ export default function Premium() {
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
+                        <section className='TextoInspirador'>
+                            <TextoInspirador />
+                        </section>
                     </div>
                 </main>
             </SobreAnimation>
