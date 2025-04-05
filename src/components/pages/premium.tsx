@@ -8,6 +8,8 @@ import TextoInspirador from '../ui/TextoInspirador';
 import GaleriaFotos from '../ui/GaleriaFotos';
 import Itinerario from '../ui/Itinerario';
 import CodigoVestimenta from '../ui/CodigoVestimenta';
+import Padres from '../ui/Padres';
+import Padrinos from '../ui/Padrinos';
 
 
 export default function Premium() {
@@ -44,6 +46,25 @@ export default function Premium() {
                         </div>
                         <section className='CodigoVestimenta'>
                             <CodigoVestimenta />
+                        </section>
+                        <div className="separador flex" data-aos="fade-up">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='Padres-Padrinos'>
+                            <div className="padres-padrinos flex flex-col gap-10" data-aos="fade-up">
+                                <Padres 
+                                    nombre1='Pablo'
+                                    apellido1='Medel Román'
+                                    nombre2='Yazmin'
+                                    apellido2='Muñiz Lopez'
+                                />
+                                <Padrinos 
+                                    nombre1='Omar'
+                                    apellido1='Medel Román'
+                                    nombre2='Maria Teresa'
+                                    apellido2='Medel Román'
+                                />
+                            </div>
                         </section>
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
