@@ -17,6 +17,7 @@ export default function GaleriaFotos() {
             {/*<!-- Component: Carousel with indicators outside --> */}
             <Carousel className="w-full">
                 <CarouselContent>
+                    {/* Mapeo de las imagenes */}
                     {data.map((item) => (
                         <CarouselItem key={item.id}>
                         <div className="flex flex-col items-center justify-center">
