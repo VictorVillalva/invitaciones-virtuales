@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter } from "@/assets/fonts/fonts"
+import { playwrite } from "@/assets/fonts/fonts"
 import "./globals.css";
 import bgImage from "@/assets/images/DanielaMedelXV/bg-blue-flowers.jpg"
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased relative`}
+        className={`${playwrite.className} antialiased relative`}
       >
         <div className="absolute inset-0 opacity-5 h-auto" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
         <div className="relative z-10">
