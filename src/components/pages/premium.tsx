@@ -5,6 +5,7 @@ import ApartaFecha from "../ui/ApartaFecha";
 import Header from "../ui/Header";
 import SobreAnimation from "../ui/SobreAnimation";
 import TextoInspirador from '../ui/TextoInspirador';
+import GaleriaFotos from '../ui/GaleriaFotos';
 
 
 export default function Premium() {
@@ -23,6 +24,12 @@ export default function Premium() {
                         </div>
                         <section className='TextoInspirador'>
                             <TextoInspirador />
+                        </section>
+                        <div className="separador flex" data-aos="fade-up">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='GaleriaFotos'> 
+                            <GaleriaFotos />
                         </section>
                     </div>
                 </main>
