@@ -10,6 +10,7 @@ import Itinerario from '../ui/Itinerario';
 import CodigoVestimenta from '../ui/CodigoVestimenta';
 import Padres from '../ui/Padres';
 import Padrinos from '../ui/Padrinos';
+import LluviaSobres from '../ui/LluviaSobres';
 
 
 export default function Premium() {
@@ -69,6 +70,13 @@ export default function Premium() {
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
+                        <section className='LluviaDeSobres'>
+                            <LluviaSobres 
+                                numero='xxxx xxxx xxxx xxxx'
+                                nombre='Nombre'
+                                banco='Banco'
+                            />
+                        </section>
                     </div>
                 </main>
             </SobreAnimation>

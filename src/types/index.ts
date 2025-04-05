@@ -8,3 +8,9 @@ export interface Nombres{
     nombre2: string;
     apellido2: string;
 }
+
+export interface Sobre{
+    numero: string;
+    nombre: string;
+    banco: string;
+}
