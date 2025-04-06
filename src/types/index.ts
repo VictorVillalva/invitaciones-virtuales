@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface SobreAnimationProps{
     children: React.ReactNode;
 }
@@ -13,4 +15,11 @@ export interface Sobre{
     numero: string;
     nombre: string;
     banco: string;
+}
+
+export interface Ubicacion{
+    image: StaticImageData | string;
+    placeName: string;
+    address: string;
+    href: string;
 }
