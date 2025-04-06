@@ -10,6 +10,7 @@ export default function Header() {
                     src={fotoPrueba}
                     alt='Daniela Medel Quinceañera'
                     className='mask-fade-bottom'
+                    priority
                 />
                 <div className="absolute bottom-10 flex flex-col items-center justify-end mb-20 text-white">
                     <span className={`${inspiration.className} text-[96px] leading-none`}>Mis XV</span>

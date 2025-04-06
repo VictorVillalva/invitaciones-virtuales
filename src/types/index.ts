@@ -4,6 +4,10 @@ export interface SobreAnimationProps{
     children: React.ReactNode;
 }
 
+export interface IconsProps{
+    width: string;
+    height: string;
+}
 export interface Nombres{
     nombre1: string;
     apellido1: string;
@@ -32,4 +36,20 @@ export interface Hotel{
     salon: string;
     date: string;
     href: string;
+}
+
+export interface SpotifySongs {
+    id: string;
+    name: string;
+    artists: {name: string}[];
+    album: {images: {url:string}[]};
+}
+
+export interface InputSearchProps{
+    query: string;
+    setQuery: (query: string) => void;
+    searchSong: (query: string) => Promise<void>;
+    songs: SpotifySongs[];
+    isLoading: boolean;
+    selectSong: (songId: string) => void;
 }

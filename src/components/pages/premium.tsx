@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import separador from "@/assets/images/DanielaMedelXV/Separador.png"
 
@@ -13,6 +14,7 @@ import Padrinos from '../ui/Padrinos';
 import LluviaSobres from '../ui/LluviaSobres';
 import Ubicacion from '../ui/Ubicacion';
 import Hoteles from '../ui/Hoteles';
+import Playlist from '../ui/Playlist';
 
 
 export default function Premium() {
@@ -90,6 +92,12 @@ export default function Premium() {
                         </div>
                         <section className='SugerenciaHospedaje'>
                             <Hoteles />
+                        </section>
+                        <div className="separador flex" data-aos="fade-up">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='Playlist'>
+                            <Playlist />
                         </section>
                     </div>
                 </main>
