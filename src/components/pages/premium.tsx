@@ -12,6 +12,7 @@ import Padres from '../ui/Padres';
 import Padrinos from '../ui/Padrinos';
 import LluviaSobres from '../ui/LluviaSobres';
 import Ubicacion from '../ui/Ubicacion';
+import Hoteles from '../ui/Hoteles';
 
 
 export default function Premium() {
@@ -83,6 +84,12 @@ export default function Premium() {
                         </div>
                         <section className="UbicacionEvento">
                             <Ubicacion />
+                        </section>
+                        <div className="separador flex" data-aos="fade-up">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='SugerenciaHospedaje'>
+                            <Hoteles />
                         </section>
                     </div>
                 </main>

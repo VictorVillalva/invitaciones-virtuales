@@ -23,3 +23,13 @@ export interface Ubicacion{
     address: string;
     href: string;
 }
+
+export interface Hotel{
+    image: StaticImageData | string;
+    placeName: string;
+    address: string;
+    event: string;
+    salon: string;
+    date: string;
+    href: string;
+}
