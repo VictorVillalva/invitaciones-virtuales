@@ -58,9 +58,14 @@ export default function PlaylistSpotify() {
             {/* Mostrar mensaje si no hay canciones */}
             {error &&
                 <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full p-4">
-                    <Alert variant="destructive" className='absolute top-0'>
+                    <Alert variant="destructive">
                         <AlertCircle className="h-4 w-4" />
-                        <AlertTitle>Error</AlertTitle>
+                        <AlertTitle>
+                            <div className='flex flex-row justify-between'> 
+                                <span>Error</span>
+                                <button onClick={handleCloseAlert}><X className="h-4 w-4"/></button>
+                            </div>
+                        </AlertTitle>
                         <AlertDescription>
                             {/* No se logró agregar la canción. */}
                             {error}
