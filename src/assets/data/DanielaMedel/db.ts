@@ -47,3 +47,34 @@ export const options = [
     { value: "Todos", label: "Todos asistiremos"},
     { value: "Ninguno", label: "Lo siento, no podremos asitir"}
 ];
+
+export const nombrePadresPadrinos = [
+    {
+        id:1, 
+        nombre: "Pablo", 
+        apellido: "Medel Román"
+    },
+    {
+        id:2,
+        nombre: "Yazmin",
+        apellido: "Muñiz Lopez",
+    },
+    {
+        id:3,
+        nombre: "Omar",
+        apellido: "Medel Roman",
+    },
+    {
+        id:4,
+        nombre:"Maria Teresa",
+        apellido:"Medel Roman"
+    }
+]          
+export const Bancos = [
+    {
+        id:1,
+        numero: "xxxx xxxx xxxx xxxx",
+        titular: "Nombre",
+        banco: "Bancomer"
+    }
+]                          

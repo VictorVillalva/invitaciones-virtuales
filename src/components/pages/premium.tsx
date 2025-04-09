@@ -18,10 +18,11 @@ import Hoteles from '../ui/Hoteles';
 import Asistencia from '../ui/Asistencia';
 import Footer from '../ui/Footer';
 import { inspiration, playwrite } from '@/assets/fonts/fonts';
-
+import { Bancos, nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db';
 
 export default function Premium() {
     const COLORTEXT = '#323C5D'
+    
     return (
         <>
             <SobreAnimation>
@@ -61,16 +62,16 @@ export default function Premium() {
                         <section className='Padres-Padrinos'>
                             <div className="padres-padrinos flex flex-col gap-10" data-aos="fade-up">
                                 <Padres 
-                                    nombre1='Pablo'
-                                    apellido1='Medel Román'
-                                    nombre2='Yazmin'
-                                    apellido2='Muñiz Lopez'
+                                    nombre1={nombrePadresPadrinos[0].nombre}
+                                    apellido1={nombrePadresPadrinos[0].apellido}
+                                    nombre2={nombrePadresPadrinos[1].nombre}
+                                    apellido2={nombrePadresPadrinos[1].apellido}
                                 />
                                 <Padrinos 
-                                    nombre1='Omar'
-                                    apellido1='Medel Román'
-                                    nombre2='Maria Teresa'
-                                    apellido2='Medel Román'
+                                    nombre1={nombrePadresPadrinos[2].nombre}
+                                    apellido1={nombrePadresPadrinos[2].apellido}
+                                    nombre2={nombrePadresPadrinos[3].nombre}
+                                    apellido2={nombrePadresPadrinos[3].apellido}
                                 />
                             </div>
                         </section>
@@ -79,9 +80,9 @@ export default function Premium() {
                         </div>
                         <section className='LluviaDeSobres'>
                             <LluviaSobres 
-                                numero='xxxx xxxx xxxx xxxx'
-                                nombre='Nombre'
-                                banco='Banco'
+                                numero={Bancos[0].numero}
+                                nombre={Bancos[0].titular}
+                                banco={Bancos[0].banco}
                             />
                         </section>
                         <div className="separador flex" data-aos="fade-up">
