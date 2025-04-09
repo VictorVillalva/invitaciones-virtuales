@@ -15,6 +15,7 @@ import LluviaSobres from '../ui/LluviaSobres';
 import Ubicacion from '../ui/Ubicacion';
 import Hoteles from '../ui/Hoteles';
 import Playlist from '../ui/Playlist';
+import Asistencia from '../ui/Asistencia';
 
 
 export default function Premium() {
@@ -93,11 +94,17 @@ export default function Premium() {
                         <section className='SugerenciaHospedaje'>
                             <Hoteles />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        {/* <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Playlist'>
                             <Playlist />
+                        </section> */}
+                        <div className="separador flex" data-aos="fade-up">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className="confirmacionAsistencia">
+                            <Asistencia />
                         </section>
                     </div>
                 </main>
