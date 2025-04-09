@@ -14,8 +14,10 @@ import Padrinos from '../ui/Padrinos';
 import LluviaSobres from '../ui/LluviaSobres';
 import Ubicacion from '../ui/Ubicacion';
 import Hoteles from '../ui/Hoteles';
-import Playlist from '../ui/Playlist';
+//import Playlist from '../ui/Playlist';
 import Asistencia from '../ui/Asistencia';
+import Footer from '../ui/Footer';
+import { inspiration, playwrite } from '@/assets/fonts/fonts';
 
 
 export default function Premium() {
@@ -106,8 +108,16 @@ export default function Premium() {
                         <section className="confirmacionAsistencia">
                             <Asistencia />
                         </section>
+                        <div className="footer flex flex-col" >
+                            <p className={`${inspiration.className} text-[96px] text-center leading-none`}>Mis XV</p>
+                            <div className={`${playwrite.className} text-[20px] text-center`}>
+                                <p>Daniela Medel</p>
+                                <p className="font-light text-[10px]">09.09.2025</p>
+                            </div>
+                        </div>
                     </div>
                 </main>
+                <Footer />
             </SobreAnimation>
         </>
     )
