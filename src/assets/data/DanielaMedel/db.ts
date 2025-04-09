@@ -39,3 +39,11 @@ export const evento = [
     { title: "Cena", time: "21:00 pm", icon: cena },
     { title: "Fiesta", time: "22:00 pm", icon: party },
 ];
+
+export const options = [
+    { value: "1_persona", label: "1 Persona" },
+    { value: "2_personas", label: "2 Personas" },
+    { value: "3_personas", label: "3 Personas" },
+    { value: "Todos", label: "Todos asistiremos"},
+    { value: "Ninguno", label: "Lo siento, no podremos asitir"}
+];

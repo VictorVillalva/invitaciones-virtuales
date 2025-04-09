@@ -53,3 +53,25 @@ export interface InputSearchProps{
     isLoading: boolean;
     selectSong: (songId: string) => void;
 }
+
+export interface InvitacionProps{
+    numPersonas: number;
+    familia: string;
+    adultos: number;
+    ninos: number;
+}
+
+export interface RadiusGroupProps {
+    selectedOption: string;
+    onValueChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface MensajeProps {
+    persona: string;
+    message: string;
+    onMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+export interface CountdownProps {
+    targetDate: Date;
+  }
