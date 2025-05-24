@@ -14,12 +14,12 @@ import Padrinos from '../ui/Padrinos';
 import LluviaSobres from '../ui/LluviaSobres';
 import Ubicacion from '../ui/Ubicacion';
 import Hoteles from '../ui/Hoteles';
-//import Playlist from '../ui/Playlist';
+import Playlist from '../ui/Playlist';
 import Asistencia from '../ui/Asistencia';
 import Footer from '../ui/Footer';
 import { inspiration, playwrite } from '@/assets/fonts/fonts';
 import { Bancos, nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db';
-//import BackgroundMusic from '../ui/BackgroundMusic';
+import BackgroundMusic from '../ui/BackgroundMusic';
 
 export default function Premium() {
     const COLORTEXT = '#323C5D'
@@ -120,7 +120,7 @@ export default function Premium() {
                     </div>
                 </main>
                 <Footer />
-                {/* <BackgroundMusic audioSrc={audioSrc}/> */}
+                <BackgroundMusic audioSrc={'/audio/TheGreatestShowmanCast-AMillionDreams.mp3'}/>
             </SobreAnimation>
         </>
     )
