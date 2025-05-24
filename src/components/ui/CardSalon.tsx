@@ -22,7 +22,7 @@ export default function CardSalon({image,placeName,address,href}:Ubicacion) {
                 <p>{address}</p>
             </CardContent>
             <CardFooter className="p-4 ">
-                <Link  href={href} className="w-full p-2 bg-primary text-[#FFFFFF] rounded text-center font-semibold">Ver ubicación</Link>
+                <Link  href={href} className="w-full p-2 bg-[#323C5D] text-[#FFFFFF] rounded text-center font-semibold">Ver ubicación</Link>
             </CardFooter>
         </Card>
     )

@@ -6,7 +6,7 @@ import ApartaFecha from "../ui/ApartaFecha";
 import Header from "../ui/Header";
 import SobreAnimation from "../ui/SobreAnimation";
 import TextoInspirador from '../ui/TextoInspirador';
-import GaleriaFotos from '../ui/GaleriaFotos';
+// import GaleriaFotos from '../ui/GaleriaFotos';
 import Itinerario from '../ui/Itinerario';
 import CodigoVestimenta from '../ui/CodigoVestimenta';
 import Padres from '../ui/Padres';
@@ -42,9 +42,9 @@ export default function Premium() {
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
-                        <section className='GaleriaFotos'> 
+                        {/* <section className='GaleriaFotos'> 
                             <GaleriaFotos />
-                        </section>
+                        </section> */}
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
