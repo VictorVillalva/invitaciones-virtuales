@@ -39,9 +39,9 @@ export default function Premium() {
                         <section className='TextoInspirador'>
                             <TextoInspirador />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        {/* <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
-                        </div>
+                        </div> */}
                         {/* <section className='GaleriaFotos'> 
                             <GaleriaFotos />
                         </section> */}
