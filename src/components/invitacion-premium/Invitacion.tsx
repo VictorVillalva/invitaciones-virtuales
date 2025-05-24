@@ -8,7 +8,11 @@ import type { InvitacionProps } from "@/types"
 export default function Invitacion({numPersonas, familia, adultos, ninos}: InvitacionProps) {
     return (
         <div className={`${quicksand.className} w-full bg-[#4F619B] relative px-4 py-6 text-white flex flex-col gap-6 rounded-[4px]`}>
-            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
+            <div
+                className="absolute inset-0 bg-cover bg-center opacity-10 rounded-[4px] pointer-events-none"
+                style={{ backgroundImage: `url(${bgImage.src})` }}
+            />
+            {/* <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url(${bgImage.src})` }}></div> */}
             <div className="flex flex-col gap-6">
                 <div className="flex flex-col text-center">
                     <p className={`${inspiration.className} text-[40px]`}>Mis XV</p>
