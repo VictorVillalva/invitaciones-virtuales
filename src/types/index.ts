@@ -74,4 +74,4 @@ export interface MensajeProps {
 
 export interface CountdownProps {
     targetDate: Date;
-  }
+}

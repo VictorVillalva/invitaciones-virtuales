@@ -101,7 +101,7 @@ export const useSpotify = () => {
 
             const playlistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID; // ID de la lista de reproducción a la que deseas agregar la canción
 
-            await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+            await axios.post(`${process.env.SPOTIFY_BASE_URL}/playlists/${playlistId}/tracks`,
                 { uris: [`spotify:track:${songId}`] },
                 {
                     headers: {

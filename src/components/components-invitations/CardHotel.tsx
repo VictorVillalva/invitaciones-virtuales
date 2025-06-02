@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card"  
 import Image from 'next/image';
 import Link from "next/link";
-import { Badge } from "./badge";
+import { Badge } from "../ui/badge";
 import { quicksand } from "@/assets/fonts/fonts";
 
 export default function CardHotel({image, placeName, address, event, salon, date, href}: Hotel) {
