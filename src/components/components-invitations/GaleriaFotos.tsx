@@ -18,7 +18,7 @@ export default function GaleriaFotos() {
             <Carousel className="w-[380px]">
                 <CarouselContent>
                     {/* Mapeo de las imagenes */}
-                    {data.map((item) => (
+                    {data.map((item, idx) => (
                         <CarouselItem key={item.id}>
                         <div className="relative h-[580px]">
                                 <Image
@@ -26,7 +26,7 @@ export default function GaleriaFotos() {
                                     alt={item.alt}
                                     fill
                                     className="object-cover" // Puedes quitar rounded si no quieres esquinas redondas
-                                    priority={item.id === 0} // Opcional: precarga la primera
+                                    priority={idx === 0} // Opcional: precarga la primera
                                 />
                             </div>
                         </CarouselItem>
