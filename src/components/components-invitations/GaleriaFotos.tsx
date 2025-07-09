@@ -15,15 +15,21 @@ export default function GaleriaFotos() {
         <div className="galeria-Fotos flex flex-col items-center text-[32px] gap-10" data-aos="fade-up">
             <p>Galeria de fotos</p>
             {/*<!-- Component: Carousel with indicators outside --> */}
-            <Carousel className="w-full">
+            <Carousel className="w-[380px]">
                 <CarouselContent>
                     {/* Mapeo de las imagenes */}
                     {data.map((item) => (
                         <CarouselItem key={item.id}>
-                        <div className="flex flex-col items-center justify-center">
-                            <Image src={item.src} alt={item.alt} />
-                        </div>
-                    </CarouselItem>
+                        <div className="relative h-[580px]">
+                                <Image
+                                    src={item.src}
+                                    alt={item.alt}
+                                    fill
+                                    className="object-cover" // Puedes quitar rounded si no quieres esquinas redondas
+                                    priority={item.id === 0} // Opcional: precarga la primera
+                                />
+                            </div>
+                        </CarouselItem>
                     ))}
                 </CarouselContent>
             </Carousel>

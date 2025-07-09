@@ -1,7 +1,6 @@
-import foto1 from '@/assets/images/DanielaMedelXV/foto_prueba_carrusel.png';
-import foto2 from '@/assets/images/DanielaMedelXV/foto_prueba_carrusel.png';
-import foto3 from '@/assets/images/DanielaMedelXV/foto_prueba_carrusel.png';
-import foto4 from '@/assets/images/DanielaMedelXV/foto_prueba_carrusel.png';
+import foto1 from '@/assets/images/DanielaMedelXV/VIL_0289.webp';
+import foto2 from '@/assets/images/DanielaMedelXV/VIL_0316.webp';
+import foto3 from '@/assets/images/DanielaMedelXV/VIL_0410.webp';
 import iglesia from "@/assets/icons/Church.png";
 import bell from "@/assets/icons/ServiceBell.png"
 import dance from "@/assets/icons/Dance.png"
@@ -24,11 +23,6 @@ export const ImagesCarrusel = [
         id: 3,
         src: foto3,
         alt: "Daniela Medel 3",
-    },
-    {
-        id: 4,
-        src: foto4,
-        alt: "Daniela Medel 4",
     },
 ];
 

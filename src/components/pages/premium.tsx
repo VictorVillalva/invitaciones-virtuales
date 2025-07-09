@@ -22,6 +22,7 @@ import BackgroundMusic from '../components-invitations/BackgroundMusic'
 import Footer from '../components-invitations/Footer'
 import Asistencia from '../components-invitations/Asistencia'
 import Playlist from "../components-invitations/Playlist"
+import GaleriaFotos from "../components-invitations/GaleriaFotos"
 
 export default function Premium() {
     const COLORTEXT = '#323C5D'
@@ -41,12 +42,12 @@ export default function Premium() {
                         <section className='TextoInspirador'>
                             <TextoInspirador />
                         </section>
-                        {/* <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
-                        </div> */}
-                        {/* <section className='GaleriaFotos'> 
+                        </div>
+                        <section className='GaleriaFotos'> 
                             <GaleriaFotos />
-                        </section> */}
+                        </section>
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
@@ -120,7 +121,7 @@ export default function Premium() {
                     </div>
                 </main>
                 <Footer />
-                <BackgroundMusic audioSrc={'/audio/TheGreatestShowmanCast-AMillionDreams.mp3'}/>
+                {/* <BackgroundMusic audioSrc={'/audio/TheGreatestShowmanCast-AMillionDreams.mp3'}/> */}
             </SobreAnimation>
         </>
     )

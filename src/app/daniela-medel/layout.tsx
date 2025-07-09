@@ -3,7 +3,6 @@ import { playwrite } from "@/assets/fonts/fonts"
 import "../globals.css";
 import bgImage from "@/assets/images/DanielaMedelXV/bg-blue-flowers.jpg"
 
-
 export const metadata: Metadata = {
     title: "XV Daniela Medel",
     description: "Invitación de XV años de Daniela Medel",
