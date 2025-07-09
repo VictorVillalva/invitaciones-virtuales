@@ -1,6 +1,7 @@
 'use client'
 //Assets
 import separador from "@/assets/images/DanielaMedelXV/Separador.png"
+import LogoDanielMedel from "@/assets/images/DanielaMedelXV/Logo_DanielMedel.jpg"
 //Data
 import { Bancos, nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
 //Fonts
@@ -111,11 +112,16 @@ export default function Premium() {
                         <section className="confirmacionAsistencia">
                             <Asistencia />
                         </section>
-                        <div className="footer flex flex-col" >
-                            <p className={`${inspiration.className} text-[96px] text-center leading-none`}>Mis XV</p>
-                            <div className={`${playwrite.className} text-[20px] text-center`}>
-                                <p>Daniela Medel</p>
-                                <p className="font-light text-[10px]">09.09.2025</p>
+                        <div className="footer flex flex-col justify-center items-center gap-6" >
+                            <div className="relative">
+                                <Image src={LogoDanielMedel} alt="Logo" width={60}/>  
+                            </div>
+                            <div className="flex flex-col">
+                                <p className={`${inspiration.className} text-[96px] text-center leading-none`}>Mis XV</p>
+                                <div className={`${playwrite.className} text-[20px] text-center`}>
+                                    <p>Daniela Medel</p>
+                                    <p className="font-light text-[10px]">09.09.2025</p>
+                                </div>
                             </div>
                         </div>
                     </div>
