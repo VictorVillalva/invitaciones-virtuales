@@ -1,5 +1,5 @@
-import Confirmacion from "../invitacion-premium/Confirmacion";
-import Invitacion from "../invitacion-premium/Invitacion";
+import Confirmacion from "./Confirmacion";
+import Invitacion from "./Invitacion";
 
 export default function Asistencia() {
     return (

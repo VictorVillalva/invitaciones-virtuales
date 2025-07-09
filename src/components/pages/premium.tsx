@@ -1,25 +1,27 @@
 'use client'
-import Image from 'next/image'
+//Assets
 import separador from "@/assets/images/DanielaMedelXV/Separador.png"
-
-import ApartaFecha from "../ui/ApartaFecha";
-import Header from "../ui/Header";
-import SobreAnimation from "../ui/SobreAnimation";
-import TextoInspirador from '../ui/TextoInspirador';
-// import GaleriaFotos from '../ui/GaleriaFotos';
-import Itinerario from '../ui/Itinerario';
-import CodigoVestimenta from '../ui/CodigoVestimenta';
-import Padres from '../ui/Padres';
-import Padrinos from '../ui/Padrinos';
-import LluviaSobres from '../ui/LluviaSobres';
-import Ubicacion from '../ui/Ubicacion';
-import Hoteles from '../ui/Hoteles';
-import Playlist from '../ui/Playlist';
-import Asistencia from '../ui/Asistencia';
-import Footer from '../ui/Footer';
-import { inspiration, playwrite } from '@/assets/fonts/fonts';
-import { Bancos, nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db';
-import BackgroundMusic from '../ui/BackgroundMusic';
+//Data
+import { Bancos, nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
+//Fonts
+import { inspiration, playwrite } from '@/assets/fonts/fonts'
+//Components
+import Image from 'next/image'
+import Header from '../components-invitations/Header'
+import SobreAnimation from '../components-invitations/SobreAnimation'
+import ApartaFecha from '../components-invitations/ApartaFecha'
+import TextoInspirador from '../components-invitations/TextoInspirador'
+import Itinerario from '../components-invitations/Itinerario'
+import CodigoVestimenta from '../components-invitations/CodigoVestimenta'
+import Padres from '../components-invitations/Padres'
+import Padrinos from '../components-invitations/Padrinos'
+import LluviaSobres from '../components-invitations/LluviaSobres'
+import Ubicacion from '../components-invitations/Ubicacion'
+import Hoteles from '../components-invitations/Hoteles'
+import BackgroundMusic from '../components-invitations/BackgroundMusic'
+import Footer from '../components-invitations/Footer'
+import Asistencia from '../components-invitations/Asistencia'
+import Playlist from "../components-invitations/Playlist"
 
 export default function Premium() {
     const COLORTEXT = '#323C5D'
@@ -98,12 +100,12 @@ export default function Premium() {
                         <section className='SugerenciaHospedaje'>
                             <Hoteles />
                         </section>
-                        {/* <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Playlist'>
                             <Playlist />
-                        </section> */}
+                        </section>
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>

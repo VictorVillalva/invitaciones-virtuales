@@ -1,4 +1,4 @@
-import PlaylistSpotify from "../invitacion-premium/PlaylistSpotify";
+import PlaylistSpotify from "./PlaylistSpotify";
 
 export default function Playlist() {
     return (

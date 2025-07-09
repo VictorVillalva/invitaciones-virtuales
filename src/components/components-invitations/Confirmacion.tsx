@@ -2,7 +2,7 @@ import { quicksand } from "@/assets/fonts/fonts";
 import { useConfirmacion } from "@/hooks/useConfirmacion";
 import RadiusGroup from "../ui/RadiusGroup";
 import Mensaje from "./Mensaje";
-import CountDown from "../ui/CountDown";
+import CountDown from "./CountDown";
 import {
     AlertDialog,
     AlertDialogAction,
