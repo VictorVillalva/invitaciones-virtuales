@@ -33,8 +33,8 @@ export const ImagesCarrusel = [
 ];
 
 export const evento = [
-    { title: "Iglesia", time: "16:00 pm", icon: iglesia },
-    { title: "Recepción", time: "18:00 pm", icon: bell },
+    { title: "Iglesia", time: "17:00 pm", icon: iglesia },
+    { title: "Recepción", time: "18:30 pm", icon: bell },
     { title: "Baile", time: "20:00 pm", icon: dance },
     { title: "Cena", time: "21:00 pm", icon: cena },
     { title: "Fiesta", time: "22:00 pm", icon: party },
@@ -51,22 +51,22 @@ export const options = [
 export const nombrePadresPadrinos = [
     {
         id:1, 
-        nombre: "Pablo", 
+        nombre: "Dr. Pablo", 
         apellido: "Medel Román"
     },
     {
         id:2,
-        nombre: "Yazmin",
+        nombre: "Dra. Yazmin",
         apellido: "Muñiz Lopez",
     },
     {
         id:3,
-        nombre: "Omar",
+        nombre: "Lic. Omar",
         apellido: "Medel Roman",
     },
     {
         id:4,
-        nombre:"Maria Teresa",
+        nombre:"Lic. Maria Teresa",
         apellido:"Medel Roman"
     }
 ]          

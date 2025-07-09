@@ -21,6 +21,7 @@ import Hoteles from '../components-invitations/Hoteles'
 import BackgroundMusic from '../components-invitations/BackgroundMusic'
 import Footer from '../components-invitations/Footer'
 import Asistencia from '../components-invitations/Asistencia'
+import Playlist from "../components-invitations/Playlist"
 
 export default function Premium() {
     const COLORTEXT = '#323C5D'
@@ -99,12 +100,12 @@ export default function Premium() {
                         <section className='SugerenciaHospedaje'>
                             <Hoteles />
                         </section>
-                        {/* <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Playlist'>
                             <Playlist />
-                        </section> */}
+                        </section>
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>

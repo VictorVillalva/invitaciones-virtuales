@@ -27,6 +27,7 @@ export default function PlaylistSpotify() {
         songs,
         isLoading,
         error,
+        showAlert,
         success,
         playlistSongs,
         isModalOpen,
@@ -56,7 +57,7 @@ export default function PlaylistSpotify() {
             </div>
             <hr className="bg-[#8D8D8D]" />
             {/* Mostrar mensaje si no hay canciones */}
-            {error &&
+            {showAlert &&
                 <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full p-4">
                     <Alert variant="destructive">
                         <AlertCircle className="h-4 w-4" />

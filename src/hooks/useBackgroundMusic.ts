@@ -53,6 +53,9 @@ export const useBackgroundMusic = () => {
     useEffect(() => {
         if (audioError) {
             setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Ocultar alerta después de 5 segundos
         } else {
             setShowAlert(false);
         }

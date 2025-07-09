@@ -8,6 +8,7 @@ export const useSpotify = () => {
     const [songs, setSongs] = useState<SpotifySongs[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [showAlert, setShowAlert] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [playlistSongs, setPlaylistSongs] = useState<SpotifySongs[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,6 +28,10 @@ export const useSpotify = () => {
         } catch (error) {
             console.error(error);
             setError("Error al obtener el token de acceso.");
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Ocultar alerta después de 5 segundos
             return null;
         }
     }
@@ -58,6 +63,10 @@ export const useSpotify = () => {
 
             if (searchResults.length === 0) {
                 setError('No se encontraron canciones');
+                setShowAlert(true);
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 5000); // Ocultar alerta después de 5 segundos
             }
 
             setSongs(searchResults);
@@ -73,10 +82,18 @@ export const useSpotify = () => {
                     console.error(error.response.status);
                 } else if (error.request) {
                     // La solicitud se hizo pero no se recibió respuesta
-                        setError('Sin respuesta del servidor')
+                    setError('Sin respuesta del servidor')
+                    setShowAlert(true);
+                    setTimeout(() => {
+                        setShowAlert(false);
+                    }, 5000); // Ocultar alerta después de 5 segundos
                     // Verificaciones adicionales de conexión
                     if (navigator.onLine === false) {
                         setError('No hay conexión a internet')
+                        setShowAlert(true);
+                        setTimeout(() => {
+                            setShowAlert(false);
+                        }, 5000); // Ocultar alerta después de 5 segundos
 
                     }
                 } else {
@@ -86,9 +103,13 @@ export const useSpotify = () => {
             } else {
                 // Error no relacionado con Axios
                 console.error(error);
-                
+
             }
             setError('No se lograron encontrar las canciones.');
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Ocultar alerta después de 5 segundos
             throw error;
         }
     }
@@ -118,15 +139,24 @@ export const useSpotify = () => {
             //Error al agregar la canción a la lista de reproducción
             console.log(error);
             setError('Error al agregar la canción a la lista de reproducción.');
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Ocultar alerta después de 5 segundos
         }
     }
 
     // Obtener canciones de una playlist
     const getPlaylistSongs = useCallback(async () => {
+        //TODO: Verificar si el ID de la playlist está definido
         const playlistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID;
         if (!playlistId) {
             console.error("No se encontró el ID de la playlist en las variables de entorno.");
             setError("Falta el ID de la playlist.");
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Ocultar alerta después de 5 segundos
             return;
         }
 
@@ -162,6 +192,10 @@ export const useSpotify = () => {
             //Error al obtener la playlist 
             console.error(error);
             setError('Error al obtener la playlist.');
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Ocultar alerta después de 5 segundos
         } finally {
             setIsLoading(false);
         }
@@ -208,6 +242,7 @@ export const useSpotify = () => {
         songs,
         isLoading,
         error,
+        showAlert,
         success,
         playlistSongs,
         isModalOpen,
