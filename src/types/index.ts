@@ -16,9 +16,10 @@ export interface Nombres{
 }
 
 export interface Sobre{
-    numero: string;
-    nombre: string;
-    banco: string;
+    tarjeta: boolean;
+    numero?: string;
+    nombre?: string;
+    banco?: string;
 }
 
 export interface Ubicacion{
