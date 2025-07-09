@@ -12,11 +12,16 @@ export const metadata: Metadata = {
 
 export default function DanielaLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <section className={`daniela-medel-layout ${playwrite.className} antialiased relative`}>
-            <div className="absolute inset-0 opacity-5 h-auto" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
-            <div className="relative z-10">
-                {children}
-            </div>
-        </section>
+        <>
+            <head>
+                <link rel="icon" href="assets/daniela-medel/logos/Logo_DanielMedel.jpg" />
+            </head>
+            <section className={`daniela-medel-layout ${playwrite.className} antialiased relative`}>
+                <div className="absolute inset-0 opacity-5 h-auto" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
+                <div className="relative z-10">
+                    {children}
+                </div>
+            </section>
+        </>
     );
 }
