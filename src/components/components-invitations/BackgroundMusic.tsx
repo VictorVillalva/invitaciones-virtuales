@@ -5,7 +5,7 @@ import {
     AlertDescription,
     AlertTitle,
 } from "@/components/ui/alert"
-import { AlertCircle, X } from 'lucide-react';
+import { AlertCircle, Volume2, VolumeOff, X } from 'lucide-react';
 
 interface BackgroundMusicProps {
     audioSrc: string;
@@ -15,8 +15,9 @@ export default function BackgroundMusic({audioSrc}:BackgroundMusicProps) {
     const {
         audioRef,
         isPlaying,
-        audioError,
+        alert,
         showAlert,
+        typeAlert,
         togglePlay,
         handleCanPlay,
         handleError,
@@ -35,25 +36,43 @@ export default function BackgroundMusic({audioSrc}:BackgroundMusicProps) {
             />
             <button
                 onClick={togglePlay}
-                className="bg-gray-800 text-white py-2 px-4 rounded-full shadow-lg hover:bg-gray-700"
-                disabled={!!audioError && audioError.includes("No se pudo cargar")}
+                className="w-auto flex flex-row gap-2 bg-gray-700 text-white py-2 px-4 rounded-full shadow-lg hover:bg-gray-700"
+                disabled={!!alert && alert.includes("No se pudo cargar")}
             >
-                {isPlaying ? '🔇 Pausar' : '🔊 Reproducir'}
+                {isPlaying ? 
+                    <>
+                        <VolumeOff width={20}/>
+                        Pausar
+                    </>
+                    :
+                    <>
+                        <Volume2 width={20}/>
+                        Reproducir
+                    </>}
             </button>
             {/* Mostrar mensaje si no hay canciones */}
-            {audioError && showAlert &&
+            {alert && showAlert &&
                 <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full p-4">
-                    <Alert variant="destructive">
+                    <Alert variant={
+                        typeAlert === "destructive" ? "destructive" :
+                        typeAlert === "default" ? "default" :
+                        undefined
+                    }>
                         <AlertCircle className="h-4 w-4" />
                         <AlertTitle>
                             <div className='flex flex-row justify-between'>
-                                <span>Error</span>
-                                <button onClick={handleCloseAlert}><X className="h-4 w-4"/></button>
+                                <span>
+                                    {/* Mensaje que cambia según el tipo de alerta */}
+                                    {typeAlert === "default" ? "Notificación" :
+                                    typeAlert === "error" ? "Se ha producido un error" :
+                                    "Notificación"}
+                                </span>
+                                <button onClick={handleCloseAlert}><X className="h-4 w-4" /></button>
                             </div>
                         </AlertTitle>
                         <AlertDescription>
                             {/* No se logro reproducir la cancion. */}
-                            {audioError}
+                            {alert}
                         </AlertDescription>
                     </Alert>
                 </div>

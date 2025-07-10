@@ -1,12 +1,15 @@
 'use client'
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, use } from "react";
 
 export const useBackgroundMusic = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
-    const [audioError, setAudioError] = useState<string | null>(null);
+    const [alert, setAlert] = useState<string | null>(null);
     const [showAlert, setShowAlert] = useState<boolean>(false);
+    const [typeAlert, setTypeAlert] = useState("");
     const [userInteracted, setUserInteracted] = useState<boolean>(false);
+
+
     // Define tryPlayAudio con useCallback
     const tryPlayAudio = useCallback(async (): Promise<void> => {
         if (audioRef.current) {
@@ -17,13 +20,13 @@ export const useBackgroundMusic = () => {
                 }
                 await audioRef.current.play();
                 setIsPlaying(true);
-                setAudioError(null);
+                setAlert(null);
             } catch (error: any) {
                 // Si el usuario no ha interactuado, mostramos un mensaje amigable
                 if (!userInteracted) {
-                    setAudioError("Haz clic en reproducir para escuchar la música de fondo.");
+                    showSuccessAlert("Haz clic en reproducir para escuchar la música de fondo.", true)
                 } else {
-                    setAudioError(`Error: ${error.message || "No se pudo reproducir el audio"}`);
+                    showErrorAlert("No se pudo reproducir el audio.")
                 }
                 setIsPlaying(false);
             }
@@ -34,12 +37,11 @@ export const useBackgroundMusic = () => {
     useEffect(() => {
         const handleUserInteraction = () => {
             setUserInteracted(true);
-            if (audioRef.current && !isPlaying && audioError) {
+            if (audioRef.current && !isPlaying && alert) {
                 // Si hay un error y el usuario interactúa, intentamos reproducir de nuevo
                 tryPlayAudio();
             }
         };
-
         document.addEventListener('click', handleUserInteraction);
         document.addEventListener('keydown', handleUserInteraction);
 
@@ -47,11 +49,11 @@ export const useBackgroundMusic = () => {
             document.removeEventListener('click', handleUserInteraction);
             document.removeEventListener('keydown', handleUserInteraction);
         };
-    }, [isPlaying, audioError, tryPlayAudio]);
+    }, [isPlaying, alert, tryPlayAudio]);
 
     // Cuando se detecta un error, mostrar el alert
     useEffect(() => {
-        if (audioError) {
+        if (alert) {
             setShowAlert(true);
             setTimeout(() => {
                 setShowAlert(false);
@@ -59,7 +61,7 @@ export const useBackgroundMusic = () => {
         } else {
             setShowAlert(false);
         }
-    }, [audioError]);
+    }, [alert]);
 
     // Intenta reproducir automáticamente cuando el componente se monta
     useEffect(() => {
@@ -75,7 +77,7 @@ export const useBackgroundMusic = () => {
                     setIsPlaying(true);
                 } catch (error) {
                     // Si falla, simplemente mostramos un mensaje indicando que se necesita interacción
-                    setAudioError("Haz clic en reproducir para escuchar la música de fondo.");
+                    showSuccessAlert("Haz clic en reproducir para escuchar la música de fondo.", true)
                 }
             }
         };
@@ -115,7 +117,7 @@ export const useBackgroundMusic = () => {
 
     // Manejar errores de carga
     const handleError = () => {
-        setAudioError("No se pudo cargar el archivo de audio. Verifique la ruta y el formato.");
+        showErrorAlert("No se pudo cargar el archivo de audio. Verifique la ruta y el formato.")
     };
 
     const handleCloseAlert = () => {
@@ -123,13 +125,26 @@ export const useBackgroundMusic = () => {
         // Mantenemos el error para que no se redispare el alert
     };
 
+    //Manejo de alert de error
+    const showErrorAlert = (message: string) => {
+        setAlert(message);
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
+    };
 
-    
+    const showSuccessAlert = (message: string, show: boolean) => {
+        setAlert(message);
+        setShowAlert(show);
+        setTypeAlert("default")
+        setTimeout(() => setShowAlert(false), 5000);
+    }
+
     return{
         audioRef,
         isPlaying,
-        audioError,
+        alert,
         showAlert,
+        typeAlert,
         togglePlay,
         handleCanPlay,
         handleError,
