@@ -22,13 +22,14 @@ export default function Confirmacion() {
         isModalOpen,
         isModalConfirmationOpen,
         isSubmitted,
-        handleValueChange,
+        handleSelectChange,
         handleMessageChange,
         handleSubmit,
         handleCloseModal,
     } = useConfirmacion();
 
     const fechaEvento = new Date('2025-12-31T00:00:00');
+
 
     return (
         <div className={`${quicksand.className} px-4 py-6 bg-[#4F619B] rounded-sm border-[#A5A3A3] flex flex-col gap-6 text-white`}>
@@ -45,8 +46,12 @@ export default function Confirmacion() {
             ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6 transition-transform duration-500 ease-in-out transform translate-y-0">
                     <p className="text-center font-bold text-xl">Completa la confirmación de asistencia</p>
-                    <div className="flex flex-col gap-6">
-                        <SelectConfirmation label="Selecciona las personas que asistirán:" selectedOption={selectedOption}/>
+                        <div className="flex flex-col gap-6">
+                            <SelectConfirmation
+                                label="Selecciona las personas que asistirán:"
+                                selectedOption={selectedOption}
+                                onSelect={handleSelectChange}  // Pasamos la función de manejo
+                            />
                         {error && <p className="text-white text-sm font-semibold">{error}</p>}
                         <Mensaje persona='Daniel Medel' message={message} onMessageChange={handleMessageChange} />
                     </div>

@@ -12,6 +12,7 @@ interface SelectProps{
     label: string;
     placeholder?: string;
     selectedOption: string;
+    onSelect: (value: string) => void;
 }
 
 const Opciones = [
@@ -20,11 +21,11 @@ const Opciones = [
     {id:3, label:"Opcion3", value:"Opcion3"},
     {id:4, label:"Opcion4", value:"Opcion4"}, 
 ]
-export default function SelectConfirmation({ label, placeholder="Selecciona", selectedOption} : SelectProps) {
+export default function SelectConfirmation({ label, placeholder="Selecciona", selectedOption, onSelect} : SelectProps) {
     return (
         <div className="flex flex-col">
             <legend className="font-medium mb-2">{label}</legend>
-            <Select>
+            <Select value={selectedOption} onValueChange={onSelect}>
                 <SelectTrigger className="w-full bg-white text-slate-500">
                     <SelectValue placeholder={placeholder} />
                 </SelectTrigger>

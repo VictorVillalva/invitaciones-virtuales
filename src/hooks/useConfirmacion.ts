@@ -8,11 +8,18 @@ export const useConfirmacion = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalConfirmationOpen, setIsModalConfirmationOpen] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false); // Nuevo estado para controlar si los datos han sido enviados
-    
-    const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedOption(e.target.value);
-        setError(""); // Limpiar el mensaje de error cuando se selecciona una opción
+
+    // ---- Se desactivo por que ya no se usaron los checkboxs ----
+    // const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     setSelectedOption(e.target.value);
+    //     setError(""); // Limpiar el mensaje de error cuando se selecciona una opción
+    // };
+
+    // Función de manejo que se pasa como prop al hijo
+    const handleSelectChange = (value: string) => {
+        setSelectedOption(value);  // Actualiza el valor seleccionado
     };
+
     // const { width, height } = useWindowSize();
     const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(e.target.value);
@@ -36,14 +43,14 @@ export const useConfirmacion = () => {
         setIsModalOpen(false);
         setIsModalConfirmationOpen(false)
     };
-    return{
+    return {
         selectedOption,
         message,
         error,
         isModalOpen,
         isModalConfirmationOpen,
         isSubmitted,
-        handleValueChange,
+        handleSelectChange,
         handleMessageChange,
         handleSubmit,
         handleCloseModal,
