@@ -12,6 +12,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
+import SelectConfirmation from "./SelectConfirmation";
 
 export default function Confirmacion() {
     const {
@@ -45,7 +46,7 @@ export default function Confirmacion() {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6 transition-transform duration-500 ease-in-out transform translate-y-0">
                     <p className="text-center font-bold text-xl">Completa la confirmación de asistencia</p>
                     <div className="flex flex-col gap-6">
-                        <RadiusGroup selectedOption={selectedOption} onValueChange={handleValueChange} />
+                        <SelectConfirmation label="Selecciona las personas que asistirán:" selectedOption={selectedOption}/>
                         {error && <p className="text-white text-sm font-semibold">{error}</p>}
                         <Mensaje persona='Daniel Medel' message={message} onMessageChange={handleMessageChange} />
                     </div>

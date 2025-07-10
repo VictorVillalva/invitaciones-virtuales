@@ -11,7 +11,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="assets/daniela-medel/logos/Logo_DanielMedel.jpg" />
+        <link rel="icon" href="assets/daniela-medel/logos/Logo-DanielMedel.jpg" />
       </head>
       <body className={`${inter.className} antialiased relative`}>
         {children}
