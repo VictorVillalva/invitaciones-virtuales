@@ -190,7 +190,7 @@ export const useSpotify = () => {
             setPlaylistSongs(songs);
         } catch (error) {
             //Error al obtener la playlist 
-            console.error(error);
+            console.error('Aqui esta el error en el ID DE LA PLAYLIST', error);
             setError('Error al obtener la playlist.');
             setShowAlert(true);
             setTimeout(() => {

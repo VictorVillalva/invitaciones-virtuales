@@ -102,12 +102,12 @@ export default function Premium() {
                         <section className='SugerenciaHospedaje'>
                             <Hoteles />
                         </section>
-                        {/* <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Playlist'>
                             <Playlist />
-                        </section> */}
+                        </section>
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>

@@ -43,6 +43,7 @@ export const useConfirmacion = () => {
         setIsModalOpen(false);
         setIsModalConfirmationOpen(false)
     };
+    
     return {
         selectedOption,
         message,
