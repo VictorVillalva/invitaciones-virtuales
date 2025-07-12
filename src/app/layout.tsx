@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter} from "@/assets/fonts/fonts"
+import { inter } from "@/assets/fonts/fonts"
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="assets/daniela-medel/logos/Logo-DanielMedel.jpg" />
+        <link rel="icon" href="/assets/daniela-medel/logos/Logo-DanielMedel.jpg" />
       </head>
       <body className={`${inter.className} antialiased relative`}>
         {children}
