@@ -56,10 +56,8 @@ export interface InputSearchProps{
 }
 
 export interface InvitacionProps{
-    numPersonas: number;
-    familia: string;
-    adultos: number;
-    ninos: number;
+    numPersonas?: number;
+    familia?: string;
 }
 
 export interface RadiusGroupProps {
@@ -75,4 +73,13 @@ export interface MensajeProps {
 
 export interface CountdownProps {
     targetDate: Date;
+}
+
+export interface Guest {
+    hasKids: boolean;
+    invitationQty: number;
+    name: string;
+    invitationId: string;
+    uuid: string;
+    hasConfirmed: boolean;
 }

@@ -25,10 +25,15 @@ import Playlist from "../components-invitations/Playlist"
 import GaleriaFotos from "../components-invitations/GaleriaFotos"
 import CountDown from "../components-invitations/CountDown"
 import Link from "next/link"
+import { ParamValue } from "next/dist/server/request/params"
 
-export default function Premium() {
+interface PremiumProps {
+    code: ParamValue;
+}
+
+export default function Premium({ code }: PremiumProps) {
     const COLORTEXT = '#323C5D'
-    const fechaEvento = new Date('2025-12-31T00:00:00');
+    const fechaEvento = new Date('2025-09-06T17:00:00');
 
     return (
         <>
@@ -48,7 +53,26 @@ export default function Premium() {
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
-                        <section className='GaleriaFotos'> 
+                        <section className='Padres-Padrinos'>
+                            <div className="padres-padrinos flex flex-col gap-10" data-aos="fade-up">
+                                <Padres
+                                    nombre1={nombrePadresPadrinos[0].nombre}
+                                    apellido1={nombrePadresPadrinos[0].apellido}
+                                    nombre2={nombrePadresPadrinos[1].nombre}
+                                    apellido2={nombrePadresPadrinos[1].apellido}
+                                />
+                                <Padrinos
+                                    nombre1={nombrePadresPadrinos[2].nombre}
+                                    apellido1={nombrePadresPadrinos[2].apellido}
+                                    nombre2={nombrePadresPadrinos[3].nombre}
+                                    apellido2={nombrePadresPadrinos[3].apellido}
+                                />
+                            </div>
+                        </section>
+                        <div className="separador flex" data-aos="fade-up">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='GaleriaFotos'>
                             <GaleriaFotos />
                         </section>
                         <div className="separador flex" data-aos="fade-up">
@@ -62,25 +86,6 @@ export default function Premium() {
                         </div>
                         <section className='CodigoVestimenta'>
                             <CodigoVestimenta />
-                        </section>
-                        <div className="separador flex" data-aos="fade-up">
-                            <Image src={separador} alt="separador" />
-                        </div>
-                        <section className='Padres-Padrinos'>
-                            <div className="padres-padrinos flex flex-col gap-10" data-aos="fade-up">
-                                <Padres 
-                                    nombre1={nombrePadresPadrinos[0].nombre}
-                                    apellido1={nombrePadresPadrinos[0].apellido}
-                                    nombre2={nombrePadresPadrinos[1].nombre}
-                                    apellido2={nombrePadresPadrinos[1].apellido}
-                                />
-                                <Padrinos 
-                                    nombre1={nombrePadresPadrinos[2].nombre}
-                                    apellido1={nombrePadresPadrinos[2].apellido}
-                                    nombre2={nombrePadresPadrinos[3].nombre}
-                                    apellido2={nombrePadresPadrinos[3].apellido}
-                                />
-                            </div>
                         </section>
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
@@ -102,12 +107,12 @@ export default function Premium() {
                         <section className='SugerenciaHospedaje'>
                             <Hoteles />
                         </section>
-                        {/* <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Playlist'>
                             <Playlist />
-                        </section> */}
+                        </section>
                         <div className="separador flex" data-aos="fade-up">
                             <Image src={separador} alt="separador" />
                         </div>
@@ -118,7 +123,7 @@ export default function Premium() {
                                 <div className="flex flex-col gap-4">
                                     <small className={`${quicksand.className} text-center`}>Da click en el boton para confirmar tu asistencia al evento</small>
                                     <Link 
-                                        href="/daniela-medel/confirmacion" 
+                                        href={`/misXV/daniela-medel/confirmacion/${code}`}
                                         className={`${quicksand.className} w-full py-2 bg-[#CBA836] text-white rounded hover:bg-[#d9b12d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#927823] font-semibold text-center`}>
                                             Confirmar asistencia
                                     </Link>
@@ -133,7 +138,7 @@ export default function Premium() {
                                 <p className={`${inspiration.className} text-[96px] text-center leading-none`}>Mis XV</p>
                                 <div className={`${playwrite.className} text-[20px] text-center`}>
                                     <p>Daniela Medel</p>
-                                    <p className="font-light text-[10px]">09.09.2025</p>
+                                    <p className="font-light text-[10px]">06.09.2025</p>
                                 </div>
                             </div>
                         </div>

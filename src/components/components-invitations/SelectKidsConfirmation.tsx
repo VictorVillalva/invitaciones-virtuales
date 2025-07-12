@@ -13,18 +13,27 @@ interface SelectProps{
     placeholder?: string;
     selectedOption: string;
     onSelect: (value: string) => void;
-    persons?: number
 }
 
-export default function SelectConfirmation({ label, placeholder = "Selecciona", selectedOption, onSelect, persons }: SelectProps) {
-    // Generar opciones dinámicamente según el número de personas
-    const opcionesDinamicas = persons
-        ? Array.from({ length: persons }, (_, i) => ({
-            id: i + 1,
-            label: `${i + 1} Persona${i + 1 > 1 ? 's' : ''}`,
-            value: (i + 1).toString(),
-        }))
-        : [];
+const kids = [
+    {
+        id: 1,
+        value: "1",
+        label: "1 niño",
+    },
+    {
+        id: 2,
+        value:"2",
+        label: "2 niños",
+    },
+    {
+        id: 3,
+        value: "3",
+        label: "3 niños",
+    },
+]
+
+export default function SelectKidsConfirmation({ label, placeholder = "Selecciona", selectedOption, onSelect }: SelectProps) {
     return (
         <div className="flex flex-col">
             <legend className="font-medium mb-2">{label}</legend>
@@ -35,7 +44,7 @@ export default function SelectConfirmation({ label, placeholder = "Selecciona", 
                 <SelectContent>
                     <SelectGroup>
                         <SelectLabel>Opciones</SelectLabel>
-                        {opcionesDinamicas.map((opcion)=>(
+                        {kids.map((opcion)=>(
                             <SelectItem key={opcion.id} value={opcion.value}>{opcion.label}</SelectItem>
                         ))}
                     </SelectGroup>

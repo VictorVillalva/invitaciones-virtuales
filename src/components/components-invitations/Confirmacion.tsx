@@ -1,6 +1,5 @@
 import { quicksand } from "@/assets/fonts/fonts";
 import { useConfirmacion } from "@/hooks/useConfirmacion";
-import RadiusGroup from "../ui/RadiusGroup";
 import Mensaje from "./Mensaje";
 import CountDown from "./CountDown";
 import {
@@ -13,23 +12,34 @@ import {
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import SelectConfirmation from "./SelectConfirmation";
+import type { Guest } from "@/types";
+import SelectKidsConfirmation from "./SelectKidsConfirmation";
+import { ParamValue } from "next/dist/server/request/params";
 
-export default function Confirmacion() {
+interface ConfirmacionProps {
+    params: ParamValue;
+    datos: Guest
+}
+
+export default function Confirmacion({ params, datos }: ConfirmacionProps) {
     const {
         selectedOption,
+        selectedKidsOption,
         message,
         error,
+        headerError,
         isModalOpen,
         isModalConfirmationOpen,
         isSubmitted,
+        hasKids,
         handleSelectChange,
+        handleSelectKidsChange,
         handleMessageChange,
         handleSubmit,
         handleCloseModal,
-    } = useConfirmacion();
+    } = useConfirmacion({params, datos});
 
-    const fechaEvento = new Date('2025-12-31T00:00:00');
-
+    const fechaEvento = new Date('2025-09-06T17:00:00');
 
     return (
         <div className={`${quicksand.className} px-4 py-6 bg-[#4F619B] rounded-sm border-[#A5A3A3] flex flex-col gap-6 text-white`}>
@@ -44,14 +54,22 @@ export default function Confirmacion() {
                     </div>
                 </>
             ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-6 transition-transform duration-500 ease-in-out transform translate-y-0">
-                    <p className="text-center font-bold text-xl">Completa la confirmación de asistencia</p>
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-6 transition-transform duration-500 ease-in-out transform translate-y-0">
+                        <p className="text-center font-bold text-xl">Completa la confirmación de asistencia</p>
                         <div className="flex flex-col gap-6">
                             <SelectConfirmation
                                 label="Selecciona las personas que asistirán:"
                                 selectedOption={selectedOption}
-                                onSelect={handleSelectChange}  // Pasamos la función de manejo
+                                onSelect={handleSelectChange} // Pasamos la función de manejo
+                                persons={datos?.invitationQty}
                             />
+                            {hasKids === true &&
+                                <SelectKidsConfirmation
+                                    label="Selecciona la cantidad de niños que asistirán:"
+                                    selectedOption={selectedKidsOption}
+                                    onSelect={handleSelectKidsChange}  // Pasamos la función de manejo
+                                />
+                            }
                         {error && <p className="text-white text-sm font-semibold">{error}</p>}
                         <Mensaje persona='Daniel Medel' message={message} onMessageChange={handleMessageChange} />
                     </div>
@@ -63,7 +81,6 @@ export default function Confirmacion() {
                     </button>
 
                 </form>
-                
             )}
             
             {isModalOpen && 
@@ -73,10 +90,10 @@ export default function Confirmacion() {
                             <AlertDialogHeader>
                                 <AlertDialogTitle className={`${quicksand.className} text-2xl font-semibold flex flex-col gap-2`}>
                                     <span className="text-6xl">🫣</span>
-                                    <p>Olvidaste confirmar</p>
+                                    <p>{headerError}</p>
                                 </AlertDialogTitle>
                                 <AlertDialogDescription className={`${quicksand.className}`}>
-                                    Recuerda que debes seleccionar el número de personas que asistirán al evento
+                                    {error}
                                 </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>

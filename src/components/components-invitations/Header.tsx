@@ -9,6 +9,7 @@ export default function Header() {
                     src={DanielaMedel}
                     alt='Daniela Medel Quinceañera'
                     fill
+                    sizes='(max-width: 768px) 100vw, 768px'
                     className='mask-fade-bottom object-cover'
                     priority
                 />

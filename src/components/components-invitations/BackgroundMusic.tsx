@@ -36,18 +36,16 @@ export default function BackgroundMusic({audioSrc}:BackgroundMusicProps) {
             />
             <button
                 onClick={togglePlay}
-                className="w-auto flex flex-row gap-2 bg-gray-700 text-white py-2 px-4 rounded-full shadow-lg hover:bg-gray-700"
+                className="w-auto flex flex-row gap-2 bg-gray-700 text-white py-2 px-2 rounded-full shadow-lg hover:bg-gray-700"
                 disabled={!!alert && alert.includes("No se pudo cargar")}
             >
                 {isPlaying ? 
                     <>
                         <VolumeOff width={20}/>
-                        Pausar
                     </>
                     :
                     <>
                         <Volume2 width={20}/>
-                        Reproducir
                     </>}
             </button>
             {/* Mostrar mensaje si no hay canciones */}
