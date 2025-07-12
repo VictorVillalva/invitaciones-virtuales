@@ -160,8 +160,8 @@ export const useConfirmacionAsistencia = ({ codeParam }: UseConfirmacionAsistenc
                 // Si tu response.data ya es un arreglo:
                 setGuestsData(response.data.data);
                 // Aquí puedes guardar la respuesta en el estado si lo necesitas
-            } catch (error) {
-                console.error("Error al obtener la confirmación:", error);
+            } catch{
+                //console.error("Error al obtener la confirmación:", error);
             }
         };
         if (codeParam) {

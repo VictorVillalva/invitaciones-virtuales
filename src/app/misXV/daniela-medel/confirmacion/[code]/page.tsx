@@ -13,15 +13,23 @@ export default function ConfirmacionAsistencia() {
   const params = useParams();
   const code = params?.code;
 
-  const {codeParam, guestsData} = useConfirmacionAsistencia({codeParam : code});
+  const { codeParam, guestsData } = useConfirmacionAsistencia({ codeParam: code });
+
+  // Si no hay datos, mostrar mensaje de error
+  const noPass = !guestsData;
 
   return (
     <>
       {!isMobile && <BlockMobile />}
-      <main className={`text-[${COLORTEXT}] w-full px-4 py-[100px] relative z-10`}>
+      <main className={`text-[${COLORTEXT}] w-full h-screen px-4 py-[100px] relative z-10`}>
         <div className="asistencia flex flex-col gap-10" data-aos="fade-up">
           <p className="text-[32px] text-center">Confirmación de asistencia</p>
-          {guestsData && (
+          {noPass ? (
+            <div className=" flex flex-col justify-center gap-4 items-center text-center h-[400px]">
+              <span className="text-6xl">🫣</span>
+              <p className="font-bold text-xl">Creemos que no tienes un pase</p>
+            </div>
+          ) : (
             <>
               <Invitacion
                 numPersonas={guestsData.invitationQty}
