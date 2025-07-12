@@ -6,6 +6,14 @@ import { inspiration, playwrite, quicksand } from "@/assets/fonts/fonts"
 import type { InvitacionProps } from "@/types"
 
 export default function Invitacion({ numPersonas, familia }: InvitacionProps) {
+    let familyText = ""
+
+    if (Number(numPersonas) > 1) {
+        familyText = `${familia} y familia`
+    }else{
+        familyText = `${familia}`
+    }
+    
     return (
         <div className={`${quicksand.className} w-full bg-[#4F619B] relative px-4 py-6 text-white flex flex-col gap-16 rounded-[4px]`}>
             <div
@@ -19,7 +27,7 @@ export default function Invitacion({ numPersonas, familia }: InvitacionProps) {
                     <p>Daniela Medel Muñiz</p>
                 </div>
                 <div className="numero-personas flex flex-col gap-4 text-center">
-                    <p className={`${playwrite.className} text-[32px]`}>Familia {familia}</p>
+                    <p className={`${playwrite.className} text-[32px]`}>{familyText}</p>
                     <p className="font-semibold">Pase para {numPersonas} personas</p>
                 </div>
             </div>

@@ -73,8 +73,9 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
         // Si pasa la validación, realiza el POST con header de autenticación
         try {
             const token = process.env.NEXT_PUBLIC_TOKEN_ACCESS_API; // Cambia por tu método de obtención de token
+            const urlApi = process.env.NEXT_PUBLIC_BACKEND_URL; // Asegúrate de que esta URL sea correcta
             await axios.post(
-                `http://localhost:8080/guests/confirm-assistance/${params}`,
+                `${urlApi}/api/guests/confirm-assistance/${params}`,
                 {
                     adultsNo,
                     kidsNo,
@@ -145,8 +146,10 @@ export const useConfirmacionAsistencia = ({ codeParam }: UseConfirmacionAsistenc
         const fetchData = async () => {
             try {
                 const token = process.env.NEXT_PUBLIC_TOKEN_ACCESS_API; // Ajusta el nombre si es diferente
+                const urlApi = process.env.NEXT_PUBLIC_BACKEND_URL; // Asegúrate de que esta URL sea correcta
+
                 const response = await axios.get(
-                    `http://localhost:8080/guests/${codeParam}`,
+                    `${urlApi}/api/guests/${codeParam}`,
                     {
                         headers: {
                             Authorization: `${token}`,
