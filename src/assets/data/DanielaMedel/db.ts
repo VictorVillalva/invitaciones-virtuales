@@ -29,7 +29,7 @@ export const ImagesCarrusel = [
 export const evento = [
     { title: "Iglesia", time: "17:00 pm", icon: iglesia },
     { title: "Recepción", time: "18:30 pm", icon: bell },
-    { title: "Baile", time: "17:00 pm", icon: dance },
+    { title: "Baile", time: "19:00 pm", icon: dance },
     { title: "Cena", time: "20:00 pm", icon: cena },
     { title: "Fiesta", time: "21:00 pm", icon: party },
 ];
