@@ -26,7 +26,7 @@ export const useSpotify = () => {
             const url = process.env.NEXT_PUBLIC_API_REFRESH_TOKEN;
             const responseTokenSpotify = await axios.get(`${url}`);
             return responseTokenSpotify.data.accessToken;
-        } catch (error) {
+        } catch {
             //console.error(error);
             setError("Error al obtener el token de acceso.");
             setShowAlert(true);
@@ -72,7 +72,7 @@ export const useSpotify = () => {
 
             setSongs(searchResults);
 
-        } catch (error) {
+        } catch {
             if (axios.isAxiosError(error)) {
                 // Manejo específico de errores de Axios
                 if (error.response) {
@@ -137,7 +137,7 @@ export const useSpotify = () => {
             // 🔥 Actualiza la lista sin necesidad de recargar
             getPlaylistSongs();
 
-        } catch (error) {
+        } catch{
             //Error al agregar la canción a la lista de reproducción
             //console.log(error);
             setError('Error al agregar la canción a la lista de reproducción.');
@@ -191,7 +191,7 @@ export const useSpotify = () => {
             const songs = response.data.items.map(({ track }) => track);
             //console.log("Canciones obtenidas:", songs); // Verifica las canciones obtenidas
             setPlaylistSongs(songs);
-        } catch (error) {
+        } catch{
             //Error al obtener la playlist 
             setError('Error al obtener la playlist.');
             setShowAlert(true);
