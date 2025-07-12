@@ -23,10 +23,11 @@ export const useSpotify = () => {
      */
     const getAccessToken = async () => {
         try {
-            const responseTokenSpotify = await axios.get('https://spotifytestrefreshtoken-production.up.railway.app/token')
+            const url = process.env.NEXT_PUBLIC_API_REFRESH_TOKEN;
+            const responseTokenSpotify = await axios.get(`${url}`);
             return responseTokenSpotify.data.accessToken;
         } catch (error) {
-            console.error(error);
+            //console.error(error);
             setError("Error al obtener el token de acceso.");
             setShowAlert(true);
             setTimeout(() => {
@@ -45,8 +46,8 @@ export const useSpotify = () => {
         try {
             const accessTokenSpotify = await getAccessToken();
             if (!accessTokenSpotify) return;
-
-            const responseSong = await axios.get('https://api.spotify.com/v1/search', {
+            const url = process.env.NEXT_PUBLIC_SPOTIFY_BASE_URL_SEARCH;
+            const responseSong = await axios.get(`${url}`, {
                 params: {
                     q: query,
                     type: 'track',
@@ -77,9 +78,9 @@ export const useSpotify = () => {
                 if (error.response) {
                     // El servidor respondió con un error
                     //Respuesta de error
-                    console.error(error.response.data);
+                    //console.error(error.response.data);
                     //Codigo de estado
-                    console.error(error.response.status);
+                    //console.error(error.response.status);
                 } else if (error.request) {
                     // La solicitud se hizo pero no se recibió respuesta
                     setError('Sin respuesta del servidor')
@@ -98,11 +99,11 @@ export const useSpotify = () => {
                     }
                 } else {
                     // Error al configurar la solicitud
-                    console.error(error.message);
+                    //console.error(error.message);
                 }
             } else {
                 // Error no relacionado con Axios
-                console.error(error);
+                //console.error(error);
 
             }
             setError('No se lograron encontrar las canciones.');
@@ -121,8 +122,9 @@ export const useSpotify = () => {
             if (!accessTokenSpotify) return;
 
             const playlistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID; // ID de la lista de reproducción a la que deseas agregar la canción
+            const urlBase = process.env.NEXT_PUBLIC_SPOTIFY_BASE_URL;
 
-            await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+            await axios.post(`${urlBase}/playlists/${playlistId}/tracks`,
                 { uris: [`spotify:track:${songId}`] },
                 {
                     headers: {
@@ -137,7 +139,7 @@ export const useSpotify = () => {
 
         } catch (error) {
             //Error al agregar la canción a la lista de reproducción
-            console.log(error);
+            //console.log(error);
             setError('Error al agregar la canción a la lista de reproducción.');
             setShowAlert(true);
             setTimeout(() => {
@@ -151,7 +153,7 @@ export const useSpotify = () => {
         //TODO: Verificar si el ID de la playlist está definido
         const playlistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID;
         if (!playlistId) {
-            console.error("No se encontró el ID de la playlist en las variables de entorno.");
+            //console.error("No se encontró el ID de la playlist en las variables de entorno.");
             setError("Falta el ID de la playlist.");
             setShowAlert(true);
             setTimeout(() => {
@@ -164,6 +166,7 @@ export const useSpotify = () => {
         setError(null);
 
         try {
+            const urlBase = process.env.NEXT_PUBLIC_SPOTIFY_BASE_URL;
             const accessTokenSpotify = await getAccessToken();
             if (!accessTokenSpotify) return;
 
@@ -181,7 +184,7 @@ export const useSpotify = () => {
             // ]
             // }
             const response = await axios.get<{ items: { track: SpotifySongs }[] }>(
-                `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+                `${urlBase}/playlists/${playlistId}/tracks`,
                 { headers: { Authorization: `Bearer ${accessTokenSpotify}` } }
             );
             
@@ -190,7 +193,6 @@ export const useSpotify = () => {
             setPlaylistSongs(songs);
         } catch (error) {
             //Error al obtener la playlist 
-            console.error('Aqui esta el error en el ID DE LA PLAYLIST', error);
             setError('Error al obtener la playlist.');
             setShowAlert(true);
             setTimeout(() => {
@@ -226,15 +228,15 @@ export const useSpotify = () => {
     }
 
     // Lógica para ocultar el alert automáticamente
-    // useEffect(() => {
-    //     if (success) {
-    //         const timeout = setTimeout(() => {
-    //             setSuccess(null);
-    //         }, 5000); // 5 segundos
+    useEffect(() => {
+        if (success) {
+            const timeout = setTimeout(() => {
+                setSuccess(null);
+            }, 5000); // 5 segundos
 
-    //         return () => clearTimeout(timeout); // limpieza
-    //     }
-    // }, [success]);
+            return () => clearTimeout(timeout); // limpieza
+        }
+    }, [success]);
 
     return{
         query,

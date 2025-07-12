@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 };
 
 //Nota: El body solo se modifica en el layout de la app, no en el de la pagina
-
 export default function DanielaLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     return (
         <>

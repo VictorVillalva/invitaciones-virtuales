@@ -2,11 +2,12 @@
 import type { Guest } from "@/types";
 import axios from "axios";
 import { ParamValue } from "next/dist/server/request/params";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 interface ConfirmacionProps {
     params: ParamValue;
     datos: Guest
 }
+
 export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
     const [hasKids, setHasKids] = useState(false);
     const [selectedOption, setSelectedOption] = useState("");
@@ -71,7 +72,7 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
         }
         // Si pasa la validación, realiza el POST con header de autenticación
         try {
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbmUuZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzUyMzAzNDAwfQ._Mwg3Fsnjk9zeH9wJtfe0eGCNszasK7SapVdLpRjzjQ"; // Cambia por tu método de obtención de token
+            const token = process.env.NEXT_PUBLIC_TOKEN_ACCESS_API; // Cambia por tu método de obtención de token
             await axios.post(
                 `http://localhost:8080/guests/confirm-assistance/${params}`,
                 {
@@ -106,12 +107,11 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
         }
     }, [datos?.hasKids]);
 
-
     useEffect(() => {
         if (datos?.hasConfirmed === true) {
             setIsSubmitted(true);
         } else {
-            setIsSubmitted(true);
+            setIsSubmitted(false);
         }
     }, [datos?.hasConfirmed]);
 
@@ -132,3 +132,43 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
         handleCloseModal,
     }
 }
+
+interface UseConfirmacionAsistenciaProps {
+    codeParam: ParamValue;
+}
+
+export const useConfirmacionAsistencia = ({ codeParam }: UseConfirmacionAsistenciaProps) => {
+    const [guestsData, setGuestsData] = useState<Guest | null>(null);
+
+    // ...existing code...
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const token = process.env.NEXT_PUBLIC_TOKEN_ACCESS_API; // Ajusta el nombre si es diferente
+                const response = await axios.get(
+                    `http://localhost:8080/guests/${codeParam}`,
+                    {
+                        headers: {
+                            Authorization: `${token}`,
+                        },
+                    }
+                );
+                // Guardar la data en el estado
+                // Si tu response.data ya es un arreglo:
+                setGuestsData(response.data.data);
+                // Aquí puedes guardar la respuesta en el estado si lo necesitas
+            } catch (error) {
+                console.error("Error al obtener la confirmación:", error);
+            }
+        };
+        if (codeParam) {
+            fetchData();
+        }
+    }, [codeParam]);
+
+    return {
+        codeParam,
+        guestsData
+    }
+}
+

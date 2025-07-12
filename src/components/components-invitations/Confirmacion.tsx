@@ -126,3 +126,4 @@ export default function Confirmacion({ params, datos }: ConfirmacionProps) {
         </div>
     )
 }
+
