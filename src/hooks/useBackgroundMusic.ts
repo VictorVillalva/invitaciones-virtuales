@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState, useEffect, useCallback, use } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 export const useBackgroundMusic = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -14,15 +14,13 @@ export const useBackgroundMusic = () => {
     const tryPlayAudio = useCallback(async (): Promise<void> => {
         if (audioRef.current) {
             try {
-                // Aseguramos que no está silenciado si el usuario ya interactuó
                 if (userInteracted) {
                     audioRef.current.muted = false;
                 }
                 await audioRef.current.play();
                 setIsPlaying(true);
                 setAlert(null);
-            } catch (error: any) {
-                // Si el usuario no ha interactuado, mostramos un mensaje amigable
+            } catch {
                 if (!userInteracted) {
                     showSuccessAlert("Haz clic en reproducir para escuchar la música de fondo.", true)
                 } else {
@@ -68,31 +66,28 @@ export const useBackgroundMusic = () => {
         const attemptAutoplay = async (): Promise<void> => {
             if (audioRef.current) {
                 try {
-                    // Primero intentamos reproducir sin sonido
                     audioRef.current.muted = true;
                     await audioRef.current.play();
-
-                    // Si tiene éxito, mantenemos la reproducción pero silenciada
-                    // hasta que el usuario interactúe
                     setIsPlaying(true);
-                } catch (error) {
-                    // Si falla, simplemente mostramos un mensaje indicando que se necesita interacción
+                } catch {
                     showSuccessAlert("Haz clic en reproducir para escuchar la música de fondo.", true)
                 }
             }
         };
 
-        // Pequeño retraso para asegurarnos de que el audio está listo
         const timer = setTimeout(() => {
             attemptAutoplay();
         }, 500);
 
+        // Guarda el ref actual en una variable
+        const audio = audioRef.current;
+
         // Limpieza al desmontar
         return () => {
             clearTimeout(timer);
-            if (audioRef.current) {
-                audioRef.current.pause();
-                audioRef.current.currentTime = 0;
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
             }
         };
     }, []);

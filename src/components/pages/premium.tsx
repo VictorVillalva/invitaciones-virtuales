@@ -3,7 +3,7 @@
 import separador from "@/assets/images/DanielaMedelXV/Separador.png"
 import LogoDanielMedel from "@/assets/images/DanielaMedelXV/Logo_DanielMedel.jpg"
 //Data
-import { Bancos, nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
+import { nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
 //Fonts
 import { inspiration, playwrite, quicksand } from '@/assets/fonts/fonts'
 //Components

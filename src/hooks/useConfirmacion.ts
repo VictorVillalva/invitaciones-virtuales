@@ -89,7 +89,7 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
             );
             setIsModalConfirmationOpen(true);
             setIsSubmitted(true);
-        } catch (error) {
+        } catch{
             setError("Ocurrió un error al enviar la confirmación.");
             setIsModalOpen(true);
         }
