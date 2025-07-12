@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <div className="w-full h-120 flex flex-row justify-center items-center">
-      <h1 className="font-extrabold text-9xl text-center">Invitaciones Virtuales</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen ">
+      <h1 className="font-bold text-9xl">Proximamente</h1>
     </div>
   );
 }

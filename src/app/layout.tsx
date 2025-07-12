@@ -7,16 +7,13 @@ export const metadata: Metadata = {
   description: "Esta es una invitacion virtual para eventos especiales",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} antialiased`}
-      >
+      <head>
+        <link rel="icon" href="/assets/daniela-medel/logos/Logo-DanielMedel.jpg" />
+      </head>
+      <body className={`${inter.className} antialiased relative`}>
         {children}
       </body>
     </html>
