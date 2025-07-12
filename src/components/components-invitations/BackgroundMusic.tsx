@@ -30,7 +30,7 @@ export default function BackgroundMusic({audioSrc}:BackgroundMusicProps) {
                 src={audioSrc}
                 loop
                 preload="auto"
-                muted={true}
+                muted={!isPlaying}
                 onCanPlay={handleCanPlay}
                 onError={handleError}
             />
