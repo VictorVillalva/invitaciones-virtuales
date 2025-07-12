@@ -16,6 +16,7 @@ export const useBackgroundMusic = () => {
             try {
                 if (userInteracted) {
                     audioRef.current.muted = false;
+                    audioRef.current.volume = 1;
                 }
                 await audioRef.current.play();
                 setIsPlaying(true);
