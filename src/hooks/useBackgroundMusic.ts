@@ -8,93 +8,128 @@ export const useBackgroundMusic = () => {
     const [showAlert, setShowAlert] = useState<boolean>(false);
     const [typeAlert, setTypeAlert] = useState("");
     const [userInteracted, setUserInteracted] = useState<boolean>(false);
+    const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
+    // Manejo de alert de error
+    const showErrorAlert = useCallback((message: string) => {
+        setAlert(message);
+        setShowAlert(true);
+        setTypeAlert("error");
+        setTimeout(() => setShowAlert(false), 5000);
+    }, []);
+
+    const showSuccessAlert = useCallback((message: string, show: boolean) => {
+        // Evitar mostrar la misma alerta múltiples veces
+        if (alert !== message) {
+            setAlert(message);
+            setShowAlert(show);
+            setTypeAlert("default");
+        }
+
+    }, [alert]);
 
     // Define tryPlayAudio con useCallback
     const tryPlayAudio = useCallback(async (): Promise<void> => {
         if (audioRef.current) {
             try {
-                if (userInteracted) {
-                    audioRef.current.muted = false;
-                    audioRef.current.volume = 1;
-                }
+                // Preparar el audio para reproducir
+                audioRef.current.muted = false;
+                audioRef.current.volume = 1;
+                
                 await audioRef.current.play();
                 setIsPlaying(true);
-                setAlert(null);
-            } catch {
+                
+                // Limpiar alertas solo después de reproducir exitosamente
+                if (alert) {
+                    setAlert(null);
+                    setShowAlert(false);
+                }
+            } catch (error) {
+                console.error('Error al reproducir audio:', error);
                 if (!userInteracted) {
-                    showSuccessAlert("Haz clic en reproducir para escuchar la música de fondo.", true)
+                    showSuccessAlert("Toca la pantalla o presiona el botón de reproducir para escuchar la música de fondo.", true);
                 } else {
-                    showErrorAlert("No se pudo reproducir el audio.")
+                    showErrorAlert("No se pudo reproducir el audio.");
                 }
                 setIsPlaying(false);
             }
         }
-    }, [userInteracted]);
+    }, [userInteracted, alert, showErrorAlert, showSuccessAlert]);
 
-    // Escuchar las interacciones del usuario
-    useEffect(() => {
-        const handleUserInteraction = () => {
+    // Función para manejar la primera interacción del usuario
+    const handleFirstInteraction = useCallback(() => {
+        if (!userInteracted) {
             setUserInteracted(true);
-            if (audioRef.current && !isPlaying && alert) {
-                // Si hay un error y el usuario interactúa, intentamos reproducir de nuevo
-                tryPlayAudio();
-            }
-        };
-        document.addEventListener('click', handleUserInteraction);
-        document.addEventListener('keydown', handleUserInteraction);
+            // Pequeño delay para evitar el parpadeo visual
+            setTimeout(() => {
+                if (audioRef.current && !isPlaying) {
+                    tryPlayAudio();
+                }
+            }, 100);
+        }
+    }, [userInteracted, isPlaying, tryPlayAudio]);
+
+    // Escuchar las interacciones del usuario (incluyendo eventos touch para móviles)
+    useEffect(() => {
+        const events = [
+            'click', 
+            'touchstart', 
+            'touchend', 
+            'keydown', 
+            'scroll',
+            'wheel'
+        ];
+
+        events.forEach(event => {
+            document.addEventListener(event, handleFirstInteraction, { passive: true });
+        });
 
         return () => {
-            document.removeEventListener('click', handleUserInteraction);
-            document.removeEventListener('keydown', handleUserInteraction);
+            events.forEach(event => {
+                document.removeEventListener(event, handleFirstInteraction);
+            });
         };
-    }, [isPlaying, alert, tryPlayAudio]);
+    }, [handleFirstInteraction]);
 
     // Cuando se detecta un error, mostrar el alert
     useEffect(() => {
-        if (alert) {
+        if (alert && !showAlert) {
             setShowAlert(true);
-            setTimeout(() => {
+            const timer = setTimeout(() => {
                 setShowAlert(false);
-            }, 5000); // Ocultar alerta después de 5 segundos
-        } else {
-            setShowAlert(false);
+            }, 8000);
+            
+            return () => clearTimeout(timer);
         }
-    }, [alert]);
+    }, [alert, showAlert]);
 
-    // Intenta reproducir automáticamente cuando el componente se monta
+    // Mostrar alerta al montar el componente (sin intentar autoplay)
     useEffect(() => {
-        const attemptAutoplay = async (): Promise<void> => {
-            if (audioRef.current) {
-                try {
-                    audioRef.current.muted = true;
-                    await audioRef.current.play();
-                    setIsPlaying(true);
-                } catch {
-                    showSuccessAlert("Haz clic en reproducir para escuchar la música de fondo.", true)
-                }
-            }
-        };
+        if (!isInitialized) {
+            setIsInitialized(true);
+            // Mostrar alerta inmediatamente sin intentar reproducir
+            showSuccessAlert("Toca la pantalla o presiona el botón de reproducir para escuchar la música de fondo.", true);
+        }
 
-        const timer = setTimeout(() => {
-            attemptAutoplay();
-        }, 500);
-
-        // Guarda el ref actual en una variable
+        // Guarda el ref actual en una variable para limpieza
         const audio = audioRef.current;
 
         // Limpieza al desmontar
         return () => {
-            clearTimeout(timer);
             if (audio) {
                 audio.pause();
                 audio.currentTime = 0;
             }
         };
-    }, []);
+    }, [isInitialized, showSuccessAlert]);
 
     const togglePlay = useCallback((): void => {
         if (audioRef.current) {
+            // Marcar como interacción del usuario si no lo estaba
+            if (!userInteracted) {
+                setUserInteracted(true);
+            }
+            
             if (isPlaying) {
                 audioRef.current.pause();
                 setIsPlaying(false);
@@ -103,47 +138,27 @@ export const useBackgroundMusic = () => {
                 tryPlayAudio();
             }
         }
-    }, [isPlaying, tryPlayAudio]);
-
-    // Verificar que el archivo se carga correctamente
-    const handleCanPlay = () => {
-        //setAudioError(null);
-        //console.log("Audio cargado correctamente y listo para reproducir");
-    };
+    }, [isPlaying, tryPlayAudio, userInteracted]);
 
     // Manejar errores de carga
-    const handleError = () => {
-        showErrorAlert("No se pudo cargar el archivo de audio. Verifique la ruta y el formato.")
-    };
+    const handleError = useCallback(() => {
+        showErrorAlert("No se pudo cargar el archivo de audio. Verifique la ruta y el formato.");
+    }, [showErrorAlert]);
 
-    const handleCloseAlert = () => {
+    const handleCloseAlert = useCallback(() => {
         setShowAlert(false);
-        // Mantenemos el error para que no se redispare el alert
-    };
+        setAlert(null);
+    }, []);
 
-    //Manejo de alert de error
-    const showErrorAlert = (message: string) => {
-        setAlert(message);
-        setShowAlert(true);
-        setTimeout(() => setShowAlert(false), 5000);
-    };
-
-    const showSuccessAlert = (message: string, show: boolean) => {
-        setAlert(message);
-        setShowAlert(show);
-        setTypeAlert("default")
-        setTimeout(() => setShowAlert(false), 5000);
-    }
-
-    return{
+    return {
         audioRef,
         isPlaying,
         alert,
         showAlert,
         typeAlert,
+        userInteracted,
         togglePlay,
-        handleCanPlay,
         handleError,
         handleCloseAlert,
-    }
-}
+    };
+};

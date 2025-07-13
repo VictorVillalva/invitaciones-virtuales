@@ -21,11 +21,11 @@ export default function ConfirmacionAsistencia() {
   return (
     <>
       {!isMobile && <BlockMobile />}
-      <main className={`text-[${COLORTEXT}] w-full h-screen px-4 py-[100px] relative z-10`}>
+      <main className={`text-[${COLORTEXT}] w-full px-4 py-[100px] relative z-10`}>
         <div className="asistencia flex flex-col gap-10" data-aos="fade-up">
           <p className="text-[32px] text-center">Confirmación de asistencia</p>
           {noPass ? (
-            <div className=" flex flex-col justify-center gap-4 items-center text-center h-[400px]">
+            <div className=" flex flex-col pt-40 gap-4 items-center text-center h-dvh">
               <span className="text-6xl">🫣</span>
               <p className="font-bold text-xl">Creemos que no tienes un pase</p>
             </div>
