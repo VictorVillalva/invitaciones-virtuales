@@ -7,6 +7,8 @@ import {
     CarouselContent,
     CarouselItem,
 } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
+
 
 export default function GaleriaFotos() {
     const [data] = useState(ImagesCarrusel)
@@ -15,7 +17,14 @@ export default function GaleriaFotos() {
         <div className="galeria-Fotos flex flex-col items-center text-[32px] gap-10" data-aos="fade-up">
             <p>Galeria de fotos</p>
             {/*<!-- Component: Carousel with indicators outside --> */}
-            <Carousel className="w-[380px]">
+            <Carousel
+                className="w-[380px]"
+                plugins={[
+                    Autoplay({
+                        delay: 2000,
+                    }),
+                ]}
+            >
                 <CarouselContent>
                     {/* Mapeo de las imagenes */}
                     {data.map((item, idx) => (

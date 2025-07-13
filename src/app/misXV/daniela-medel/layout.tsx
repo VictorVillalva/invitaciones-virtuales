@@ -1,15 +1,27 @@
-import type { Metadata } from "next";
+'use client'
 import { playwrite } from "@/assets/fonts/fonts"
 import "../../globals.css";
 import bgImage from "@/assets/images/DanielaMedelXV/bg-blue-flowers.jpg"
-
-export const metadata: Metadata = {
-    title: "XV Daniela Medel",
-    description: "Invitación de XV años de Daniela Medel",
-};
+import { useEffect, useState } from "react";
 
 //Nota: El body solo se modifica en el layout de la app, no en el de la pagina
 export default function DanielaLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Simula la carga inicial (puedes ajustar el tiempo o la lógica)
+        const timer = setTimeout(() => setLoading(false), 1200);
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
+                {/* Aquí tu spinner o animación */}
+                <span className="animate-spin text-3xl">🎵</span>
+            </div>
+        );
+    }
     return (
         <>
             <section className={`daniela-medel-layout ${playwrite.className} antialiased relative`}>

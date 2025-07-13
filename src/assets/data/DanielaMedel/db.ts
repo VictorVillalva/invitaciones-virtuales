@@ -56,12 +56,12 @@ export const nombrePadresPadrinos = [
     {
         id:3,
         nombre: "Lic. Omar",
-        apellido: "Medel Roman",
+        apellido: "Padilla Romero",
     },
     {
         id:4,
-        nombre:"Lic. Maria Teresa",
-        apellido:"Medel Roman"
+        nombre:"Lic. María Teresa",
+        apellido:"Medel Román"
     }
 ]          
 export const Bancos = [

@@ -33,7 +33,7 @@ interface PremiumProps {
 
 export default function Premium({ code }: PremiumProps) {
     const COLORTEXT = '#323C5D'
-    const fechaEvento = new Date('2025-09-06T17:00:00');
+    const fechaEvento = new Date('2025-08-10T00:00:00');
 
     return (
         <>
@@ -118,14 +118,17 @@ export default function Premium({ code }: PremiumProps) {
                         </div>
                         <section className="confirmacionAsistencia">
                             <div className="asistencia flex flex-col gap-10" data-aos="fade-up">
-                                <p className="text-[32px] text-center">Confirmación de asistencia</p>
+                                <div className="flex flex-col gap-2">
+                                    <p className="text-[32px] text-center">Confirmación de asistencia</p>
+                                    <small className={`${quicksand.className} text-center`}>Esta es la fecha límite para confirmar tu asistencia al evento</small>
+                                </div>
                                 <CountDown targetDate={fechaEvento} />
                                 <div className="flex flex-col gap-4">
                                     <small className={`${quicksand.className} text-center`}>Da click en el boton para confirmar tu asistencia al evento</small>
-                                    <Link 
+                                    <Link
                                         href={`/misXV/daniela-medel/confirmacion/${code}`}
                                         className={`${quicksand.className} w-full py-2 bg-[#CBA836] text-white rounded hover:bg-[#d9b12d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#927823] font-semibold text-center`}>
-                                            Confirmar asistencia
+                                        Confirmar asistencia
                                     </Link>
                                 </div>
                             </div>
@@ -145,7 +148,7 @@ export default function Premium({ code }: PremiumProps) {
                     </div>
                 </main>
                 <Footer />
-                <BackgroundMusic audioSrc={'/audio/TheGreatestShowmanCast-AMillionDreams.mp3'}/>
+                <BackgroundMusic audioSrc={'/audio/Goo-Goo-Dolls-Iris.mp3'}/>
             </SobreAnimation>
         </>
     )
