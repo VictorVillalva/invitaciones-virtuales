@@ -71,7 +71,7 @@ export default function Confirmacion({ params, datos }: ConfirmacionProps) {
                                 />
                             }
                         {error && <p className="text-white text-sm font-semibold">{error}</p>}
-                        <Mensaje persona='Daniel Medel' message={message} onMessageChange={handleMessageChange} />
+                        <Mensaje persona='Daniela Medel' message={message} onMessageChange={handleMessageChange} />
                     </div>
                     <button
                         type="submit"
