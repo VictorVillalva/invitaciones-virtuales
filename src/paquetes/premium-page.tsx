@@ -4,35 +4,33 @@ import separador from "@/assets/images/DanielaMedelXV/Separador.png"
 import LogoDanielMedel from "@/assets/images/DanielaMedelXV/Logo_DanielMedel.jpg"
 import Iglesia from '@/assets/images/DanielaMedelXV/ParroquiaSanAndresApostol.jpg'
 import SalonLuzcina from '@/assets/images/DanielaMedelXV/SalonLuzcina.jpg'
-import DanielaMedel from '@/assets/images/DanielaMedelXV/VIL_0316.webp'
-
-
+import premium1 from '@/assets/images/Paquetes/premium-1.jpg'
 //Data
 import { nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
+import { ImagesCarrusel } from '@/assets/data/db-paquetes';
 //Fonts
 import { inspiration, playwrite, quicksand } from '@/assets/fonts/fonts'
 //Components
 import Image from 'next/image'
-import Header from '../components-invitations/Header'
-import SobreAnimation from '../components-invitations/SobreAnimation'
-import ApartaFecha from '../components-invitations/ApartaFecha'
-import TextoInspirador from '../components-invitations/TextoInspirador'
-import Itinerario from '../components-invitations/Itinerario'
-import CodigoVestimenta from '../components-invitations/CodigoVestimenta'
-import Padres from '../components-invitations/Padres'
-import Padrinos from '../components-invitations/Padrinos'
-import LluviaSobres from '../components-invitations/LluviaSobres'
-import Ubicacion from '../components-invitations/Ubicacion'
-import Hoteles from '../components-invitations/Hoteles'
-import BackgroundMusic from '../components-invitations/BackgroundMusic'
-import Footer from '../components-invitations/Footer'
-import Playlist from "../components-invitations/Playlist"
-import GaleriaFotos from "../components-invitations/GaleriaFotos"
-import CountDown from "../components-invitations/CountDown"
+
 import Link from "next/link"
 import { ParamValue } from "next/dist/server/request/params"
-import { ImagesCarrusel } from '@/assets/data/DanielaMedel/db'
-
+import SobreAnimation from "@/components/components-invitations/SobreAnimation"
+import Header from "@/components/components-invitations/Header"
+import ApartaFecha from "@/components/components-invitations/ApartaFecha"
+import TextoInspirador from "@/components/components-invitations/TextoInspirador"
+import Padres from "@/components/components-invitations/Padres"
+import Padrinos from "@/components/components-invitations/Padrinos"
+import GaleriaFotos from "@/components/components-invitations/GaleriaFotos"
+import Itinerario from "@/components/components-invitations/Itinerario"
+import CodigoVestimenta from "@/components/components-invitations/CodigoVestimenta"
+import LluviaSobres from "@/components/components-invitations/LluviaSobres"
+import Ubicacion from "@/components/components-invitations/Ubicacion"
+import Hoteles from "@/components/components-invitations/Hoteles"
+import Playlist from "@/components/components-invitations/Playlist"
+import CountDown from "@/components/components-invitations/CountDown"
+import Footer from "@/components/components-invitations/Footer"
+import BackgroundMusic from "@/components/components-invitations/BackgroundMusic"
 
 interface PremiumProps {
     code: ParamValue;
@@ -45,16 +43,16 @@ export default function Premium({ code }: PremiumProps) {
     return (
         <>
             <SobreAnimation>
-                <Header 
+                <Header
                     title="Mis XV"
-                    subtitle="Daniela Medel Muñiz"
-                    img={DanielaMedel}
-                    alt="Daniela Medel Muñiz"
+                    subtitle="Alejandra Lopez Ruiz"
+                    img={premium1}
+                    alt="Alejandra Lopez Ruiz"
                 />
                 <main className="w-full px-4 py-[100px] relative z-10">
                     <div className={`flex flex-col items-center text-[${COLORTEXT}] gap-[120]`}>
                         <section className='ApartaFecha'>
-                            <ApartaFecha fecha="6 de Septiembre del 2025"/>
+                            <ApartaFecha fecha="26 de Septiembre del 2025" />
                         </section>
                         <div className="separador flex" >
                             <Image src={separador} alt="separador" />

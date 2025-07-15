@@ -28,34 +28,34 @@ export const useBackgroundMusic = () => {
 
     }, [alert]);
 
-    // Define tryPlayAudio con useCallback
-    const tryPlayAudio = useCallback(async (): Promise<void> => {
-        if (audioRef.current) {
-            try {
-                // Preparar el audio para reproducir
-                audioRef.current.muted = false;
-                audioRef.current.volume = 1;
+    // // Define tryPlayAudio con useCallback
+    // const tryPlayAudio = useCallback(async (): Promise<void> => {
+    //     if (audioRef.current) {
+    //         try {
+    //             // Preparar el audio para reproducir
+    //             audioRef.current.muted = false;
+    //             audioRef.current.volume = 1;
                 
-                await audioRef.current.play();
+    //             await audioRef.current.play();
                 
-                setIsPlaying(true);
+    //             setIsPlaying(true);
                 
-                // Limpiar alertas solo después de reproducir exitosamente
-                if (alert) {
-                    setAlert(null);
-                    setShowAlert(false);
-                }
-            } catch (error) {
-                console.error('Error al reproducir audio:', error);
-                if (!userInteracted) {
-                    showSuccessAlert("Toca la pantalla o presiona el botón de reproducir para escuchar la música de fondo.", true);
-                } else {
-                    showErrorAlert("No se pudo reproducir el audio.");
-                }
-                setIsPlaying(false);
-            }
-        }
-    }, [userInteracted, alert, showErrorAlert, showSuccessAlert]);
+    //             // Limpiar alertas solo después de reproducir exitosamente
+    //             if (alert) {
+    //                 setAlert(null);
+    //                 setShowAlert(false);
+    //             }
+    //         } catch (error) {
+    //             console.error('Error al reproducir audio:', error);
+    //             if (!userInteracted) {
+    //                 showSuccessAlert("Toca la pantalla o presiona el botón de reproducir para escuchar la música de fondo.", true);
+    //             } else {
+    //                 showErrorAlert("No se pudo reproducir el audio.");
+    //             }
+    //             setIsPlaying(false);
+    //         }
+    //     }
+    // }, [userInteracted, alert, showErrorAlert, showSuccessAlert]);
 
     // Escuchar las interacciones del usuario (incluyendo eventos touch para móviles)
     useEffect(() => {
