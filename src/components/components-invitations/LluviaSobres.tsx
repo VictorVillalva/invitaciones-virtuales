@@ -5,7 +5,7 @@ import { quicksand } from '@/assets/fonts/fonts'
 
 export default function LluviaSobres({numero, nombre, banco, tarjeta=true}: Sobre) {
     return (
-        <div className="lluvia-sobres flex flex-col items-center text-center gap-4" data-aos="fade-up">
+        <div className="lluvia-sobres flex flex-col items-center text-center gap-4" >
             <Image src={sobre} alt="sobre" width={180} />
             <p className="text-[32px]">Lluvia de sobres</p>
             { tarjeta && (

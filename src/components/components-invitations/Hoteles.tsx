@@ -2,7 +2,7 @@ import CardHotel from "./CardHotel";
 import HotelPosadaSenoria from '@/assets/images/DanielaMedelXV/Hotel-Posada-Senorial.jpg'
 export default function Hoteles() {
     return (
-        <div className="sugerencia-de-hospedaje flex flex-col text-center gap-10" data-aos="fade-up">
+        <div className="sugerencia-de-hospedaje flex flex-col text-center gap-10" >
             <p className="text-[32px]">Sugerencia de Hospedaje</p>
             <CardHotel
                 image={HotelPosadaSenoria}

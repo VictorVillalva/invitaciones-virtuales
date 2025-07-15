@@ -22,7 +22,7 @@ export default function ConfirmacionAsistencia() {
     <>
       {!isMobile && <BlockMobile />}
       <main className={`text-[${COLORTEXT}] w-full px-4 py-[100px] relative z-10`}>
-        <div className="asistencia flex flex-col gap-10" data-aos="fade-up">
+        <div className="asistencia flex flex-col gap-10" >
           <p className="text-[32px] text-center">Confirmación de asistencia</p>
           {noPass ? (
             <div className=" flex flex-col pt-40 gap-4 items-center text-center h-dvh">
