@@ -25,6 +25,13 @@ export default function SelectConfirmation({ label, placeholder = "Selecciona", 
             value: (i + 1).toString(),
         }))
         : [];
+
+    // Agregar la opción "No asistiremos" al final del array
+    opcionesDinamicas.push({
+        id: 0, // id para la opción "No asistiremos"
+        label: "No podremos asistir", // Texto visible de la opción
+        value: "0", // Valor de la opción, para enviar "0"
+    });
     return (
         <div className="flex flex-col">
             <legend className="font-medium mb-2">{label}</legend>
