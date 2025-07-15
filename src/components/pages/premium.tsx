@@ -148,7 +148,7 @@ export default function Premium({ code }: PremiumProps) {
                     </div>
                 </main>
                 <Footer />
-                <BackgroundMusic audioSrc={'/audio/Goo-Goo-Dolls-Iris.mp3'}/>
+                <BackgroundMusic audioSrc={'/audio/Timber.mp3'}/>
             </SobreAnimation>
         </>
     )

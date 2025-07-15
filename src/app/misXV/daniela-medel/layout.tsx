@@ -11,7 +11,7 @@ export default function DanielaLayout({ children }: Readonly<{ children: React.R
 
     useEffect(() => {
         // Simula la carga inicial (puedes ajustar el tiempo o la lógica)
-        const timer = setTimeout(() => setLoading(false), 5000);
+        const timer = setTimeout(() => setLoading(false), 2000);
         return () => clearTimeout(timer);
     }, []);
 

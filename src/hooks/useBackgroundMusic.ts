@@ -15,7 +15,7 @@ export const useBackgroundMusic = () => {
         setAlert(message);
         setShowAlert(true);
         setTypeAlert("error");
-        setTimeout(() => setShowAlert(false), 5000);
+        setTimeout(() => setShowAlert(false), 1000);
     }, []);
 
     const showSuccessAlert = useCallback((message: string, show: boolean) => {
@@ -24,6 +24,7 @@ export const useBackgroundMusic = () => {
             setAlert(message);
             setShowAlert(show);
             setTypeAlert("default");
+            setTimeout(() => setShowAlert(false), 1000);
         }
 
     }, [alert]);
@@ -37,6 +38,7 @@ export const useBackgroundMusic = () => {
                 audioRef.current.volume = 1;
                 
                 await audioRef.current.play();
+                
                 setIsPlaying(true);
                 
                 // Limpiar alertas solo después de reproducir exitosamente
@@ -56,40 +58,40 @@ export const useBackgroundMusic = () => {
         }
     }, [userInteracted, alert, showErrorAlert, showSuccessAlert]);
 
-    // Función para manejar la primera interacción del usuario
-    const handleFirstInteraction = useCallback(() => {
-        if (!userInteracted) {
-            setUserInteracted(true);
-            // Pequeño delay para evitar el parpadeo visual
-            setTimeout(() => {
-                if (audioRef.current && !isPlaying) {
-                    tryPlayAudio();
-                }
-            }, 100);
-        }
-    }, [userInteracted, isPlaying, tryPlayAudio]);
-
     // Escuchar las interacciones del usuario (incluyendo eventos touch para móviles)
     useEffect(() => {
-        const events = [
-            'click', 
-            'touchstart', 
-            'touchend', 
-            'keydown', 
-            'scroll',
-            'wheel'
-        ];
+        // Click/touchstart directo, solo una vez
+        const handle = () => {
+            if (!userInteracted) {
+                setUserInteracted(true);
+                if (audioRef.current && !isPlaying) {
+                    audioRef.current.muted = false;
+                    audioRef.current.volume = 1;
+                    audioRef.current.play()
+                        .then(() => {
+                            setIsPlaying(true);
+                        })
+                        .catch((error) => {
+                            showErrorAlert("No se pudo reproducir el audio.");
+                            setIsPlaying(false);
+                            console.error('Error al reproducir audio:', error);
+                        });
+                }
+            }
+            // Limpia listeners al primer intento real
+            document.removeEventListener('click', handle);
+            document.removeEventListener('touchstart', handle);
+        };
 
-        events.forEach(event => {
-            document.addEventListener(event, handleFirstInteraction, { passive: true });
-        });
+        document.addEventListener('click', handle, { passive: true });
+        document.addEventListener('touchstart', handle, { passive: true });
 
         return () => {
-            events.forEach(event => {
-                document.removeEventListener(event, handleFirstInteraction);
-            });
+            document.removeEventListener('click', handle);
+            document.removeEventListener('touchstart', handle);
         };
-    }, [handleFirstInteraction]);
+        // Incluye solo showErrorAlert aquí
+    }, [userInteracted, isPlaying, showErrorAlert]);
 
     // Cuando se detecta un error, mostrar el alert
     useEffect(() => {
@@ -98,7 +100,7 @@ export const useBackgroundMusic = () => {
             const timer = setTimeout(() => {
                 setShowAlert(false);
             }, 8000);
-            
+
             return () => clearTimeout(timer);
         }
     }, [alert, showAlert]);
@@ -108,37 +110,33 @@ export const useBackgroundMusic = () => {
         if (!isInitialized) {
             setIsInitialized(true);
             // Mostrar alerta inmediatamente sin intentar reproducir
-            showSuccessAlert("Toca la pantalla o presiona el botón de reproducir para escuchar la música de fondo.", true);
         }
-
-        // Guarda el ref actual en una variable para limpieza
-        const audio = audioRef.current;
-
-        // Limpieza al desmontar
-        return () => {
-            if (audio) {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-        };
-    }, [isInitialized, showSuccessAlert]);
+    }, [isInitialized]);
 
     const togglePlay = useCallback((): void => {
         if (audioRef.current) {
-            // Marcar como interacción del usuario si no lo estaba
             if (!userInteracted) {
                 setUserInteracted(true);
             }
-            
+
             if (isPlaying) {
                 audioRef.current.pause();
                 setIsPlaying(false);
             } else {
-                audioRef.current.muted = false; // Asegúrate de que no esté silenciado
-                tryPlayAudio();
+                audioRef.current.muted = false;
+                audioRef.current.volume = 1;
+                audioRef.current.play()
+                    .then(() => {
+                        setIsPlaying(true);
+                    })
+                    .catch((error) => {
+                        showErrorAlert("No se pudo reproducir el audio.");
+                        setIsPlaying(false);
+                        console.error('Error al reproducir audio:', error);
+                    });
             }
         }
-    }, [isPlaying, tryPlayAudio, userInteracted]);
+    }, [isPlaying, userInteracted, showErrorAlert]);
 
     // Manejar errores de carga
     const handleError = useCallback(() => {
@@ -146,9 +144,14 @@ export const useBackgroundMusic = () => {
     }, [showErrorAlert]);
 
     const handleCloseAlert = useCallback(() => {
+        console.log('Cerrando alerta, audio debería seguir igual:', {
+            isPlaying,
+            currentTime: audioRef.current?.currentTime,
+            paused: audioRef.current?.paused
+        });
         setShowAlert(false);
         setAlert(null);
-    }, []);
+    }, [isPlaying]);
 
     return {
         audioRef,
