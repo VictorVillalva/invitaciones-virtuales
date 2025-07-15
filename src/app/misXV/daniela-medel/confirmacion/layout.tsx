@@ -3,6 +3,7 @@ import { playwrite } from "@/assets/fonts/fonts"
 import "../../../globals.css";
 import bgImage from "@/assets/images/DanielaMedelXV/bg-blue-flowers.jpg"
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 //Nota: El body solo se modifica en el layout de la app, no en el de la pagina
 export default function DanielaLayoutConfirmacion({ children }: Readonly<{ children: React.ReactNode; }>) {
@@ -10,7 +11,7 @@ export default function DanielaLayoutConfirmacion({ children }: Readonly<{ child
 
     useEffect(() => {
         // Simula la carga inicial (puedes ajustar el tiempo o la lógica)
-        const timer = setTimeout(() => setLoading(false), 100);
+        const timer = setTimeout(() => setLoading(false), 2000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -18,7 +19,16 @@ export default function DanielaLayoutConfirmacion({ children }: Readonly<{ child
         return (
             <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
                 {/* Aquí tu spinner o animación */}
-                <span className="animate-spin text-3xl">🎵</span>
+                <span className="animate-bounce">
+                    <Image
+                        src="/assets/daniela-medel/logos/Logo-DanielMedel.jpg"
+                        alt="Logo de Daniel Medel"
+                        width={80}
+                        height={75}
+                        className="w-[80px] h-auto"
+                        priority
+                    />
+                </span>
             </div>
         );
     }
