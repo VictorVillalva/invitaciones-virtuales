@@ -23,8 +23,9 @@ export default function DanielaLayout({ children }: Readonly<{ children: React.R
                     <Image
                         src="/assets/daniela-medel/logos/Logo-DanielMedel.jpg"
                         alt="Logo de Daniel Medel"
-                        width={80} // O el tamaño que prefieras
-                        height={80}
+                        width={80}
+                        height={75}
+                        className="w-[80px] h-auto"
                         priority
                     />
                 </span>

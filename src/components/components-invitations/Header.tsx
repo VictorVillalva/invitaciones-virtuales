@@ -5,7 +5,7 @@ export default function Header() {
     return (
         <header>
             <div className='relative w-full h-[900px] max-w-[768px] mx-auto flex flex-col justify-center items-center'>
-                <Image 
+                <Image
                     src={DanielaMedel}
                     alt='Daniela Medel Quinceañera'
                     fill
@@ -13,6 +13,7 @@ export default function Header() {
                     className='mask-fade-bottom object-cover'
                     priority
                 />
+
                 <div className="absolute bottom-10 flex flex-col items-center justify-end mb-24 text-white gap-2">
                     {/* <Image 
                         src={LogoDanielaMedel}

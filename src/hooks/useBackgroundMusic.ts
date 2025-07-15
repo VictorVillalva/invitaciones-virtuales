@@ -24,7 +24,6 @@ export const useBackgroundMusic = () => {
             setAlert(message);
             setShowAlert(show);
             setTypeAlert("default");
-            setTimeout(() => setShowAlert(false), 1000);
         }
 
     }, [alert]);
@@ -109,9 +108,10 @@ export const useBackgroundMusic = () => {
     useEffect(() => {
         if (!isInitialized) {
             setIsInitialized(true);
+            showSuccessAlert("Toca la pantalla o presiona el botón de reproducir para escuchar la música de fondo.", true);
             // Mostrar alerta inmediatamente sin intentar reproducir
         }
-    }, [isInitialized]);
+    }, [isInitialized, showSuccessAlert]);
 
     const togglePlay = useCallback((): void => {
         if (audioRef.current) {
@@ -152,6 +152,13 @@ export const useBackgroundMusic = () => {
         setShowAlert(false);
         setAlert(null);
     }, [isPlaying]);
+
+    useEffect(() => {
+        if (userInteracted && showAlert) {
+            setShowAlert(false);
+            setAlert(null);
+        }
+    }, [userInteracted, showAlert]);
 
     return {
         audioRef,
