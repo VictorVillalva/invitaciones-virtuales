@@ -1,5 +1,5 @@
-import foto1 from '@/assets/images/DanielaMedelXV/VIL_0289.webp';
-import foto2 from '@/assets/images/DanielaMedelXV/VIL_0316.webp';
+import foto1 from '@/assets/images/DanielaMedelXV/VIL_0316.webp';
+import foto2 from '@/assets/images/DanielaMedelXV/VIL_0289.webp';
 import foto3 from '@/assets/images/DanielaMedelXV/VIL_0410.webp';
 import iglesia from "@/assets/icons/Church.png";
 import bell from "@/assets/icons/ServiceBell.png"

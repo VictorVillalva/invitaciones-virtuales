@@ -2,6 +2,9 @@
 //Assets
 import separador from "@/assets/images/DanielaMedelXV/Separador.png"
 import LogoDanielMedel from "@/assets/images/DanielaMedelXV/Logo_DanielMedel.jpg"
+import Iglesia from '@/assets/images/DanielaMedelXV/ParroquiaSanAndresApostol.jpg'
+import SalonLuzcina from '@/assets/images/DanielaMedelXV/SalonLuzcina.jpg'
+
 //Data
 import { nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
 //Fonts
@@ -44,17 +47,17 @@ export default function Premium({ code }: PremiumProps) {
                         <section className='ApartaFecha'>
                             <ApartaFecha />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" >
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='TextoInspirador'>
                             <TextoInspirador />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" >
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Padres-Padrinos'>
-                            <div className="padres-padrinos flex flex-col gap-10" data-aos="fade-up">
+                            <div className="padres-padrinos flex flex-col gap-10" >
                                 <Padres
                                     nombre1={nombrePadresPadrinos[0].nombre}
                                     apellido1={nombrePadresPadrinos[0].apellido}
@@ -69,25 +72,25 @@ export default function Premium({ code }: PremiumProps) {
                                 />
                             </div>
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" >
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='GaleriaFotos'>
                             <GaleriaFotos />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Itinerario'>
                             <Itinerario />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='CodigoVestimenta'>
                             <CodigoVestimenta />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='LluviaDeSobres'>
@@ -95,29 +98,47 @@ export default function Premium({ code }: PremiumProps) {
                                 tarjeta={false}
                             />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className="UbicacionEvento">
-                            <Ubicacion />
+                            <Ubicacion
+                                label="Ubicación del evento"
+                                placeName="Salón Luzcina"
+                                address="Av. 5 de Mayo 1400, San Juan Aquiahuac, 72810 San Andrés Cholula, Pue."
+                                href={"https://maps.app.goo.gl/CpJ4H3AD8HFbJYnK6"}
+                                img={SalonLuzcina}  // Assuming Iglesia is the image for the event location  
+                            />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className="UbicacionIglesia">
+                            <Ubicacion
+                                label="Ubicación de la iglesia"
+                                placeName="Parroquia de San Andrés Apóstol"
+                                address="C. 3 Ote. 2, Centro San Andrés Cholula, 72810 San Andrés Cholula, Pue."
+                                href={"https://maps.app.goo.gl/zsZMZDFANsf5CNcB8"}
+                                img={Iglesia}  // Assuming Iglesia is the image for the event location  
+                            />
+                        </section>
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='SugerenciaHospedaje'>
                             <Hoteles />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Playlist'>
                             <Playlist />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className="confirmacionAsistencia">
-                            <div className="asistencia flex flex-col gap-10" data-aos="fade-up">
+                            <div className="asistencia flex flex-col gap-10">
                                 <div className="flex flex-col gap-2">
                                     <p className="text-[32px] text-center">Confirmación de asistencia</p>
                                     <small className={`${quicksand.className} text-center`}>Esta es la fecha límite para confirmar tu asistencia al evento</small>
@@ -148,7 +169,7 @@ export default function Premium({ code }: PremiumProps) {
                     </div>
                 </main>
                 <Footer />
-                <BackgroundMusic audioSrc={'/audio/Goo-Goo-Dolls-Iris.mp3'}/>
+                <BackgroundMusic audioSrc={'/audio/Timber.mp3'}/>
             </SobreAnimation>
         </>
     )

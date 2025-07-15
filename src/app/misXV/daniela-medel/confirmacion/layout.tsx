@@ -10,7 +10,7 @@ export default function DanielaLayoutConfirmacion({ children }: Readonly<{ child
 
     useEffect(() => {
         // Simula la carga inicial (puedes ajustar el tiempo o la lógica)
-        const timer = setTimeout(() => setLoading(false), 1200);
+        const timer = setTimeout(() => setLoading(false), 100);
         return () => clearTimeout(timer);
     }, []);
 

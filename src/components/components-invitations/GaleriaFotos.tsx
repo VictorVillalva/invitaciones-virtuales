@@ -14,7 +14,7 @@ export default function GaleriaFotos() {
     const [data] = useState(ImagesCarrusel)
 
     return (
-        <div className="galeria-Fotos flex flex-col items-center text-[32px] gap-10" data-aos="fade-up">
+        <div className="galeria-Fotos flex flex-col items-center text-[32px] gap-10">
             <p>Galeria de fotos</p>
             {/*<!-- Component: Carousel with indicators outside --> */}
             <Carousel

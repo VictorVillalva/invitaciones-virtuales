@@ -74,13 +74,6 @@ export default function BackgroundMusic({ audioSrc }: BackgroundMusicProps) {
                         </AlertTitle>
                         <AlertDescription className="mt-2">
                             {alert}
-                            {/* Agregar indicación visual para móviles */}
-                            {/* {!userInteracted && typeAlert === "default" && (
-                                <div className="mt-2 text-sm text-gray-600">
-                                    <p>📱 En móviles: Toca cualquier parte de la pantalla</p>
-                                    <p>🖥️ En computadora: Haz clic en cualquier lugar</p>
-                                </div>
-                            )} */}
                         </AlertDescription>
                     </Alert>
                 </div>
