@@ -188,7 +188,7 @@ export default function Premium({ code }: PremiumProps) {
                             <div className="flex flex-col">
                                 <p className={`${inspiration.className} text-[96px] text-center leading-none`}>Mis XV</p>
                                 <div className={`${playwrite.className} text-[20px] text-center`}>
-                                    <p>Daniela Medel</p>
+                                    <p>Daniela Medel Muñiz</p>
                                     <p className="font-light text-[10px]">06.09.2025</p>
                                 </div>
                             </div>
