@@ -151,6 +151,14 @@ export default function Premium({ code }: PremiumProps) {
                                         <small className={`${quicksand.className} text-center`}>Ya haz confirmado tu asistencia al evento, guarda la fecha para este maravilloso momento</small>
                                     </div>
                                     <CountDown targetDate={fechaEvento} />
+                                    <div className="flex flex-col gap-4">
+                                        <small className={`${quicksand.className} text-center`}>Da click en el boton para ver tus pases</small>
+                                        <Link
+                                            href={`/misXV/daniela-medel/confirmacion/${code}`}
+                                            className={`${quicksand.className} w-full py-2 bg-[#CBA836] text-white rounded hover:bg-[#d9b12d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#927823] font-semibold text-center`}>
+                                            Ver mis pases
+                                        </Link>
+                                    </div>
                                 </div>
                             ) : (
                                 <div className="asistencia flex flex-col gap-10">
