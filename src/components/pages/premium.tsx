@@ -40,7 +40,7 @@ interface PremiumProps {
 export default function Premium({ code }: PremiumProps) {
     const COLORTEXT = '#323C5D'
     const fechaEvento = new Date('2025-09-06T00:00:00');
-    const fechaCofirmacion = new Date('2025-09-02T00:00:00');
+    const fechaCofirmacion = new Date('2025-08-19T00:00:00');
     const { puedeConfirmar } = useFechaConfirmacion();
     const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
 

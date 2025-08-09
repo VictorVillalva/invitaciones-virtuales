@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useFechaConfirmacion = () => {
-    const FECHA_LIMITE = "2025-09-02T00:00:00";
+    const FECHA_LIMITE = "2025-08-19T00:00:00";
     const [puedeConfirmar, setPuedeConfirmar] = useState<boolean>(true);
 
     useEffect(() => {
