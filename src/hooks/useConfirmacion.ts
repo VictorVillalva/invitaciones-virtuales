@@ -18,6 +18,7 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalConfirmationOpen, setIsModalConfirmationOpen] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false); // Nuevo estado para controlar si los datos han sido enviados
+    const [localDatos, setLocalDatos] = useState(datos);
 
     // ---- Se desactivo por que ya no se usaron los checkboxs ----
     // const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,13 +42,13 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Convertir a número, si están vacíos poner 0
+
+        // 1) Normaliza números
         const adultsNo = Number(selectedOption) || 0;
-        const kidsNo = Number(selectedKidsOption) || 0;
+        const kidsNo = hasKids ? (Number(selectedKidsOption) || 0) : 0;
         const total = adultsNo + kidsNo;
 
-        console.log("Adults:", adultsNo, "Kids:", kidsNo, "Total:", total);
-
+        // 2) Validaciones de selects
         if (hasKids) {
             if (selectedOption === "" || selectedKidsOption === "") {
                 setHeaderError("Olvidaste confirmar");
@@ -58,40 +59,75 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
         } else {
             if (selectedOption === "") {
                 setHeaderError("Olvidaste confirmar");
-                setError("*Por favor, selecciona una opción.");
+                setError("Por favor, selecciona una opción.");
                 setIsModalOpen(true);
                 return;
             }
         }
 
+        // 3) No exceder pases
         if (total > datos.invitationQty) {
-            setHeaderError("Ups!, creo que te has pasado");
-            setError(`No puedes confirmar más de ${datos.invitationQty} personas, revisa bien tu invitación e intenta nuevamente.`);
+            setHeaderError("¡Ups! Creo que te has pasado");
+            setError(`No puedes confirmar más de ${datos.invitationQty} personas. Revisa tu invitación e intenta nuevamente.`);
             setIsModalOpen(true);
             return;
         }
-        // Si pasa la validación, realiza el POST con header de autenticación
+
+        // 4) Payload para backend
+        const payload = {
+            adultsNo,
+            kidsNo,
+            message,
+            // si tu backend deduce hasConfirmed, omítelo; si no:
+            hasConfirmed: total > 0,
+        };
+
         try {
-            const token = process.env.NEXT_PUBLIC_TOKEN_ACCESS_API; // Cambia por tu método de obtención de token
-            const urlApi = process.env.NEXT_PUBLIC_BACKEND_URL; // Asegúrate de que esta URL sea correcta
+            const token = process.env.NEXT_PUBLIC_TOKEN_ACCESS_API;
+            const urlApi = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+            // 5) **Actualiza UI al instante** (optimista)
+            setIsSubmitted(true);
+            setLocalDatos(prev => ({
+                ...prev,
+                ...payload,
+            }));
+
+            // modal según asista/no asista
+            if (total > 0) {
+                setIsModalConfirmationOpen(true); // modal "¡confirmaste!"
+            } else {
+                // 0/0: no asiste → usa el modal de "lamentamos..."
+                setHeaderError("Lamentamos que no puedas asistir");
+                setError("Gracias por confirmarlo. Ojalá podamos coincidir en otra ocasión.");
+                setIsModalOpen(true);
+            }
+
+            // 6) Llama al backend
             await axios.post(
-                `${urlApi}/api/guests/confirm-assistance/${params}`,
-                {
-                    adultsNo,
-                    kidsNo,
-                    message
-                },
+                `${urlApi}/guests/confirm-assistance/${params}`,
+                payload,
                 {
                     headers: {
-                        Authorization: `${token}`,
+                        // según tu API tal vez requiere 'Bearer ':
+                        Authorization: `${token}`, // o `Bearer ${token}`
                     },
                 }
             );
-            setIsModalConfirmationOpen(true);
-            setIsSubmitted(true);
-        } catch{
-            setError("Ocurrió un error al enviar la confirmación.");
+
+            // Si usas Server Components y quieres refrescar datos del server:
+            // router.refresh();
+
+        } catch (err) {
+            console.error("Error:", err);
+            // Reacción de error
+            setHeaderError("Ocurrió un error");
+            setError("Ocurrió un error al enviar la confirmación. Intenta de nuevo.");
             setIsModalOpen(true);
+
+            // (Opcional) revertir UI si quieres
+            // setIsSubmitted(false);
+            // setLocalDatos(datos);
         }
     };
 
@@ -126,6 +162,7 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
         isModalOpen,
         isModalConfirmationOpen,
         isSubmitted,
+        localDatos,
         handleSelectKidsChange,
         handleSelectChange,
         handleMessageChange,
@@ -147,9 +184,9 @@ export const useConfirmacionAsistencia = ({ codeParam }: UseConfirmacionAsistenc
             try {
                 const token = process.env.NEXT_PUBLIC_TOKEN_ACCESS_API; // Ajusta el nombre si es diferente
                 const urlApi = process.env.NEXT_PUBLIC_BACKEND_URL; // Asegúrate de que esta URL sea correcta
-
+                //`${urlApi}/api/guests/${codeParam}`
                 const response = await axios.get(
-                    `${urlApi}/api/guests/${codeParam}`,
+                    `${urlApi}/guests/${codeParam}`,
                     {
                         headers: {
                             Authorization: `${token}`,
