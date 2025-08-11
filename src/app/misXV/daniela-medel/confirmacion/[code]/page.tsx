@@ -1,11 +1,13 @@
 'use client'
+import { quicksand } from "@/assets/fonts/fonts";
 import BlockMobile from "@/components/components-invitations/BlockMobile";
 import Confirmacion from "@/components/components-invitations/Confirmacion";
 import Footer from "@/components/components-invitations/Footer";
 import Invitacion from "@/components/components-invitations/Invitacion";
-import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
+import { useConfirmacion, useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 
 export default function ConfirmacionAsistencia() {
   const { isMobile } = useIsMobile()
@@ -31,11 +33,23 @@ export default function ConfirmacionAsistencia() {
             </div>
           ) : (
             <>
-              <Invitacion
-                numPersonas={guestsData.invitationQty}
-                familia={guestsData.name}
-              />
-              <Confirmacion params={codeParam} datos={guestsData} />
+              {(guestsData.adultsNo === null && guestsData.kidsNo === null) ||
+                ((guestsData.adultsNo ?? 0) + (guestsData.kidsNo ?? 0) >= 1) ? (
+                <>
+                  <Confirmacion 
+                    params={codeParam} 
+                    datos={guestsData} 
+                    numeroPersonas={guestsData.invitationQty} 
+                    familia={guestsData.name} 
+                  />
+                </>
+              ) : (
+                <div className="h-dvw flex flex-col justify-center text-center py-20 mb-20">
+                  <p className={`${quicksand.className} font-medium`}>
+                    Gracias por tu interés. Entendemos que no podrás acompañarnos en esta ocasión y esperamos verte en una próxima celebración.                 
+                  </p>
+                </div>
+              )}
             </>
           )}
         </div>

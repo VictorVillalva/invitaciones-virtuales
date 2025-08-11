@@ -73,7 +73,7 @@ export interface MensajeProps {
 
 export interface CountdownProps {
     targetDate: Date;
-}
+} 
 
 export interface Guest {
     hasKids: boolean;
@@ -82,4 +82,6 @@ export interface Guest {
     invitationId: string;
     uuid: string;
     hasConfirmed: boolean;
+    adultsNo: number;
+    kidsNo: number;
 }
