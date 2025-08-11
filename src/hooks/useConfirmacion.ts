@@ -105,7 +105,7 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
 
             // 6) Llama al backend
             await axios.post(
-                `${urlApi}/guests/confirm-assistance/${params}`,
+                `${urlApi}/api/guests/confirm-assistance/${params}`,
                 payload,
                 {
                     headers: {
@@ -186,7 +186,7 @@ export const useConfirmacionAsistencia = ({ codeParam }: UseConfirmacionAsistenc
                 const urlApi = process.env.NEXT_PUBLIC_BACKEND_URL; // Asegúrate de que esta URL sea correcta
                 //`${urlApi}/api/guests/${codeParam}`
                 const response = await axios.get(
-                    `${urlApi}/guests/${codeParam}`,
+                    `${urlApi}/api/guests/${codeParam}`,
                     {
                         headers: {
                             Authorization: `${token}`,
