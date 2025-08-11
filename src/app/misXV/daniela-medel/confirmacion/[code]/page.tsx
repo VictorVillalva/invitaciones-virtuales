@@ -3,11 +3,9 @@ import { quicksand } from "@/assets/fonts/fonts";
 import BlockMobile from "@/components/components-invitations/BlockMobile";
 import Confirmacion from "@/components/components-invitations/Confirmacion";
 import Footer from "@/components/components-invitations/Footer";
-import Invitacion from "@/components/components-invitations/Invitacion";
-import { useConfirmacion, useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
+import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useParams } from "next/navigation";
-import { useState } from "react";
 
 export default function ConfirmacionAsistencia() {
   const { isMobile } = useIsMobile()
