@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { BadgeRabe } from "@/components/ui/badge-rabe";
+import { BentoBeneficios } from "@/components/components-landing-page/bento-beneficios";
 
 export default function Home() {
   return (
@@ -101,10 +102,38 @@ export default function Home() {
       </section>
       <section className="beneficios-landing-page bg-white ">
         <div className="encabezado lg:px-[134px] px-4  flex flex-col justify-center items-center gap-6 mt-[100px]">
-          <BadgeRabe variant="outline" className="font-semibold">BENEFICIOS</BadgeRabe>
+          <BadgeRabe variant="outline" className="font-semibold">
+            BENEFICIOS
+          </BadgeRabe>
           <div className="encabezado lg:px-[236px] flex flex-col items-center text-center gap-2.5">
-            <h2 className="font-semibold tracking-[-0.08em] text-4xl text-rabe-primary">Porque tu evento merece lo mejor desde la invitación</h2>
-            <p className="font-medium tracking-[-0.08em] text-xs text-neutral-600">No es solo una invitación, es la primera experiencia que tendrán tus invitados de tu evento. Con nosotros, cada detalle cuenta: diseños únicos, entrega rápida y la magia de lo digital para sorprender y emocionar desde el primer clic.</p>
+            <h2 className="font-semibold tracking-[-0.08em] text-4xl text-rabe-primary">
+              Porque tu evento merece lo mejor desde la invitación
+            </h2>
+            <p className="font-medium tracking-[-0.08em] text-xs text-neutral-600">
+              No es solo una invitación, es la primera experiencia que tendrán
+              tus invitados de tu evento. Con nosotros, cada detalle cuenta:
+              diseños únicos, entrega rápida y la magia de lo digital para
+              sorprender y emocionar desde el primer clic.
+            </p>
+          </div>
+          <BentoBeneficios />
+        </div>
+      </section>
+      <section className="proceso-landing-page bg-rabe-primary-100 py-[50px] mt-[100px]">
+        <div className="encabezado lg:px-[134px] px-4  flex flex-col justify-center items-center gap-6 mt-[100px]">
+          <BadgeRabe variant="outline" className="font-semibold">
+            BENEFICIOS
+          </BadgeRabe>
+          <div className="encabezado lg:px-[236px] flex flex-col items-center text-center gap-2.5">
+            <h2 className="font-semibold tracking-[-0.08em] text-4xl text-rabe-primary">
+              Porque tu evento merece lo mejor desde la invitación
+            </h2>
+            <p className="font-medium tracking-[-0.08em] text-xs text-neutral-600">
+              No es solo una invitación, es la primera experiencia que tendrán
+              tus invitados de tu evento. Con nosotros, cada detalle cuenta:
+              diseños únicos, entrega rápida y la magia de lo digital para
+              sorprender y emocionar desde el primer clic.
+            </p>
           </div>
         </div>
       </section>
