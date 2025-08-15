@@ -7,6 +7,7 @@ import beneficio3 from "@/assets/images/landing/image-beneficios-3.png";
 import beneficio2 from "@/assets/images/landing/image-beneficios-2.png";
 import beneficio1 from "@/assets/images/landing/image-beneficios-1.png";
 
+//TODO: Revisar lo responsivo del grid
 const features = [
   {
     Icon: FileTextIcon,
@@ -14,14 +15,16 @@ const features = [
     description:
       "Cada invitación es creada a tu medida, reflejando el estilo y la esencia de tu evento.",
     href: "#",
-    className: "col-span-1 row-span-1",
+    className: "lg:col-span-1 lg:row-span-1",
     cta: "Conocer mas",
     background: (
-      <Image
-        src={beneficio1}
-        alt="Beneficio 1"
-        className="absolute w-[220px] right-26 -bottom-15 scale-100 rounded-md transition-all duration-300 ease-out group-hover:scale-110"
-      />
+      <div className="flex items-end justify-center">        
+        <Image
+          src={beneficio1}
+          alt="Beneficio 1"
+          className="w-[220px] lg:scale-100 scale-90 rounded-md transition-all duration-300 ease-out group-hover:scale-110"
+        />
+      </div>
     ),
   },
   {
@@ -31,13 +34,15 @@ const features = [
       "Haz que tu invitación cobre vida con una experiencia multimedia única. Incluye la canción que más te guste, agrega tus fotos favoritas y sorprende con animaciones que capturan la esencia de tu evento.",
     href: "#",
     cta: "Conocer mas",
-    className: "col-span-2",
+    className: "lg:col-span-2",
     background: (
-      <Image
-        src={beneficio3}
-        alt="Beneficio 3"
-        className="absolute w-[370px] right-64 -bottom-14 scale-100 rounded-md transition-all duration-300 ease-out group-hover:scale-110"
-      />
+      <div className="flex flex-col bg-amber-500">        
+        <Image
+          src={beneficio3}
+          alt="Beneficio 3"
+          className="w-[370px] scale-50 lg:scale-100 rounded-md transition-all duration-300 ease-out lg:group-hover:scale-90 group-hover:scale-110"
+        />
+      </div>
     ),
   },
   {
@@ -47,12 +52,12 @@ const features = [
       "Envíala por WhatsApp, correo o redes sociales sin límites y sin complicaciones.",
     href: "#",
     cta: "Conocer mas",
-    className: "col-span-1",
+    className: "lg:col-span-1",
     background: (
       <Image
         src={beneficio2}
         alt="Beneficio 2"
-        className="absolute w-[240px] right-26 -bottom-15 scale-100 rounded-md transition-all duration-300 ease-out group-hover:scale-110"
+        className="absolute w-[240px] lg:right-26 lg:-bottom-15 -bottom-20 right-20 scale-100 rounded-md transition-all duration-300 ease-out group-hover:scale-110"
       />
     ),
   },
@@ -68,7 +73,7 @@ const features = [
       <Image
         src={beneficio4}
         alt="Beneficio 4"
-        className="absolute w-[270px] right-22 bottom-25 scale-100 rounded-md transition-all duration-300 ease-out group-hover:scale-110"
+        className="absolute w-[270px] lg:right-22 lg:bottom-25 right-16 bottom-11 scale-100 rounded-md transition-all duration-300 ease-out group-hover:scale-110"
       />
     ),
   },
@@ -76,7 +81,7 @@ const features = [
 
 export function BentoBeneficios() {
   return (
-    <BentoGrid className="grid grid-flow-col grid-cols-3 gap-4">
+    <BentoGrid className="grid lg:grid-flow-col lg:grid-cols-3 grid-cols-1 gap-4">
       {features.map((feature, idx) => (
         <BentoCard key={idx} {...feature} />
       ))}

@@ -141,7 +141,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="pasos flex flex-row gap-4">
+          <div className="pasos flex flex-col lg:flex-row gap-4">
             <div className="pasos-descripcion flex flex-col gap-6">
               <div className="paso flex flex-col gap-0 tracking-[-0.08em]">
                 <h3 className="text-rabe-primary-500 font-semibold">Paso 1:  Elige tu estilo y personaliza</h3>
