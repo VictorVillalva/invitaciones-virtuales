@@ -1,6 +1,7 @@
 //** Hooks */
 import Image, { StaticImageData } from 'next/image'
-
+//** Assets */}
+import separador from '@/assets/images/PamelaCastilloXV/Separator-2-PamelaCastillo.svg'
 //** Interfaces or Types*/
 interface HeaderInvitationProps {
     title: string;
@@ -11,7 +12,7 @@ interface HeaderInvitationProps {
     classNameSubtitle?: string;
 }
 
-export default function HeaderInvitation({title, image, tipographyTitle, nombreFestejada, classNameTitle, classNameSubtitle}: HeaderInvitationProps) {
+export default function HeaderInvitation({ title, image, tipographyTitle, nombreFestejada, classNameTitle, classNameSubtitle }: HeaderInvitationProps) {
     return (
         <header>
             <div className='relative w-full h-[900px] max-w-[768px] mx-auto flex flex-col justify-center items-center'>
@@ -20,7 +21,7 @@ export default function HeaderInvitation({title, image, tipographyTitle, nombreF
                     alt='Mis XV Invitation'
                     fill
                     sizes='(max-width: 768px) 100vw, 768px'
-                    className='mask-fade-bottom object-cover'
+                    className='object-cover'
                     priority
                 />
                 <div className="absolute bottom-10 flex flex-col items-center justify-end mb-24 text-white gap-2">
@@ -30,6 +31,7 @@ export default function HeaderInvitation({title, image, tipographyTitle, nombreF
                     </div>
                 </div>
             </div>
+            <Image src={separador} alt="separador" />
         </header>
     )
 }

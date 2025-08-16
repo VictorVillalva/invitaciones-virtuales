@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState, useCallback } from "react";
 
-export function useIsMobile(breakpoint = 768){
+export function useIsMobile(breakpoint = 767){
     const [isMobile, setIsMobile] = useState(true);
 
     const handleResize = useCallback(() => {

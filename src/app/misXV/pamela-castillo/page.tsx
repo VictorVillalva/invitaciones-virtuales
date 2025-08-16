@@ -15,7 +15,8 @@ import PamelaCastillo from '@/assets/images/PamelaCastilloXV/Portada-PamelaCasti
 import Lugar from '@/assets/images/PamelaCastilloXV/Hacienda-ElJaguey.png'
 import separador from '@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg'
 import { ephesis } from '@/assets/fonts/fonts'
-import BlockMobile from '@/components/components-invitations/BlockMobile'
+import BlockMobile from '@/components/components-invitations/BlockMobile-Invitation'
+import FooterRabe from '@/components/components-invitations/Footer-Rabe'
 
 
 
@@ -63,7 +64,7 @@ export default function PamelaCastilloPreInvitation() {
         <section className='Espera-la-invitación'>
           <div className='flex flex-col gap-3 text-center px-4 text-pamela-primary'>
             <h2 className=' font-bold text-[40px] tracking-[-0.06em] leading-[40px]'>Espera la invitación oficial</h2>
-            <p className='tracking-[-0.02em]'>Espera la invitación oficial que se te enviara en las próximas semanas para que puedas confirmar tu asistencia a este maravilloso evento y acompañar a Pamela en este momento tan especial para ella.</p>
+            <p className='tracking-[-0.02em]'>Estamos trabajando en todos los detalles para que este evento sea especial, en los próximos días estarás recibiendo la información oficial para este gran evento</p>
           </div>
         </section>
         <Image src={separador} alt="separador" />
@@ -75,6 +76,9 @@ export default function PamelaCastilloPreInvitation() {
           </div>
         </section>
       </main>
+      <FooterRabe 
+        className='bg-[#F2D6D6]'
+      />
     </>
   )
 }
