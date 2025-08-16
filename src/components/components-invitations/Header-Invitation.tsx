@@ -31,7 +31,7 @@ export default function HeaderInvitation({ title, image, tipographyTitle, nombre
                     </div>
                 </div>
             </div>
-            <Image src={separador} alt="separador" />
+            <Image src={separador} alt="separador" loading="lazy"/>
         </header>
     )
 }
