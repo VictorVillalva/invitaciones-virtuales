@@ -6,10 +6,11 @@ import HeaderInvitation from '@/components/components-invitations/Header-Invitat
 import ApartaFechaInvitation from '@/components/components-invitations/ApartaFecha-Invitation'
 import TextoInspirador from '@/components/components-invitations/TextoInspirador-Invitation'
 import CountDown from '@/components/components-invitations/CountDown-Invitation'
-import CardLugarEvento from '@/components/components-invitations/CardLugarEvento-Invitation-1'
+import LugarEvento from '@/components/components-invitations/LugarEvento-Invitation'
 
 //** Assets */
 import PamelaCastillo from '@/assets/images/PamelaCastilloXV/Portada-PamelaCastillo.png'
+import Lugar from '@/assets/images/PamelaCastilloXV/Hacienda-ElJaguey.png'
 import separador from '@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg'
 import { ephesis } from '@/assets/fonts/fonts'
 
@@ -42,7 +43,16 @@ export default function PamelaCastilloPreInvitation() {
           classNameTitle='text-center text-[40px] font-bold text-pamela-primary tracking-[-0.02em] leading-[40px]'
         />
         <Image src={separador} alt="separador" />
-        <CardLugarEvento />
+        <LugarEvento 
+          title='Lugar del Evento'
+          classNameTitle='text-center text-[40px] font-bold text-pamela-primary tracking-[-0.02em] leading-[40px]'
+          image={Lugar}
+          location='Prolongación Hacienda El Jaguey 3402 Cholula, 72828 Heroica Puebla de Zaragoza'
+          urlLocation='https://maps.app.goo.gl/bnV6uGG2rLP7YQYWA'
+          titleCard='Hacienda El Jaguey'
+          classNameTitleCard='text-[32px] tracking-[-0.06em] text-pamela-primary'
+          classNameButton='rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]'
+        />
       </main>
     </>
   )
