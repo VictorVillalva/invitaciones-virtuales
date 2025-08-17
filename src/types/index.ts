@@ -73,6 +73,8 @@ export interface MensajeProps {
 
 export interface CountdownProps {
     targetDate: Date;
+    classNameTitle?: string;
+    title?: string;
 } 
 
 export interface Guest {
