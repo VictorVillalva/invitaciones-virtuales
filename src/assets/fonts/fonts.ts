@@ -1,4 +1,4 @@
-import { Ephesis, Inspiration, Inter, Playwrite_US_Trad, Quicksand, Zain } from "next/font/google";
+import { Ephesis, Inspiration, Inter, Playwrite_US_Trad, Quicksand, Zain, Libre_Caslon_Text } from "next/font/google";
 
 // Versión optimizada - solo los pesos y subsets más usados
 export const inter = Inter({
@@ -46,4 +46,12 @@ export const zain = Zain({
     style: ['normal', "italic"],
     display: 'swap',
     variable: '--font-zain'
+})
+
+export const libreCaslonText = Libre_Caslon_Text({
+    subsets: ['latin', 'latin-ext'],
+    weight: ['400', '700'], // Solo pesos disponibles
+    style: ['normal', 'italic'],
+    display: 'swap',
+    variable: '--font-libreCaslonText'
 })

@@ -12,7 +12,7 @@ import LugarEvento from '@/components/components-invitations/LugarEvento-Invitat
 import PamelaCastillo from '@/assets/images/PamelaCastilloXV/Portada-PamelaCastillo.png'
 import Lugar from '@/assets/images/PamelaCastilloXV/Hacienda-ElJaguey.png'
 import separador from '@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg'
-import { ephesis } from '@/assets/fonts/fonts'
+import { ephesis, libreCaslonText } from '@/assets/fonts/fonts'
 import BlockMobile from '@/components/components-invitations/BlockMobile-Invitation'
 import FooterRabe from '@/components/components-invitations/Footer-Rabe'
 
@@ -26,8 +26,10 @@ export default function PamelaCastilloPreInvitation() {
         image={PamelaCastillo}
         classNameTitle='text-[80px]'
         tipographyTitle={ephesis}
-        nombreFestejada='Pamela Castillo'
-        classNameSubtitle='text-[20px]'
+        tipographySubtitle={libreCaslonText}
+        nombreFestejada='Pamela Castillo Monterrosas'
+        classNameSubtitle='text-[20px] font-semibold bg-gradient-to-r from-[#F3C71C] via-[#EFB810] to-[#C4870A] bg-clip-text text-transparent'
+        filterImage={true}
       />
       <main className='pre-invitacion-pamela-castillo flex flex-col gap-[150px] px-4 py-[150px]'>
         <section data-aos="fade-dowm" className='aparta-fechas-invitation'>
@@ -85,7 +87,7 @@ export default function PamelaCastilloPreInvitation() {
         <section data-aos="fade-dowm" className='misXV'>
           <div className='flex flex-col justify-center items-center text-center gap-2'>
             <span className={`${ephesis.className} text-[80px] leading-none text-[#C4870A]`}>Mis XV</span>
-            <span className={`text-[20px] font-bold text-[#9C610C]`}>Pamela Castillo Monterrosas</span>
+            <span className={`${libreCaslonText.className} text-[20px] font-bold text-[#9C610C]`}>Pamela Castillo Monterrosas</span>
             <span className='tracking-[1em] text-[#9C610C]'>08.11.2025</span>
           </div>
         </section>
