@@ -2,7 +2,6 @@
 import { StaticImageData } from 'next/image'
 //** Components */
 import CardLugarEvento from '@/components/components-invitations/CardLugarEvento-Invitation-1'
-import { url } from 'inspector';
 //** Interfaces or Types*/
 interface LugareEventoProps {
     title: string;
