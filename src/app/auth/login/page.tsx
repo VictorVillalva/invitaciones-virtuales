@@ -1,10 +1,12 @@
 "use client";
-/** Hooks */
-import Image from "next/image";
-import fondo from "@/assets/images/landing/image-paquetes-1.png";
-import Rabe from "@/assets/images/landing/rabe-logo.png";
+//** Components */
 import LoginForm from "@/components/components-admin/loginForm";
 import Link from "next/link";
+//** Assets */
+import fondo from "@/assets/images/landing/image-paquetes-1.png";
+import Rabe from "@/assets/images/landing/rabe-logo.png";
+//** Hooks */
+import Image from "next/image";
 
 export default function Login() {
   return (
