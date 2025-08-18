@@ -12,8 +12,13 @@ export default function LoginForm() {
   return (
     <form action="" className="w-full flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <label htmlFor="user">Usuario</label>
-        <Input id="user" type="text" placeholder="Usuario" required />
+        <label htmlFor="username">Usuario</label>
+        <Input 
+            id="username" 
+            type="text" 
+            placeholder="Usuario" 
+            required 
+        />
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="password">Contraseña</label>
