@@ -12,7 +12,7 @@ import LugarEvento from '@/components/components-invitations/LugarEvento-Invitat
 import PamelaCastillo from '@/assets/images/PamelaCastilloXV/Portada-PamelaCastillo.png'
 import Lugar from '@/assets/images/PamelaCastilloXV/Hacienda-ElJaguey.png'
 import separador from '@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg'
-import { ephesis, fleurDeLeah } from '@/assets/fonts/fonts'
+import { ephesis } from '@/assets/fonts/fonts'
 import BlockMobile from '@/components/components-invitations/BlockMobile-Invitation'
 import FooterRabe from '@/components/components-invitations/Footer-Rabe'
 
