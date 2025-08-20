@@ -1,9 +1,9 @@
-import { Ephesis, Inspiration, Inter, Playwrite_US_Trad, Quicksand, Zain, Libre_Caslon_Text } from "next/font/google";
+import { Ephesis, Inspiration, Inter, Playwrite_US_Trad, Quicksand, Zain, Libre_Caslon_Text, Fleur_De_Leah} from "next/font/google";
 
 // Versión optimizada - solo los pesos y subsets más usados
 export const inter = Inter({
     subsets: ['latin', 'latin-ext'], // Solo los subsets más comunes
-    weight: ['300', '400', '500', '600', '700'], // Solo los pesos más usados
+    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], // Solo los pesos más usados
     style: ['normal', 'italic'],
     display: 'swap',
     variable: '--font-inter'
@@ -54,4 +54,12 @@ export const libreCaslonText = Libre_Caslon_Text({
     style: ['normal', 'italic'],
     display: 'swap',
     variable: '--font-libreCaslonText'
+})
+
+export const fleurDeLeah = Fleur_De_Leah({
+    subsets: ['latin', 'latin-ext'],
+    weight: ['400'], // Solo pesos disponibles
+    style: ['normal'],
+    display: 'swap',
+    variable: '--font-fleurDeLeah'
 })
