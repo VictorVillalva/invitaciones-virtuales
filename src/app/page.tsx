@@ -11,6 +11,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { BadgeRabe } from "@/components/ui/badge-rabe";
 import { BentoBeneficios } from "@/components/components-landing-page/bento-beneficios";
+import Facebook from "@/assets/icons/Facebook";
+import Instagram from "@/assets/icons/Instagram";
+import Whatsapp from "@/assets/icons/Whatsapp";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   return (
@@ -365,12 +369,53 @@ export default function Home() {
           </article>
         </div>
       </section>
-      <section className="CTO-Section-landing-page bg-rabe-primary-700 py-[60px] px-[134px] flex flex-col justify-center items-center">
+      <section className="CTO-Section-landing-page bg-[linear-gradient(to_bottom,#3C6563_0%,#497975_37%,#4D7F7B_48%,#679A95_100%)] py-[60px] px-[134px] flex flex-col justify-center items-center gap-6">
         <div className="texto max-w-[772px] flex flex-col gap-3 text-white text-center ">
           <h2 className="font-semibold text-[40px] leading-none tracking-[-0.08em]">¡Haz que tu evento sea inolvidable desde la invitación!</h2>
           <p className="tracking-[-0.08em]">Sorprende a tus invitados con una invitación digital única, interactiva y lista para compartir en minutos. Dale a tu evento el inicio que se merece.</p>
         </div>
+        <Link
+          href={""}
+          className="group transition-all flex flex-row items-center justify-center gap-1 px-2 py-3 bg-rabe-primary-50 text-rabe-primary rounded-[6px] max-w-[188px] text-sm font-medium hover:text-rabe-primary-500 hover:bg-rabe-primary-100"
+        >
+          Diseñar mi invitación{" "}
+          <ArrowUpRight
+            width={16}
+            height={16}
+            className="group-hover:animate-pulse"
+          />
+        </Link>
       </section>
+      <footer className="footer-landing-page flex flex-col px-[134px] pt-[80px] pb-[24px] gap-[35px] bg-white">
+        <div className="secciones flex flex-row justify-between">
+          <div className="rabe flex flex-col max-w-[281px] gap-8">
+            <div className="encabezado flex flex-col gap-2">
+              <div className="RabeInnovation flex flex-row gap-2 tracking-[-0.08em]">
+                <Image
+                  src={Rabe}
+                  alt="Rabe Innovation"
+                  width={24}
+                  height={16}
+                  className="object-contain"
+                />
+                <span className="font-bold text-rabe-primary">
+                  Invitaciones Virtuales
+                </span>
+              </div>
+              <small className="tracking-[-0.08em] text-neutral-500">Creamos invitaciones digitales únicas que combinan diseño, personalización y tecnología para que tu evento brille desde el primer clic.</small>
+            </div>
+            <div className="social-medias flex flex-row gap-6">
+              <Facebook width="24" height="24"/>
+              <Instagram width="24" height="24"/>
+              <Whatsapp width="24" height="24"/>
+            </div>
+          </div>
+        </div>
+        <Separator />
+        <div className="copyright flex flex-row justify-end">
+          <small className="text-rabe-primary-400 font-semibold">© 2025 Rabe Innovations. Todos los derechos reservados.</small>
+        </div>
+      </footer>
     </main>
   );
 }
