@@ -6,6 +6,7 @@ import separador from '@/assets/images/PamelaCastilloXV/Separator-2-PamelaCastil
 interface HeaderInvitationProps {
     title: string;
     image: StaticImageData;
+    classNameImage?: string;
     tipographyTitle: { className: string };
     tipographySubtitle?: { className: string };
     nombreFestejada: string;
@@ -14,11 +15,13 @@ interface HeaderInvitationProps {
     classNameSubtitle?: string;
     filterImage?: boolean;
     classNameFilterImage?: string;
+    classNameHeader?: string;
 }
 
 export default function HeaderInvitation({ 
     title, 
     image, 
+    classNameImage,
     tipographyTitle, 
     nombreFestejada, 
     classNameTitle, 
@@ -26,18 +29,19 @@ export default function HeaderInvitation({
     classNameSubtitle, 
     tipographySubtitle, 
     filterImage = false, 
-    classNameFilterImage 
+    classNameFilterImage,
+    classNameHeader
 }: HeaderInvitationProps) {
     return (
         <header>
-            <div className='relative w-full h-[900px] max-w-[768px] mx-auto flex flex-col justify-center items-center'>
+            <div className={`${classNameHeader ? classNameHeader : 'h-[900px]'} relative w-full max-w-[768px] mx-auto flex flex-col justify-center items-center `}>
                 {filterImage && <div className={`h-full w-full absolute ${classNameFilterImage ? classNameFilterImage : 'bg-black/20'} z-10`}></div>}
                 <Image
                     src={image}
                     alt='Mis XV Invitation'
                     fill
                     sizes='(max-width: 768px) 100vw, 768px'
-                    className='object-cover'
+                    className={`${classNameImage} object-cover`}
                     priority
                 />
                 <div className={`${classNameCardTitle} absolute bottom-10 flex flex-col items-center justify-end mb-24 text-white gap-2 z-20 `}>
