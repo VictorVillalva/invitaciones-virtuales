@@ -174,7 +174,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="paquetes-landing-page bg-white mb-[1000px] flex flex-col gap-[60px]">
+      <section className="paquetes-landing-page bg-white flex flex-col gap-[60px] mb-[255px]">
         <div className="encabezado lg:px-[134px] px-4 flex flex-col justify-center items-center gap-6 mt-[100px]">
           <BadgeRabe variant="outline" className="font-semibold">
             PAQUETES
@@ -189,9 +189,53 @@ export default function Home() {
           </div>
         </div>
         <div className="paquetes flex flex-col gap-36">
-          <article className="paquete-core flex flex-row justify-end gap-4 lg:pl-[134px]">
-            <div className="descripcion-paquete">
-              hola
+          <article className="paquete-core flex flex-row justify-end items-center gap-4 lg:pl-[134px]">
+            <div className="descripcion-paquete w-full flex flex-col gap-6">
+              <div className="titulo-p flex flex-col gap-1">
+                <h4 className="font-semibold text-[32px] leading-none tracking-[-0.08em] text-rabe-primary">Invitación Core</h4>
+                <small className="text-rabe-primary-500 font-semibold">Ideal para eventos informales de entre 10 - 50 personas</small>
+              </div>
+              <div className="especificaciones">
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Personalización del diseño de Invitación</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Sección de información general (Tipo de evento, Fecha, Festejado)</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div>
+                    <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  </div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Secciones sobre el evento, 2 a escoger (Papás, Padrinos, Mesa de regalos, Itinerario o Código de vestimenta)</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div>
+                    <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  </div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Conteo regresivo del evento, Canción de fondo, Galería de fotos de hasta 3 fotos</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Confirmación mediante Whatsapp directo</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Visibilidad de la invitación por 1 mes</p>
+                </div>
+              </div>
+              <Link
+                href={""}
+                className="group transition-all flex flex-row items-center justify-center gap-1 px-2 py-3 bg-rabe-primary text-white rounded-[6px] max-w-[180px] text-sm font-medium hover:bg-rabe-primary-800"
+              >
+                Ver Invitación{" "}
+                <ArrowUpRight
+                  width={16}
+                  height={16}
+                  className="group-hover:animate-pulse"
+                />
+              </Link>
             </div>
             <Image
               src={paquete1}
@@ -199,19 +243,119 @@ export default function Home() {
               className="object-cover relative max-w-[712px] h-[452px] overflow-hidden rounded-l-[9999px]"
             />
           </article>
-          <article className="paquete-rise flex flex-row gap-4 lg:pr-[134px]">
+          <article className="paquete-rise flex flex-row items-center gap-4 lg:pr-[134px]">
             <Image
               src={paquete2}
               alt="Invitación Rise"
               className="object-cover relative max-w-[712px] h-[452px] overflow-hidden rounded-r-[9999px]"
             />
-            <div className="descripcion-paquete">
-              hola
+            <div className="descripcion-paquete w-full flex flex-col gap-6 pl-6">
+              <div className="titulo-p flex flex-col gap-1">
+                <h4 className="font-semibold text-[32px] leading-none tracking-[-0.08em] text-rabe-primary">Invitación Rise</h4>
+                <small className="text-rabe-primary-500 font-semibold">Ideal para eventos semi-formales de entre 50-100 personas</small>
+              </div>
+              <div className="especificaciones">
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Personalización del diseño de Invitación</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Sección de información general (Papas, Padrinos, itinerario, Código de vestimenta, Dedicatorias)</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div>
+                    <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  </div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Fecha del evento</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div>
+                    <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  </div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Sección sobre el evento (Mesa de regalos, Código de vestimenta, Contador para la fecha, Canción de fondo, Galería de fotos de hasta 6 fotos)</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Confirmación mediante Whatsapp directo</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Ubicación del evento</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Visibilidad de la invitación por 2 mes</p>
+                </div>
+              </div>
+              <Link
+                href={""}
+                className="group transition-all flex flex-row items-center justify-center gap-1 px-2 py-3 bg-rabe-primary text-white rounded-[6px] max-w-[180px] text-sm font-medium hover:bg-rabe-primary-800"
+              >
+                Ver Invitación{" "}
+                <ArrowUpRight
+                  width={16}
+                  height={16}
+                  className="group-hover:animate-pulse"
+                />
+              </Link>
             </div>
           </article>
-          <article className="paquete-core flex flex-row justify-end gap-4 lg:pl-[134px]">
-            <div className="descripcion-paquete">
-              hola
+          <article className="paquete-core flex flex-row items-center justify-end gap-4 lg:pl-[134px]">
+            <div className="descripcion-paquete w-full flex flex-col gap-6">
+              <div className="titulo-p flex flex-col gap-1">
+                <h4 className="font-semibold text-[32px] leading-none tracking-[-0.08em] text-rabe-primary">Invitación Nova</h4>
+                <small className="text-rabe-primary-500 font-semibold">Ideal para eventos formales para hasta 150 personas</small>
+              </div>
+              <div className="especificaciones">
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Incluye todo lo de los paquetes anteriores</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Pre-Invitación (save the date)</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div>
+                    <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  </div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Playlist de spotify</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div>
+                    <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  </div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Envio masivo de invitaciones y pre invitaciones automatizado</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Confirmación directa desde la invitación</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Fecha limite para confirmar</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Tablero dinámico para administrar confirmación y datos de invitados</p>
+                </div>
+                <div className="contenido flex flex-row items-center gap-2.5">
+                  <div className="h-[10px] w-[10px] bg-rabe-primary rounded-full"></div>
+                  <p className="flex flex-row text-neutral-500 tracking-[-0.08em]">Visibilidad de la invitación por 3 mes</p>
+                </div>
+              </div>
+              <Link
+                href={""}
+                className="group transition-all flex flex-row items-center justify-center gap-1 px-2 py-3 bg-rabe-primary text-white rounded-[6px] max-w-[180px] text-sm font-medium hover:bg-rabe-primary-800"
+              >
+                Ver Invitación{" "}
+                <ArrowUpRight
+                  width={16}
+                  height={16}
+                  className="group-hover:animate-pulse"
+                />
+              </Link>
             </div>
             <Image
               src={paquete3}
@@ -220,7 +364,13 @@ export default function Home() {
             />
           </article>
         </div>
-      </section>z
+      </section>
+      <section className="CTO-Section-landing-page bg-rabe-primary-700 py-[60px] px-[134px] flex flex-col justify-center items-center">
+        <div className="texto max-w-[772px] flex flex-col gap-3 text-white text-center ">
+          <h2 className="font-semibold text-[40px] leading-none tracking-[-0.08em]">¡Haz que tu evento sea inolvidable desde la invitación!</h2>
+          <p className="tracking-[-0.08em]">Sorprende a tus invitados con una invitación digital única, interactiva y lista para compartir en minutos. Dale a tu evento el inicio que se merece.</p>
+        </div>
+      </section>
     </main>
   );
 }
