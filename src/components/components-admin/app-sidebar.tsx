@@ -1,59 +1,26 @@
-import React from "react";
+/** Hooks */
+import Link from "next/link";
+
+/** Assets */
+import { LayoutGrid, ListChecks } from "lucide-react";
+/** Components */
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
 import AppLogo from "./app-logo";
-import Link from "next/link";
-import NavOpciones from "./nav-opciones";
-import { ChartLine, LayoutGrid, List, Mailbox, Shield, Users } from "lucide-react";
-import type { NavItem } from "@/types";
 import NavUser from "./nav-user";
-
+import NavMain from "./nav-main";
+/** Interfaces or Types */
+import type { NavItem } from "@/types";
+/** Consts */
 const mainNavItems: NavItem[] = [
   {
     title: "Dashboard",
-    href: "/dashboard",
+    href: "/administrador/dashboard",
     icon: LayoutGrid,
   },
   {
-    title: "Quejas",
-    href: "/quejas",
-    icon: Mailbox,
-  },
-  {
-    title: "Estadisticas",
-    href: "/estadisticas",
-    icon: ChartLine,
-  },
-  {
-    title: "Catalogo",
-    href: "/catalogos",
-    icon: List,
-    subitems: [
-      {
-        title: "Tipo de Violencia",
-        url: "/tipo-de-violencia",
-      },
-    ],
-  },
-];
-
-const adminNavItems: NavItem[] = [
-  {
-    title: "Usuarios",
-    href: "/usuarios",
-    icon: Users,
-  },
-  {
-    title: "Roles",
-    href: "/roles",
-    icon: Shield,
-  },
-];
-
-const catalogoNavItems: NavItem[] = [
-  {
-    title: "Lista de Catalogos",
-    href: "/catalogos",
-    icon: List,
+    title: "Lista Invitados",
+    href: "/administrador/lista-invitados",
+    icon: ListChecks,
   },
 ];
 
@@ -65,7 +32,7 @@ export default function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <Link href="/dashboard" prefetch>
+              <Link href="/administrador/dashboard" prefetch>
                 <AppLogo />
               </Link>
             </SidebarMenuButton>
@@ -74,9 +41,7 @@ export default function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
-        <NavOpciones items={mainNavItems} titulo="Acciones" />
-        <NavOpciones items={adminNavItems} titulo="Administración" />
-        <NavOpciones items={catalogoNavItems} titulo="Catálogos" />
+        <NavMain items={mainNavItems} titulo="Acciones" />
       </SidebarContent>
 
       <SidebarFooter>
