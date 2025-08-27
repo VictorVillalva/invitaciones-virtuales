@@ -73,7 +73,7 @@ export default function NavbarBasic() {
               <li role="none" className="flex items-stretch">
                 <Link
                   role="menuitem"
-                  href="#paquetes"
+                  href="#paquetes-landing-page"
                   className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-rabe-primary-700 hover:font-semibold focus:outline-none lg:px-6"
                 >
                   Paquetes
@@ -82,7 +82,7 @@ export default function NavbarBasic() {
               <li role="none" className="flex items-stretch">
                 <Link
                   role="menuitem"
-                  href="#beneficios"
+                  href="#beneficios-landing-page"
                   className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-rabe-primary-700 hover:font-semibold focus:outline-none lg:px-6"
                 >
                   Beneficios
@@ -91,7 +91,7 @@ export default function NavbarBasic() {
               <li role="none" className="flex items-stretch">
                 <Link
                   role="menuitem"
-                  href="#proceso"
+                  href="#proceso-landing-page"
                   className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-rabe-primary-700 hover:font-semibold focus:outline-none lg:px-6"
                 >
                   Proceso

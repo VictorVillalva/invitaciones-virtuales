@@ -76,7 +76,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="beneficios-landing-page bg-white ">
+      <section id="beneficios-landing-page" className="bg-white ">
         <div className="encabezado xl:px-[134px] lg:px-[100px] px-4 flex flex-col justify-center items-center gap-6 mt-[100px]">
           <BadgeRabe variant="outline" className="font-semibold">
             BENEFICIOS
@@ -95,7 +95,7 @@ export default function Home() {
           <BentoBeneficios />
         </div>
       </section>
-      <section className="proceso-landing-page bg-rabe-primary-100 py-[50px] mt-[100px]">
+      <section id="proceso-landing-page" className="bg-rabe-primary-100 py-[50px] mt-[100px]">
         <div className="encabezado xl:px-[134px] lg:px-[100px] px-4 flex flex-col justify-center items-center gap-10">
           <div className="encabezado-titulos flex flex-col justify-center items-center gap-6">
             <BadgeRabe variant="outline" className="font-semibold">
@@ -164,7 +164,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="paquetes-landing-page bg-white flex flex-col gap-[60px] mb-[255px]">
+      <section id="paquetes-landing-page" className="bg-white flex flex-col gap-[60px] mb-[255px]">
         <div className="encabezado xl:px-[134px] lg:px-[100px] px-4 flex flex-col justify-center items-center gap-6 mt-[100px]">
           <BadgeRabe variant="outline" className="font-semibold">
             PAQUETES
@@ -422,7 +422,7 @@ export default function Home() {
           </article>
         </div>
       </section>
-      <section className="CTO-Section-landing-page bg-[linear-gradient(to_bottom,#3C6563_0%,#497975_37%,#4D7F7B_48%,#679A95_100%)] py-[60px] lg:px-[134px] px-6 flex flex-col justify-center items-center gap-6">
+      <section id="CTO-Section-landing-page " className="bg-[linear-gradient(to_bottom,#3C6563_0%,#497975_37%,#4D7F7B_48%,#679A95_100%)] py-[60px] lg:px-[134px] px-6 flex flex-col justify-center items-center gap-6">
         <div className="texto max-w-[772px] flex flex-col gap-3 text-white text-center ">
           <h2 className="font-semibold text-[40px] leading-none tracking-[-0.08em]">
             ¡Haz que tu evento sea inolvidable desde la invitación!

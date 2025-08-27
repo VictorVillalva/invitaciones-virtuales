@@ -1,6 +1,11 @@
 @import "tailwindcss";
 /* 
 ---break--- */
+/** Personal Configuration*/
+html {
+  scroll-behavior: smooth;
+}
+/** Shadcui */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
