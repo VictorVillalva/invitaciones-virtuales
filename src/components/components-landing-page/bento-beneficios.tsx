@@ -1,5 +1,3 @@
-import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
-import { BellIcon, Share2Icon } from "lucide-react";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import Image from "next/image";
 import beneficio4 from "@/assets/images/landing/image-beneficios-4.png";
@@ -9,7 +7,6 @@ import beneficio1 from "@/assets/images/landing/image-beneficios-1.png";
 
 const features = [
   {
-    Icon: FileTextIcon,
     name: "Diseños únicos que hablan por ti",
     description:
       "Cada invitación es creada a tu medida, reflejando el estilo y la esencia de tu evento.",
@@ -27,7 +24,6 @@ const features = [
     ),
   },
   {
-    Icon: BellIcon,
     name: "Música, fotos y animaciones",
     description:
       "Haz que tu invitación cobre vida con una experiencia multimedia única. Incluye la canción que más te guste, agrega tus fotos favoritas y sorprende con animaciones que capturan la esencia de tu evento.",
@@ -45,7 +41,6 @@ const features = [
     ),
   },
   {
-    Icon: Share2Icon,
     name: "Comparte en segundos",
     description:
       "Envíala por WhatsApp, correo o redes sociales sin límites y sin complicaciones.",
@@ -63,7 +58,6 @@ const features = [
     ),
   },
   {
-    Icon: CalendarIcon,
     name: "Confirmación de asistencia online",
     description:
       "Tus invitados pueden confirmar con un solo clic, y tú ves la lista en tiempo real.",
