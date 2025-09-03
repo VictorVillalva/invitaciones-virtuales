@@ -22,6 +22,7 @@ export default function PamelaCastilloPreInvitation() {
     <>
       {!isMobile && <BlockMobile />}
       <HeaderInvitation
+        classNameHeader='h-[730px]'
         title='Mis XV'
         image={PamelaCastillo}
         classNameTitle='text-[64px]'
