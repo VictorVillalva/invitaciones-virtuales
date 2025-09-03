@@ -13,6 +13,8 @@ export interface Nombres{
     apellido1: string;
     nombre2: string;
     apellido2: string;
+    classNameTitle?: string;
+    classNameNombres?: string;
 }
 
 export interface Sobre{
