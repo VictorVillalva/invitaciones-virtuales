@@ -30,9 +30,6 @@ import LugarEventoInvitation from "@/components/components-invitations/LugarEven
 import PlaylistInvitation from "@/components/components-invitations/Playlist-Invitation";
 import { useFechaConfirmacion } from "@/hooks/useFechaConfirmacion";
 import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
-import { useSpotify } from "@/hooks/useSpotify";
-import { AlertCircle, X } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 
 export default function PamelaCastillo() {
@@ -41,12 +38,6 @@ export default function PamelaCastillo() {
   const code = params?.code;
   const { puedeConfirmar } = useFechaConfirmacion();
   const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
-
-    const {
-    error,
-    showAlert,
-    handleCloseAlert,
-  } = useSpotify();
 
   return (
     <>
@@ -186,7 +177,7 @@ export default function PamelaCastillo() {
         </main>
         {/* Alertas de la Invitación */}
         {/* Mostrar mensaje si no hay canciones */}
-        {showAlert && (
+        {/* {showAlert && (
           <div className="fixed left-1/2 top-[calc(env(safe-area-inset-top,0px)+0.75rem)] z-[100] w-full max-w-xl -translate-x-1/2 px-4">
             <Alert variant="destructive">
               <AlertCircle className="h-4 w-4" />
@@ -199,12 +190,11 @@ export default function PamelaCastillo() {
                 </div>
               </AlertTitle>
               <AlertDescription>
-                {/* No se logró agregar la canción. */}
                 {error}
               </AlertDescription>
             </Alert>
           </div>
-        )}
+        )} */}
       </SobreAnimationInvitation>
     </>
   );

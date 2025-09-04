@@ -17,6 +17,7 @@ import {
 import InputSearch from "@/components/ui/InputSearch";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
+import AlertInvitation from "../Alert-Invitation";
 
 export default function CardSpotifyInvitation() {
   const {
@@ -28,11 +29,14 @@ export default function CardSpotifyInvitation() {
     success,
     playlistSongs,
     isModalOpen,
+    showAlert,
     searchSong,
     handleSelectSong,
     handleCloseModal,
     handleCloseAlert,
   } = useSpotify();
+
+  const [prueba] = useState(true);
 
   return (
     <div
@@ -53,7 +57,28 @@ export default function CardSpotifyInvitation() {
         />
       </div>
       <Separator />
-
+      {/* Mostrar mensaje si no hay canciones */}
+      {prueba && (
+        <AlertInvitation 
+          title="Ocurrio un Error"
+          description={error || 'Por favor revisa la playlist'}
+          variant="destructive"
+        />
+        // <div className="fixed left-1/2 top-4 z-[100] w-full max-w-xl -translate-x-1/2 px-4">
+        //   <Alert variant="destructive">
+        //     <AlertCircle className="h-4 w-4" />
+        //     <AlertTitle>
+        //       <div className="flex flex-row justify-between">
+        //         <span>Error</span>
+        //         <button onClick={handleCloseAlert}>
+        //           <X className="h-4 w-4" />
+        //         </button>
+        //       </div>
+        //     </AlertTitle>
+        //     <AlertDescription>{error}</AlertDescription>
+        //   </Alert>
+        // </div>
+      )}
       {/* Mostrar mensaje si se agrego la cancion */}
       {success && (
         <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full p-4">
