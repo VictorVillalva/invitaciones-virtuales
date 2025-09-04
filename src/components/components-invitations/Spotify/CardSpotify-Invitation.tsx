@@ -1,25 +1,26 @@
 "use client";
-import { inter, quicksand } from "@/assets/fonts/fonts";
-import Spotify from "@/assets/icons/Spotify";
-import { useSpotify } from "@/hooks/useSpotify";
-import { AlertCircle, CircleCheck, X } from "lucide-react";
+//** Hook */
+import {  useSpotifyInvitation } from "@/hooks/useSpotify";
 import Image from "next/image";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+//** Assets */
+import { inter, zain } from "@/assets/fonts/fonts";
+import Spotify from "@/assets/icons/Spotify";
+import LogoPamela from "@/assets/images/PamelaCastilloXV/Logo-Pamela.png";
+//** Components */
 import InputSearch from "@/components/ui/InputSearch";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
 import AlertInvitation from "../Alert-Invitation";
+import DialogInvitation from "../Dialog-Invitation";
+//** Interfaces or Types */
+interface CardSpotify {
+  apiRefreshToken?: string;
+  spotifyPlaylistId?: string;
+}
 
-export default function CardSpotifyInvitation() {
+export default function CardSpotifyInvitation({
+  apiRefreshToken,
+  spotifyPlaylistId,
+}: CardSpotify) {
   const {
     query,
     setQuery,
@@ -34,9 +35,7 @@ export default function CardSpotifyInvitation() {
     handleSelectSong,
     handleCloseModal,
     handleCloseAlert,
-  } = useSpotify();
-
-  const [prueba] = useState(true);
+  } = useSpotifyInvitation({ apiRefreshToken, spotifyPlaylistId });
 
   return (
     <div
@@ -58,73 +57,40 @@ export default function CardSpotifyInvitation() {
       </div>
       <Separator />
       {/* Mostrar mensaje si no hay canciones */}
-      {prueba && (
-        <AlertInvitation 
+      {showAlert && (
+        <AlertInvitation
           title="Ocurrio un Error"
-          description={error || 'Por favor revisa la playlist'}
+          icon="alert"
+          description={error || "Por favor revisa la playlist"}
           variant="destructive"
+          close={handleCloseAlert}
         />
-        // <div className="fixed left-1/2 top-4 z-[100] w-full max-w-xl -translate-x-1/2 px-4">
-        //   <Alert variant="destructive">
-        //     <AlertCircle className="h-4 w-4" />
-        //     <AlertTitle>
-        //       <div className="flex flex-row justify-between">
-        //         <span>Error</span>
-        //         <button onClick={handleCloseAlert}>
-        //           <X className="h-4 w-4" />
-        //         </button>
-        //       </div>
-        //     </AlertTitle>
-        //     <AlertDescription>{error}</AlertDescription>
-        //   </Alert>
-        // </div>
       )}
       {/* Mostrar mensaje si se agrego la cancion */}
       {success && (
-        <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full p-4">
-          <Alert className="shadow-lg">
-            <CircleCheck className="h-4 w-4" />
-            <AlertTitle>
-              <div className="flex flex-row justify-between">
-                <span>Canción agregada</span>
-                <button onClick={handleCloseAlert}>
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-            </AlertTitle>
-            <AlertDescription>{success}</AlertDescription>
-          </Alert>
-        </div>
+        <AlertInvitation
+          title="Canción agregada"
+          icon="check"
+          description={success || "Haz agregado la canción con exito."}
+          close={handleCloseAlert}
+        />
       )}
       {/* Mostrar mensaje si la cancion ya fue agregada */}
       {isModalOpen && (
-        <AlertDialog open onOpenChange={handleCloseModal}>
-          <AlertDialogContent className="rounded-sm text-[#292929]">
-            <AlertDialogHeader>
-              <AlertDialogTitle
-                className={`${quicksand.className} text-2xl text-[#292929] flex flex-col gap-2`}
-              >
-                <span className="text-6xl">🫣</span>
-                <p>Upss</p>
-              </AlertDialogTitle>
-              <AlertDialogDescription className={`${quicksand.className} `}>
-                La cancion que elegiste ya fue agregada, intenta agregar otra.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogAction
-                className={`${quicksand.className} bg-[#CBA836]`}
-                onClick={handleCloseModal}
-              >
-                Continuar
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        <DialogInvitation
+          title="La canción ya esta agregada"
+          classNameTitle="text-[40px] text-pamela-primary tracking-[-0.04em] leading-none"
+          description="La cancion que tratas de seleccionar ya fue agregada a la playlist, intenta agregar otra."
+          classNameDescription="text-pamela-primary text-[18px] leading-none tracking-[-0.02em]"
+          classNameButton="rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]"
+          tipography={zain}
+          logo={LogoPamela}
+          closeModal={handleCloseModal}
+        />
       )}
       {/* Muestra texto si aun no hay canciones en la playlist */}
       {playlistSongs.length === 0 && !isLoading && !error && (
-        <div className="flex flex-col items-center justify-center h-full font-light text-xs text-gray-400">
+        <div className="flex flex-col items-center justify-center h-full text-xs text-gray-400">
           Aún no hay canciones agregadas.
         </div>
       )}

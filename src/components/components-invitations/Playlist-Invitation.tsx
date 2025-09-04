@@ -22,7 +22,10 @@ export default function PlaylistInvitation({
           <h3 className={`${classNameTitle} text-[40px]`}>{title}</h3>
           <p className={`${classNameDescription}`}>{description}</p>
         </div>
-        <CardSpotifyInvitation />
+        <CardSpotifyInvitation
+          apiRefreshToken={process.env.NEXT_PUBLIC_API_REFRESH_TOKEN_PAMELA}
+          spotifyPlaylistId={process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID_PAMELA}
+         />
       </div>
     </>
   );
