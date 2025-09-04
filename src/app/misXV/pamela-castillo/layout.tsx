@@ -10,7 +10,7 @@ export default function DanielaLayout({ children }: Readonly<{ children: React.R
     return (
         <>
             <section className={`pamela-castillo-layout ${zain.className} antialiased relative`}>
-                <div className="absolute inset-0 h-auto" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
+                <div className="absolute inset-0 h-auto bg-repeat" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
                 <div className="relative z-10">
                     <AOSInit />
                     {children}

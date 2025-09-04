@@ -57,7 +57,7 @@ export default function CardSpotifyInvitation({
       </div>
       <Separator />
       {/* Mostrar mensaje si no hay canciones */}
-      {showAlert && (
+      {/* {showAlert && (
         <AlertInvitation
           title="Ocurrio un Error"
           icon="alert"
@@ -65,18 +65,18 @@ export default function CardSpotifyInvitation({
           variant="destructive"
           close={handleCloseAlert}
         />
-      )}
+      )} */}
       {/* Mostrar mensaje si se agrego la cancion */}
-      {success && (
+      {/* {success && (
         <AlertInvitation
           title="Canción agregada"
           icon="check"
           description={success || "Haz agregado la canción con exito."}
           close={handleCloseAlert}
         />
-      )}
+      )} */}
       {/* Mostrar mensaje si la cancion ya fue agregada */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <DialogInvitation
           title="La canción ya esta agregada"
           classNameTitle="text-[40px] text-pamela-primary tracking-[-0.04em] leading-none"
@@ -87,7 +87,7 @@ export default function CardSpotifyInvitation({
           logo={LogoPamela}
           closeModal={handleCloseModal}
         />
-      )}
+      )} */}
       {/* Muestra texto si aun no hay canciones en la playlist */}
       {playlistSongs.length === 0 && !isLoading && !error && (
         <div className="flex flex-col items-center justify-center h-full text-xs text-gray-400">

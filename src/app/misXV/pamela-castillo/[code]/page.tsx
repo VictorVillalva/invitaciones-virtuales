@@ -3,23 +3,16 @@
 import Image from "next/image";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useParams } from "next/navigation";
+import { useFechaConfirmacionInvitation } from "@/hooks/useFechaConfirmacion";
+import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
+import Link from "next/link";
+import { useSpotifyInvitation } from "@/hooks/useSpotify";
 //** Components */
 import BlockMobileInvitation from "@/components/components-invitations/BlockMobile-Invitation";
 import HeaderInvitation from "@/components/components-invitations/Header-Invitation";
 import SobreAnimationInvitation from "@/components/components-invitations/SobreAnimation-Invitation";
 import ApartaFechaInvitation from "@/components/components-invitations/ApartaFecha-Invitation";
 import TextoInspiradorInvitation from "@/components/components-invitations/TextoInspirador-Invitation";
-//** Assets */
-import Portada from "@/assets/images/PamelaCastilloXV/Portada-Oficial-PamelaCastillo.png";
-import Lugar from "@/assets/images/PamelaCastilloXV/Hacienda-ElJaguey.png";
-import separador from "@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg";
-import { ephesis } from "@/assets/fonts/fonts";
-//** Data */
-import {
-  ImagesCarrusel,
-  evento,
-  nombrePadresPadrinos,
-} from "@/assets/data/PamelaCastillo/db";
 import GaleriaFotosInvitation from "@/components/components-invitations/GaleriaFotos-Invitation";
 import ItinerarioInvitation from "@/components/components-invitations/Itinerario-Invitation";
 import PadresInvitation from "@/components/components-invitations/Padres-Invitation";
@@ -28,15 +21,38 @@ import Liverpool from "@/components/components-invitations/Mesas-Regalo/Liverpoo
 import CountDownInvitation from "@/components/components-invitations/CountDown-Invitation";
 import LugarEventoInvitation from "@/components/components-invitations/LugarEvento-Invitation";
 import PlaylistInvitation from "@/components/components-invitations/Playlist-Invitation";
-import { useFechaConfirmacion } from "@/hooks/useFechaConfirmacion";
-import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
-
+import FooterRabe from "@/components/components-invitations/Footer-Rabe";
+import AlertInvitation from "@/components/components-invitations/Alert-Invitation";
+import DialogInvitation from "@/components/components-invitations/Dialog-Invitation";
+//** Assets */
+import Portada from "@/assets/images/PamelaCastilloXV/Portada-Oficial-PamelaCastillo.png";
+import Lugar from "@/assets/images/PamelaCastilloXV/Hacienda-ElJaguey.png";
+import separador from "@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg";
+import { ephesis, zain } from "@/assets/fonts/fonts";
+import LogoPamela from "@/assets/images/PamelaCastilloXV/Logo-Pamela.png";
+//** Data */
+import {
+  ImagesCarrusel,
+  evento,
+  nombrePadresPadrinos,
+} from "@/assets/data/PamelaCastillo/db";
 
 export default function PamelaCastillo() {
+  const apiRefreshToken = process.env.NEXT_PUBLIC_API_REFRESH_TOKEN_PAMELA;
+  const spotifyPlaylistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID_PAMELA;
+    const {
+      error,
+      success,
+      isModalOpen,
+      showAlert,
+      handleCloseModal,
+      handleCloseAlert,
+    } = useSpotifyInvitation({ apiRefreshToken, spotifyPlaylistId });
   const { isMobile } = useIsMobile();
   const params = useParams();
   const code = params?.code;
-  const { puedeConfirmar } = useFechaConfirmacion();
+  const fechaLimite = "2025-09-19T00:00:00";
+  const { puedeConfirmar } = useFechaConfirmacionInvitation({ fechaLimite });
   const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
 
   return (
@@ -163,7 +179,7 @@ export default function PamelaCastillo() {
           <section data-aos="fade-dowm" className="separador-invitation">
             <Image src={separador} alt="separador" />
           </section>
-          <section data-aos="fade-dowm" className="spotify-playlist">
+          <section data-aos="fade-dowm" className="spotify-playlist-invitation">
             <PlaylistInvitation
               title="Mi Playlist"
               description="La música es una hermosa forma de transmitir buenos deseos. Por eso, los invitamos a dedicarle una canción a Pame, que represente todo el cariño y los mejores deseos para ella."
@@ -174,27 +190,140 @@ export default function PamelaCastillo() {
           <section data-aos="fade-dowm" className="separador-invitation">
             <Image src={separador} alt="separador" />
           </section>
-        </main>
-        {/* Alertas de la Invitación */}
-        {/* Mostrar mensaje si no hay canciones */}
-        {/* {showAlert && (
-          <div className="fixed left-1/2 top-[calc(env(safe-area-inset-top,0px)+0.75rem)] z-[100] w-full max-w-xl -translate-x-1/2 px-4">
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>
-                <div className="flex flex-row justify-between">
-                  <span>Error</span>
-                  <button onClick={handleCloseAlert}>
-                    <X className="h-4 w-4" />
-                  </button>
+          <section data-aos="fade-dowm" className="confirmación-invitation">
+            {guestsData?.hasConfirmed ? (
+              <div className="asistencia flex flex-col gap-10">
+                <div className="flex flex-col">
+                  <p className="text-[40px] text-center tracking-[-0.06em] font-bold text-pamela-primary">
+                    Fecha del evento
+                  </p>
+                  <p
+                    className={`text-center text-[24px] tracking-[-0.06em] text-pamela-primary leading-none`}
+                  >
+                    Ya haz confirmado tu asistencia al evento, guarda la fecha
+                    para este maravilloso momento
+                  </p>
                 </div>
-              </AlertTitle>
-              <AlertDescription>
-                {error}
-              </AlertDescription>
-            </Alert>
-          </div>
-        )} */}
+                <div className="flex flex-col gap-4">
+                  <p
+                    className={`text-center tracking-[-0.06em] text-pamela-primary`}
+                  >
+                    Da click en el boton para ver tus pases
+                  </p>
+                  <Link
+                    href={`/misXV/pamela-castillo/confirmacion/${code}`}
+                    className={`py-2 px-3 flex justify-center items-center rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]`}
+                  >
+                    Ver mis pases
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <div className="asistencia flex flex-col gap-10">
+                {puedeConfirmar ? (
+                  <>
+                    <div className="flex flex-col">
+                      <p className="text-[40px] text-center tracking-[-0.06em] font-bold text-pamela-primary">
+                        Confirmación de Asistencia
+                      </p>
+                      <p
+                        className={`text-center tracking-[-0.06em] text-pamela-primary leading-none`}
+                      >
+                        Esta es la fecha límite para confirmar tu asistencia al
+                        evento, date prisa y no te quedes fuera de este momento
+                        tan especial.
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <p
+                        className={`text-center tracking-[-0.06em] text-pamela-primary`}
+                      >
+                        Da click en el boton para confirmar tu asistencia
+                      </p>
+                      <Link
+                        href={`/misXV/daniela-medel/confirmacion/${code}`}
+                        className={`py-2 px-3 flex justify-center items-center rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]`}
+                      >
+                        Confirmar
+                      </Link>
+                    </div>
+                    <ApartaFechaInvitation
+                      date="8 de Noviembre del 2025"
+                      classNameTitle="tracking-[0.16em] text-pamela-primary font-normal"
+                      classNameText="text-[40px] font-bold tracking-[-0.02em] text-[#C4870A]"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <div className="flex flex-col gap-4">
+                      <p className="text-[40px] tracking-[-0.06em] text-pamela-primary font-bold leading-10 text-center">
+                        Lo sentimos pero el tiempo ha terminado
+                      </p>
+                      <p
+                        className={`text-center text-pamela-primary tracking-[-0.02em] leading-none`}
+                      >
+                        El tiempo para confirmar tu asistencia al evento ha
+                        terminado, lamentamos que no hayas podido confirmar tu
+                        presencia, ojalá podamos coincidir en otra ocasión.
+                      </p>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+          </section>
+          <section data-aos="fade-dowm" className="separador-invitation">
+            <Image src={separador} alt="separador" />
+          </section>
+          <section data-aos="fade-dowm" className="footer-invitation">
+            <div className="footer flex flex-col items-center gap-2">
+              <span
+                className={`${ephesis.className} text-[32px] text-[#C4870A] text-center`}
+              >
+                Mis XV
+              </span>
+              <span
+                className={`${ephesis.className} text-[64px] text-[#C4870A] leading-[80%] text-center drop-shadow-[0_4px_6px_rgba(0,0,0,0.25)]`}
+              >
+                Pamela Castillo Monterrosas
+              </span>
+              <span className="tracking-[1em] text-[#9C610C]">08.11.2025</span>
+            </div>
+          </section>
+        </main>
+        <FooterRabe className="bg-[#F2D6D6]" />
+        {/* Mostrar mensaje si no hay canciones */}
+        {showAlert && (
+          <AlertInvitation
+            title="Ocurrio un Error"
+            icon="alert"
+            description={error || ""}
+            variant="destructive"
+            close={handleCloseAlert}
+          />
+        )}
+        {/* Mostrar mensaje si se agrego la cancion */}
+        {success && (
+          <AlertInvitation
+            title="Canción agregada"
+            icon="check"
+            description={success}
+            close={handleCloseAlert}
+          />
+        )}
+        {/* Mostrar mensaje si la cancion ya fue agregada */}
+        {isModalOpen && (
+          <DialogInvitation
+            title="La canción ya esta agregada"
+            classNameTitle="text-[40px] text-pamela-primary tracking-[-0.04em] leading-none"
+            description="La cancion que tratas de seleccionar ya fue agregada a la playlist, intenta agregar otra."
+            classNameDescription="text-pamela-primary text-[18px] leading-none tracking-[-0.02em]"
+            classNameButton="rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]"
+            tipography={zain}
+            logo={LogoPamela}
+            closeModal={handleCloseModal}
+          />
+        )}
       </SobreAnimationInvitation>
     </>
   );
