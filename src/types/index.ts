@@ -77,6 +77,8 @@ export interface CountdownProps {
     targetDate: Date;
     classNameTitle?: string;
     title?: string;
+    showTitle?: boolean;
+
 } 
 
 export interface Guest {
@@ -89,3 +91,4 @@ export interface Guest {
     adultsNo: number;
     kidsNo: number;
 }
+

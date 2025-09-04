@@ -40,20 +40,22 @@ import {
 export default function PamelaCastillo() {
   const apiRefreshToken = process.env.NEXT_PUBLIC_API_REFRESH_TOKEN_PAMELA;
   const spotifyPlaylistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID_PAMELA;
-    const {
-      error,
-      success,
-      isModalOpen,
-      showAlert,
-      handleCloseModal,
-      handleCloseAlert,
-    } = useSpotifyInvitation({ apiRefreshToken, spotifyPlaylistId });
+  const {
+    error,
+    success,
+    isModalOpen,
+    showAlert,
+    handleCloseModal,
+    handleCloseAlert,
+  } = useSpotifyInvitation({ apiRefreshToken, spotifyPlaylistId });
   const { isMobile } = useIsMobile();
   const params = useParams();
   const code = params?.code;
   const fechaLimite = "2025-09-19T00:00:00";
   const { puedeConfirmar } = useFechaConfirmacionInvitation({ fechaLimite });
   const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
+
+  console.log(guestsData);
 
   return (
     <>
@@ -193,30 +195,46 @@ export default function PamelaCastillo() {
           <section data-aos="fade-dowm" className="confirmación-invitation">
             {guestsData?.hasConfirmed ? (
               <div className="asistencia flex flex-col gap-10">
-                <div className="flex flex-col">
-                  <p className="text-[40px] text-center tracking-[-0.06em] font-bold text-pamela-primary">
-                    Fecha del evento
-                  </p>
-                  <p
-                    className={`text-center text-[24px] tracking-[-0.06em] text-pamela-primary leading-none`}
-                  >
-                    Ya haz confirmado tu asistencia al evento, guarda la fecha
-                    para este maravilloso momento
-                  </p>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <p
-                    className={`text-center tracking-[-0.06em] text-pamela-primary`}
-                  >
-                    Da click en el boton para ver tus pases
-                  </p>
-                  <Link
-                    href={`/misXV/pamela-castillo/confirmacion/${code}`}
-                    className={`py-2 px-3 flex justify-center items-center rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]`}
-                  >
-                    Ver mis pases
-                  </Link>
-                </div>
+                {(guestsData.adultsNo === null && guestsData.kidsNo === null) ||
+                (guestsData.adultsNo ?? 0) + (guestsData.kidsNo ?? 0) >= 1 ? (
+                  <>
+                    <div className="flex flex-col">
+                      <p className="text-[40px] text-center tracking-[-0.06em] font-bold text-pamela-primary">
+                        Fecha del evento
+                      </p>
+                      <p
+                        className={`text-center text-[24px] tracking-[-0.06em] text-pamela-primary leading-none`}
+                      >
+                        Ya haz confirmado tu asistencia al evento, guarda la
+                        fecha para este maravilloso momento
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                      <p
+                        className={`text-center tracking-[-0.06em] text-pamela-primary`}
+                      >
+                        Da click en el boton para ver tus pases
+                      </p>
+                      <Link
+                        href={`/misXV/pamela-castillo/confirmacion/${code}`}
+                        className={`py-2 px-3 flex justify-center items-center rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]`}
+                      >
+                        Ver mis pases
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <div className=" flex flex-col justify-center py-50 gap-4 items-center text-center text-pamela-primary">
+                    <p className="font-bold text-[40px] tracking-[-0.02em] leading-none">
+                      Lamentamos que no puedas asistir
+                    </p>
+                    <p className="text-[18px] tracking-tighter leading-none">
+                      Gracias por tu interés. Entendemos que no podrás
+                      acompañarnos en esta ocasión y esperamos verte en una
+                      próxima celebración.
+                    </p>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="asistencia flex flex-col gap-10">
