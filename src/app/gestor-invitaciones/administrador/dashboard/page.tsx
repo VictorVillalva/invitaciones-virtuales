@@ -4,14 +4,16 @@ import React from 'react'
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
-        href: '/administrador/dashboard',
+        href: 'gestor-invitaciones/administrador/dashboard',
     },
 ];
 export default function Dashboard() {
     return (
         <>
             <AppSidebarHeader breadcrumbs={breadcrumbs} />
-            <div>esto es el dashboard bb</div>
+            <main className='px-8 py-6'>
+                Hola
+            </main>
         </>
     )
 }

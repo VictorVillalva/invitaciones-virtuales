@@ -4,30 +4,50 @@ import Link from "next/link";
 /** Assets */
 import { LayoutGrid, ListChecks } from "lucide-react";
 /** Components */
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "../ui/sidebar";
 import AppLogo from "./app-logo";
-import NavUser from "./nav-user";
 import NavMain from "./nav-main";
 /** Interfaces or Types */
 import type { NavItem } from "@/types";
+import { useUserData } from "@/hooks/useProvider";
+import NavUserProvisional from "./nav-user-proviciona";
 /** Consts */
 const mainNavItems: NavItem[] = [
   {
     title: "Dashboard",
-    href: "/administrador/dashboard",
+    href: "dashboard",
     icon: LayoutGrid,
   },
   {
     title: "Lista Invitados",
-    href: "/administrador/lista-invitados",
+    href: "lista-invitados",
     icon: ListChecks,
   },
 ];
 
 export default function AppSidebar() {
+  const user = useUserData();
+
+  const sidebarUser = user
+    ? {
+        honereeName: user.honereeName,
+        username: user.username,
+      }
+    : {
+        honereeName: "Rabe Innovation",
+        username: "Rabe",
+      };
+
   return (
     <Sidebar collapsible="icon" variant="inset">
-        
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -45,7 +65,8 @@ export default function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter>
-        <NavUser />
+        <NavUserProvisional user={sidebarUser} />
+        {/* <NavUser /> */}
       </SidebarFooter>
     </Sidebar>
   );
