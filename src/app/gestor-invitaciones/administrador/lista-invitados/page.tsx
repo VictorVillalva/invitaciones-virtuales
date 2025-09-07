@@ -67,7 +67,7 @@ export default function ListaInvitados() {
       <AppSidebarHeader breadcrumbs={breadcrumbs} />
       <main className="flex flex-col px-8 py-6 gap-8">
         <div className="flex flex-col gap-1">
-          <h1 className="font-semibold text-3xl">Lista de Invitados</h1>
+          <h1 className="font-semibold text-3xl text-rabe-primary-600">Lista de Invitados</h1>
           <small className="text-muted-foreground">Revisa el estado de confirmacion y otros datos mas de todos tus invitados.</small>
         </div>
         <DataTable

@@ -1,4 +1,3 @@
-import { Anchor } from "lucide-react";
 /** Assets */
 import rabe from '@/assets/images/landing/rabe-logo.png'
 /** Hooks */

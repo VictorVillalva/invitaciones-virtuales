@@ -63,7 +63,8 @@ export default function LoginForm() {
       localStorage.setItem("userData", JSON.stringify(userData));
       setUser(userData); // También en contexto para el uso inmediato
       router.push("administrador/dashboard");
-    } catch (error: any) {
+    } catch (error) {
+      console.log(error);
       setError("root", {
         type: "manual",
         message: "Credenciales inválidas. Por favor, inténtalo de nuevo.",

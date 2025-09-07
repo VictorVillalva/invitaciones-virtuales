@@ -13,7 +13,6 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   name: string;
   className: string;
   background: ReactNode;
-  Icon?: React.ElementType;
   description: string;
   href?: string;
   cta?: string;
@@ -37,7 +36,6 @@ const BentoCard = ({
   name,
   className,
   background,
-  Icon,
   description,
   href,
   cta,
@@ -57,7 +55,6 @@ const BentoCard = ({
   >
     <div className="p-4">
       <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-300 ">
-        {/* <Icon className="h-8 w-8  origin-left transform-gpu text-rabe-primary-500 transition-all duration-300 ease-in-out group-hover:scale-75" /> */}
         <h3 className="font-semibold tracking-[-0.08em] text-rabe-primary-500 dark:text-rabe-primary-500">
           {name}
         </h3>

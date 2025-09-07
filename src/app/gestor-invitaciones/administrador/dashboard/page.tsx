@@ -1,10 +1,12 @@
 "use client";
 import AppSidebarHeader from "@/components/components-admin/app-sidebar-header";
+import CardData from "@/components/components-admin/card-data";
 import { columnasInvitados } from "@/components/components-admin/datatable/columns";
 import { DataTable } from "@/components/components-admin/datatable/datatable";
 import { useUserData } from "@/hooks/useProvider";
 import api from "@/lib/api";
 import { BreadcrumbItem } from "@/types";
+import { User, Users } from "lucide-react";
 import React, { useEffect, useState } from "react";
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -62,6 +64,7 @@ export default function Dashboard() {
       </div>
     );
 
+
   const resumen = data.reduce(
     (acc, invitado) => {
       if (invitado.hasConfirmed) {
@@ -73,39 +76,52 @@ export default function Dashboard() {
     },
     { adultos: 0, ninos: 0, total: 0 }
   );
+
+  const formatDate = (dateString?: string): string => {
+    if (!dateString) return ""; // o podrías devolver "Sin fecha"
+
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return ""; // protege si viene algo inválido
+
+    return date.toLocaleDateString("es-MX", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  };
+
   return (
     <>
       <AppSidebarHeader breadcrumbs={breadcrumbs} />
       <main className="px-8 py-6 flex flex-col gap-8">
-        <div className="flex flex-col gap-1">
-          <h1 className=" text-3xl tracking-tight text-neutral-700">
-            Bienvenida <b>{user?.username || ""}</b>
-          </h1>
-          <small className="text-muted-foreground">
-            Mira un resumen general de tus invitados a tu evento especial.
-          </small>
-        </div>
-        <div className="flex flex-col lg:flex-row justify-between gap-4">
-          <div className="flex flex-col lg:flex-row gap-2">
-            <div className="flex flex-col h-full p-2 border border-neutral-200 shadow- rounded">
-              <small>Adultos confirmados</small>
-              <p className="text-2xl font-bold text-neutral-700">
-                {resumen.adultos}
+        <div className="flex lg:flex-row flex-col gap-4">
+          <div className="w-full flex flex-col gap-1">
+            <h1 className=" text-3xl tracking-tight text-neutral-700">
+              Bienvenida <b className="text-rabe-primary-600">{user?.username || ""}</b>
+            </h1>
+            <small className="text-muted-foreground">
+              Mira un resumen general de tus invitados a tu evento especial.
+            </small>
+          </div>
+          <div className="lg:flex hidden w-full flex-col gap-4 lg:flex-row lg:justify-end lg:items-end">
+            <div className="flex flex-col">
+              <small className="text-muted-foreground">Fecha del Evento</small>
+              <p className="text-rabe-primary-600 tracking-[-0.08em] font-bold">
+                {formatDate(user?.eventDate) || "Fecha no disponible"}
               </p>
             </div>
-            <div className="flex flex-col h-full p-2 border border-neutral-200 shadow- rounded">
-              <small>Niños confirmados</small>
-              <p className="text-2xl font-bold text-neutral-700">
-                {resumen.ninos}
-              </p>
-            </div>
-            <div className="flex flex-col h-full p-2 border border-neutral-200 shadow- rounded">
-              <small>Total de personas confirmadas</small>
-              <p className="text-2xl font-bold text-neutral-700">
-                {resumen.total}
+            <div className="flex flex-col">
+              <small className="text-muted-foreground">Fecha Limite de Confirmacion</small>
+              <p className="text-rabe-primary-600 tracking-[-0.08em] font-bold">
+                {formatDate(user?.eventDeadLine) || "Fecha no disponible"}
               </p>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col lg:flex-row gap-4">
+          <CardData icon={<User size={16} />} title="Adultos Confirmados" data={resumen.adultos} />
+          <CardData icon={<User size={16} />} title="Menores Confirmados" data={resumen.ninos} />
+          <CardData icon={<Users size={16} />} title="Total de Personas Confirmadas" data={resumen.total} />
         </div>
         <DataTable
           columns={columnasInvitados}

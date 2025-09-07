@@ -74,9 +74,9 @@ export const columnasInvitados: ColumnDef<ColumnaInvitados>[] = [
     },
     cell: ({ row }) =>
       row.getValue("hasConfirmed") ? (
-        <Badge variant="default" className="w-[60px]">Sí</Badge>
+        <Badge variant="default" className="w-[60px] bg-rabe-primary-600">Sí</Badge>
       ) : (
-        <Badge variant="destructive" className="w-[60px]">No</Badge>
+        <Badge variant="destructive" className="w-[60px] bg-neutral-300">No</Badge>
       ),
   },
   {
