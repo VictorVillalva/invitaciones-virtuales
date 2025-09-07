@@ -3,14 +3,11 @@
 import {  useSpotifyInvitation } from "@/hooks/useSpotify";
 import Image from "next/image";
 //** Assets */
-import { inter, zain } from "@/assets/fonts/fonts";
+import { inter } from "@/assets/fonts/fonts";
 import Spotify from "@/assets/icons/Spotify";
-import LogoPamela from "@/assets/images/PamelaCastilloXV/Logo-Pamela.png";
 //** Components */
 import InputSearch from "@/components/ui/InputSearch";
 import { Separator } from "@/components/ui/separator";
-import AlertInvitation from "../Alert-Invitation";
-import DialogInvitation from "../Dialog-Invitation";
 //** Interfaces or Types */
 interface CardSpotify {
   apiRefreshToken?: string;
@@ -27,14 +24,9 @@ export default function CardSpotifyInvitation({
     songs,
     isLoading,
     error,
-    success,
     playlistSongs,
-    isModalOpen,
-    showAlert,
     searchSong,
     handleSelectSong,
-    handleCloseModal,
-    handleCloseAlert,
   } = useSpotifyInvitation({ apiRefreshToken, spotifyPlaylistId });
 
   return (
@@ -56,38 +48,6 @@ export default function CardSpotifyInvitation({
         />
       </div>
       <Separator />
-      {/* Mostrar mensaje si no hay canciones */}
-      {/* {showAlert && (
-        <AlertInvitation
-          title="Ocurrio un Error"
-          icon="alert"
-          description={error || "Por favor revisa la playlist"}
-          variant="destructive"
-          close={handleCloseAlert}
-        />
-      )} */}
-      {/* Mostrar mensaje si se agrego la cancion */}
-      {/* {success && (
-        <AlertInvitation
-          title="Canción agregada"
-          icon="check"
-          description={success || "Haz agregado la canción con exito."}
-          close={handleCloseAlert}
-        />
-      )} */}
-      {/* Mostrar mensaje si la cancion ya fue agregada */}
-      {/* {isModalOpen && (
-        <DialogInvitation
-          title="La canción ya esta agregada"
-          classNameTitle="text-[40px] text-pamela-primary tracking-[-0.04em] leading-none"
-          description="La cancion que tratas de seleccionar ya fue agregada a la playlist, intenta agregar otra."
-          classNameDescription="text-pamela-primary text-[18px] leading-none tracking-[-0.02em]"
-          classNameButton="rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]"
-          tipography={zain}
-          logo={LogoPamela}
-          closeModal={handleCloseModal}
-        />
-      )} */}
       {/* Muestra texto si aun no hay canciones en la playlist */}
       {playlistSongs.length === 0 && !isLoading && !error && (
         <div className="flex flex-col items-center justify-center h-full text-xs text-gray-400">

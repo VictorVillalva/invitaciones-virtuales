@@ -55,8 +55,6 @@ export default function PamelaCastillo() {
   const { puedeConfirmar } = useFechaConfirmacionInvitation({ fechaLimite });
   const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
 
-  console.log(guestsData);
-
   return (
     <>
       {!isMobile && <BlockMobileInvitation />}
@@ -67,6 +65,8 @@ export default function PamelaCastillo() {
       >
         <HeaderInvitation
           title="Mis XV"
+          classNameHeader="h-[720px]"
+          classNameCardTitle="bottom-0"
           image={Portada}
           classNameTitle="text-[64px]"
           tipographyTitle={ephesis}
@@ -259,7 +259,7 @@ export default function PamelaCastillo() {
                         Da click en el boton para confirmar tu asistencia
                       </p>
                       <Link
-                        href={`/misXV/daniela-medel/confirmacion/${code}`}
+                        href={`/misXV/pamela-castillo/confirmacion/${code}`}
                         className={`py-2 px-3 flex justify-center items-center rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]`}
                       >
                         Confirmar

@@ -44,7 +44,7 @@ export default function HeaderInvitation({
                     className={`${classNameImage} object-cover`}
                     priority
                 />
-                <div className={`${classNameCardTitle} absolute bottom-10 flex flex-col items-center justify-end mb-24 text-white gap-2 z-20 `}>
+                <div className={`${classNameCardTitle ? classNameCardTitle : "bottom-10"} absolute flex flex-col items-center justify-end mb-24 text-white gap-2 z-20 `}>
                     <div className='flex flex-col items-center'>
                         <span className={`${tipographyTitle.className} ${classNameTitle} text-[60px] leading-none`}>{title}</span>
                         <span className={`${tipographySubtitle?.className} ${classNameSubtitle} text-[16px] font-normal`}>{nombreFestejada}</span>
