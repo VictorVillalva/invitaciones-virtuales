@@ -11,6 +11,8 @@ import bell from "@/assets/icons/ServiceBell.png"
 import dance from "@/assets/icons/Dance.png"
 import cena from "@/assets/icons/Dinner.png"
 import party from "@/assets/icons/Disco.png"
+import bye from '@/assets/icons/bye.png'
+import cocktail from '@/assets/icons/Coctails.png'
 
 export const ImagesCarrusel = [
     {
@@ -56,11 +58,13 @@ export const ImagesCarrusel = [
 ];
 
 export const evento = [
-    { title: "Iglesia", time: "17:00 pm", icon: iglesia },
-    { title: "Recepción", time: "18:30 pm", icon: bell },
-    { title: "Baile", time: "19:00 pm", icon: dance },
-    { title: "Cena", time: "20:00 pm", icon: cena },
-    { title: "Fiesta", time: "21:00 pm", icon: party },
+    { title: "Misa", time: "18:00 pm", icon: iglesia },
+    { title: "Cockteles de Bienvenida", time: "18:40 pm", icon: cocktail },
+    { title: "Recepción", time: "19:00 pm", icon: bell },
+    { title: "Cena", time: "19:30 pm", icon: cena },
+    { title: "Vals", time: "20:10 pm", icon: dance },
+    { title: "Apertura de Pista", time: "20:45 pm", icon: party },
+    { title: "Gracias por asistir", time: "02:00 am", icon: bye },
 ];
 
 export const nombrePadresPadrinos = [
