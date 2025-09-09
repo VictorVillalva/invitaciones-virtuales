@@ -315,7 +315,7 @@ export const useSpotifyInvitation = ({ apiRefreshToken, spotifyPlaylistId }: Spo
                 setShowAlert(true);
                 setTimeout(() => {
                     setShowAlert(false);
-                }, 8000); // Ocultar alerta después de 5 segundos
+                }, 5000); // Ocultar alerta después de 5 segundos
             }
 
             setSongs(searchResults);
@@ -358,7 +358,7 @@ export const useSpotifyInvitation = ({ apiRefreshToken, spotifyPlaylistId }: Spo
             setShowAlert(true);
             setTimeout(() => {
                 setShowAlert(false);
-            }, 8000); // Ocultar alerta después de 5 segundos
+            }, 5000); // Ocultar alerta después de 5 segundos
             throw error;
         }
     }
@@ -392,7 +392,7 @@ export const useSpotifyInvitation = ({ apiRefreshToken, spotifyPlaylistId }: Spo
             setShowAlert(true);
             setTimeout(() => {
                 setShowAlert(false);
-            }, 8000); // Ocultar alerta después de 5 segundos
+            }, 5000); // Ocultar alerta después de 5 segundos
         }
     }
 
@@ -405,7 +405,7 @@ export const useSpotifyInvitation = ({ apiRefreshToken, spotifyPlaylistId }: Spo
             setShowAlert(true);
             setTimeout(() => {
                 setShowAlert(false);
-            }, 8000); // Ocultar alerta después de 5 segundos
+            }, 5000); // Ocultar alerta después de 5 segundos
             return;
         }
 
@@ -430,7 +430,7 @@ export const useSpotifyInvitation = ({ apiRefreshToken, spotifyPlaylistId }: Spo
             setShowAlert(true);
             setTimeout(() => {
                 setShowAlert(false);
-            }, 8000); // Ocultar alerta después de 5 segundos
+            }, 5000); // Ocultar alerta después de 5 segundos
         } finally {
             setIsLoading(false);
         }
@@ -467,7 +467,7 @@ export const useSpotifyInvitation = ({ apiRefreshToken, spotifyPlaylistId }: Spo
             const timeout = setTimeout(() => {
                 setSuccess(null);
                 setError(null)
-            }, 8000); // 5 segundos
+            }, 5000); // 5 segundos
 
             return () => clearTimeout(timeout); // limpieza
         }
