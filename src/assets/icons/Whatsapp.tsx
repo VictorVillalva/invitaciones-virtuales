@@ -22,6 +22,5 @@ export default function Whatsapp({ width, height }: IconsProps) {
                 </clipPath>
             </defs>
         </svg>
-
     )
 }

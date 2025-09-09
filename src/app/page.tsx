@@ -1,3 +1,4 @@
+'use client'
 //** Images-Assests */
 import Rabe from "@/assets/images/landing/rabe-logo.png";
 import headerImage from "@/assets/images/landing/image-header-1.png";
