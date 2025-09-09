@@ -317,7 +317,6 @@ export default function PamelaCastillo() {
             icon="alert"
             description={error || ""}
             variant="destructive"
-            close={handleCloseAlert}
           />
         )}
         {/* Mostrar mensaje si se agrego la cancion */}
