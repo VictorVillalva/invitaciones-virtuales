@@ -1,4 +1,22 @@
 import { StaticImageData } from "next/image";
+import { LucideIcon } from 'lucide-react';
+
+export interface NavItem {
+    title: string;
+    href: string;
+    icon?: LucideIcon | null;
+    isActive?: boolean;
+    subitems?: {
+        title: string
+        url: string
+    }[]
+}
+
+
+export interface BreadcrumbItem {
+    title: string;
+    href: string;
+}
 
 export interface SobreAnimationProps{
     children: React.ReactNode;
