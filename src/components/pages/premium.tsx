@@ -42,8 +42,8 @@ export default function Premium({ code }: PremiumProps) {
     const fechaEvento = new Date('2025-09-06T00:00:00');
     const fechaCofirmacion = new Date('2025-08-19T00:00:00');
     const { puedeConfirmar } = useFechaConfirmacion();
-    const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
 
+    const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
     return (
         <>
             <SobreAnimation>

@@ -54,6 +54,8 @@
   --color-rabe-primary-800: var(--rabe-primary-800);
   --color-rabe-primary-900: var(--rabe-primary-900);
   --color-rabe-primary-950: var(--rabe-primary-950);
+    /* Pamela Colors */
+  --color-pamela-primary: var(--pamela-primary);
 }
 
 /* 
@@ -116,7 +118,8 @@
   --rabe-primary-800: #2c4343;
   --rabe-primary-900: #283939;
   --rabe-primary-950: #131f20;
-
+  /* Pamela Colors */
+  --pamela-primary: #435A62;
 }
 
 /* 
@@ -166,6 +169,8 @@
   --rabe-primary-200: #2c4343;
   --rabe-primary-100: #283939;
   --rabe-primary-50: #131f20;
+  /* Pamela Colors */
+  --pamela-primary: #435A62;
 }
 
 /* 
