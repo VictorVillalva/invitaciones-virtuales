@@ -1,4 +1,3 @@
-import { quicksand } from '@/assets/fonts/fonts'
 import { useBackgroundMusic } from '@/hooks/useBackgroundMusic'
 import {
     Alert,

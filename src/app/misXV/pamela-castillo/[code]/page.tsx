@@ -4,9 +4,8 @@ import Image from "next/image";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useParams } from "next/navigation";
 import { useFechaConfirmacionInvitation } from "@/hooks/useFechaConfirmacion";
-import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
+import { useConfirmacionAsistenciaPamela } from "@/hooks/useConfirmacion";
 import Link from "next/link";
-import { useSpotifyPamela } from "@/hooks/useSpotify";
 //** Components */
 import BlockMobileInvitation from "@/components/components-invitations/BlockMobile-Invitation";
 import HeaderInvitation from "@/components/components-invitations/Header-Invitation";
@@ -36,13 +35,12 @@ import {
 } from "@/assets/data/PamelaCastillo/db";
 
 export default function PamelaCastillo() {
-
   const { isMobile } = useIsMobile();
   const params = useParams();
   const code = params?.code;
   const fechaLimite = "2025-09-19T00:00:00";
   const { puedeConfirmar } = useFechaConfirmacionInvitation({ fechaLimite });
-  const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
+  const { guestsData } = useConfirmacionAsistenciaPamela({ codeParam: code });
 
   return (
     <>
