@@ -1,4 +1,22 @@
 import { StaticImageData } from "next/image";
+import { LucideIcon } from 'lucide-react';
+
+export interface NavItem {
+    title: string;
+    href: string;
+    icon?: LucideIcon | null;
+    isActive?: boolean;
+    subitems?: {
+        title: string
+        url: string
+    }[]
+}
+
+
+export interface BreadcrumbItem {
+    title: string;
+    href: string;
+}
 
 export interface SobreAnimationProps{
     children: React.ReactNode;
@@ -13,6 +31,8 @@ export interface Nombres{
     apellido1: string;
     nombre2: string;
     apellido2: string;
+    classNameTitle?: string;
+    classNameNombres?: string;
 }
 
 export interface Sobre{
@@ -75,6 +95,8 @@ export interface CountdownProps {
     targetDate: Date;
     classNameTitle?: string;
     title?: string;
+    showTitle?: boolean;
+
 } 
 
 export interface Guest {
@@ -87,3 +109,4 @@ export interface Guest {
     adultsNo: number;
     kidsNo: number;
 }
+
