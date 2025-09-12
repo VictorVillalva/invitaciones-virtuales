@@ -1,12 +1,11 @@
 'use client'
-import { playwrite } from "@/assets/fonts/fonts"
 import "../../globals.css";
 import bgImage from "@/assets/images/DanielaMedelXV/bg-blue-flowers.jpg"
 import { useEffect, useState } from "react";
 import { LoaderCircle } from "lucide-react"
 
 //Nota: El body solo se modifica en el layout de la app, no en el de la pagina
-export default function DanielaLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default function CoreLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,7 +26,7 @@ export default function DanielaLayout({ children }: Readonly<{ children: React.R
     }
     return (
         <>
-            <section className={`daniela-medel-layout ${playwrite.className} antialiased relative`}>
+            <section className={`core-layout antialiased relative`}>
                 <div className="absolute inset-0 opacity-5 h-auto" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
                 <div className="relative z-10">
                     {children}
