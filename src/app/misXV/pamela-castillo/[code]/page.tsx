@@ -157,7 +157,7 @@ export default function PamelaCastillo() {
           </section>
           <section data-aos="fade-dowm" className="lugar-evento-invitation">
             <LugarEventoInvitation
-              title="Recepción y Celebración"
+              title="Misa y Recepción"
               classNameTitle="text-center text-[40px] font-bold text-pamela-primary tracking-[-0.02em] leading-[40px]"
               image={Lugar}
               location="Prolongación Hacienda El Jaguey 3402 Cholula, 72828 Heroica Puebla de Zaragoza"
