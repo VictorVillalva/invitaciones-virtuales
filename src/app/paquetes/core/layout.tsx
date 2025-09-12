@@ -27,7 +27,7 @@ export default function CoreLayout({ children }: Readonly<{ children: React.Reac
     return (
         <>
             <section className={`core-layout antialiased relative`}>
-                <div className="absolute inset-0 opacity-5 h-auto" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
+                <div className="absolute inset-0 opacity-5 h-auto bg-[#6A8E99]"></div>
                 <div className="relative z-10">
                     {children}
                 </div>
