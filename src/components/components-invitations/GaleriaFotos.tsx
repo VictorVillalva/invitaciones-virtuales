@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { ImagesCarrusel } from '@/assets/data/DanielaMedel/db'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import {
     Carousel,
     CarouselContent,
@@ -9,8 +8,17 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 
+interface Galeria{
+    id: number;
+    src: StaticImageData;
+    alt: string;
+}
 
-export default function GaleriaFotos() {
+interface ImageItem {
+    ImagesCarrusel: Galeria[]
+}
+
+export default function GaleriaFotos({ImagesCarrusel}: ImageItem) {
     const [data] = useState(ImagesCarrusel)
 
     return (

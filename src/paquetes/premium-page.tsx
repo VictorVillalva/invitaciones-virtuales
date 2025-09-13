@@ -4,33 +4,33 @@ import separador from "@/assets/images/DanielaMedelXV/Separador.png"
 import LogoDanielMedel from "@/assets/images/DanielaMedelXV/Logo_DanielMedel.jpg"
 import Iglesia from '@/assets/images/DanielaMedelXV/ParroquiaSanAndresApostol.jpg'
 import SalonLuzcina from '@/assets/images/DanielaMedelXV/SalonLuzcina.jpg'
-//Hooks
-import { ParamValue } from "next/dist/server/request/params"
-import Link from "next/link"
-import { useFechaConfirmacion } from "@/hooks/useFechaConfirmacion"
-import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion"
+import premium1 from '@/assets/images/Paquetes/premium-1.jpg'
 //Data
 import { nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
+import { ImagesCarrusel } from '@/assets/data/db-paquetes';
 //Fonts
 import { inspiration, playwrite, quicksand } from '@/assets/fonts/fonts'
 //Components
 import Image from 'next/image'
-import Header from '../components-invitations/Header'
-import SobreAnimation from '../components-invitations/SobreAnimation'
-import ApartaFecha from '../components-invitations/ApartaFecha'
-import TextoInspirador from '../components-invitations/TextoInspirador'
-import Itinerario from '../components-invitations/Itinerario'
-import CodigoVestimenta from '../components-invitations/CodigoVestimenta'
-import Padres from '../components-invitations/Padres'
-import Padrinos from '../components-invitations/Padrinos'
-import LluviaSobres from '../components-invitations/LluviaSobres'
-import Ubicacion from '../components-invitations/Ubicacion'
-import Hoteles from '../components-invitations/Hoteles'
-import BackgroundMusic from '../components-invitations/BackgroundMusic'
-import Footer from '../components-invitations/Footer'
-import Playlist from "../components-invitations/Playlist"
-import GaleriaFotos from "../components-invitations/GaleriaFotos"
-import CountDown from "../components-invitations/CountDown"
+
+import Link from "next/link"
+import { ParamValue } from "next/dist/server/request/params"
+import SobreAnimation from "@/components/components-invitations/SobreAnimation"
+import Header from "@/components/components-invitations/Header"
+import ApartaFecha from "@/components/components-invitations/ApartaFecha"
+import TextoInspirador from "@/components/components-invitations/TextoInspirador"
+import Padres from "@/components/components-invitations/Padres"
+import Padrinos from "@/components/components-invitations/Padrinos"
+import GaleriaFotos from "@/components/components-invitations/GaleriaFotos"
+import Itinerario from "@/components/components-invitations/Itinerario"
+import CodigoVestimenta from "@/components/components-invitations/CodigoVestimenta"
+import LluviaSobres from "@/components/components-invitations/LluviaSobres"
+import Ubicacion from "@/components/components-invitations/Ubicacion"
+import Hoteles from "@/components/components-invitations/Hoteles"
+import Playlist from "@/components/components-invitations/Playlist"
+import CountDown from "@/components/components-invitations/CountDown"
+import Footer from "@/components/components-invitations/Footer"
+import BackgroundMusic from "@/components/components-invitations/BackgroundMusic"
 
 interface PremiumProps {
     code: ParamValue;
@@ -38,24 +38,21 @@ interface PremiumProps {
 
 export default function Premium({ code }: PremiumProps) {
     const COLORTEXT = '#323C5D'
-    const fechaEvento = new Date('2025-09-06T00:00:00');
-    const fechaCofirmacion = new Date('2025-08-19T00:00:00');
-    const { puedeConfirmar } = useFechaConfirmacion();
+    const fechaEvento = new Date('2025-08-10T00:00:00');
 
-    const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
     return (
         <>
             <SobreAnimation>
-                <Header 
+                <Header
                     title="Mis XV"
-                    subtitle="Daniela Medel Muñiz"
-                    img={DanielaMedel}
-                    alt="Daniela Medel Muñiz"
+                    subtitle="Alejandra Lopez Ruiz"
+                    img={premium1}
+                    alt="Alejandra Lopez Ruiz"
                 />
                 <main className="w-full px-4 py-[100px] relative z-10">
                     <div className={`flex flex-col items-center text-[${COLORTEXT}] gap-[120]`}>
                         <section className='ApartaFecha'>
-                            <ApartaFecha fecha="6 de Septiembre del 2025"/>
+                            <ApartaFecha fecha="26 de Septiembre del 2025" />
                         </section>
                         <div className="separador flex" >
                             <Image src={separador} alt="separador" />
@@ -148,50 +145,21 @@ export default function Premium({ code }: PremiumProps) {
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className="confirmacionAsistencia">
-                            {guestsData?.hasConfirmed ? (
-                                <div className="asistencia flex flex-col gap-10">
-                                    <div className="flex flex-col gap-2">
-                                        <p className="text-[32px] text-center">Fecha del evento</p>
-                                        <small className={`${quicksand.className} text-center`}>Ya haz confirmado tu asistencia al evento, guarda la fecha para este maravilloso momento</small>
-                                    </div>
-                                    <CountDown targetDate={fechaEvento} />
-                                    <div className="flex flex-col gap-4">
-                                        <small className={`${quicksand.className} text-center`}>Da click en el boton para ver tus pases</small>
-                                        <Link
-                                            href={`/misXV/daniela-medel/confirmacion/${code}`}
-                                            className={`${quicksand.className} w-full py-2 bg-[#CBA836] text-white rounded hover:bg-[#d9b12d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#927823] font-semibold text-center`}>
-                                            Ver mis pases
-                                        </Link>
-                                    </div>
+                            <div className="asistencia flex flex-col gap-10">
+                                <div className="flex flex-col gap-2">
+                                    <p className="text-[32px] text-center">Confirmación de asistencia</p>
+                                    <small className={`${quicksand.className} text-center`}>Esta es la fecha límite para confirmar tu asistencia al evento</small>
                                 </div>
-                            ) : (
-                                <div className="asistencia flex flex-col gap-10">
-                                    {puedeConfirmar ? (
-                                        <>
-                                            <div className="flex flex-col gap-2">
-                                                <p className="text-[32px] text-center">Confirmación de asistencia</p>
-                                                <small className={`${quicksand.className} text-center`}>Esta es la fecha límite para confirmar tu asistencia al evento</small>
-                                            </div>
-                                            <CountDown targetDate={fechaCofirmacion} />
-                                            <div className="flex flex-col gap-4">
-                                                <small className={`${quicksand.className} text-center`}>Da click en el boton para confirmar tu asistencia al evento</small>
-                                                <Link
-                                                    href={`/misXV/daniela-medel/confirmacion/${code}`}
-                                                    className={`${quicksand.className} w-full py-2 bg-[#CBA836] text-white rounded hover:bg-[#d9b12d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#927823] font-semibold text-center`}>
-                                                    Confirmar asistencia
-                                                </Link>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div className="flex flex-col gap-4">
-                                                <p className="text-[32px] text-center">Se acabo el tiempo</p>
-                                                <small className={`${quicksand.className} text-center`}>Sabemos que en esta ocasión no podrás acompañarnos, pero esperamos compartir juntos en otra oportunidad.</small>
-                                            </div>
-                                        </>
-                                    )}
+                                <CountDown targetDate={fechaEvento} />
+                                <div className="flex flex-col gap-4">
+                                    <small className={`${quicksand.className} text-center`}>Da click en el boton para confirmar tu asistencia al evento</small>
+                                    <Link
+                                        href={`/misXV/daniela-medel/confirmacion/${code}`}
+                                        className={`${quicksand.className} w-full py-2 bg-[#CBA836] text-white rounded hover:bg-[#d9b12d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#927823] font-semibold text-center`}>
+                                        Confirmar asistencia
+                                    </Link>
                                 </div>
-                            )}
+                            </div>
                         </section>
                         <div className="footer flex flex-col justify-center items-center gap-6" >
                             <div className="relative">
@@ -200,7 +168,7 @@ export default function Premium({ code }: PremiumProps) {
                             <div className="flex flex-col">
                                 <p className={`${inspiration.className} text-[96px] text-center leading-none`}>Mis XV</p>
                                 <div className={`${playwrite.className} text-[20px] text-center`}>
-                                    <p>Daniela Medel Muñiz</p>
+                                    <p>Daniela Medel</p>
                                     <p className="font-light text-[10px]">06.09.2025</p>
                                 </div>
                             </div>
