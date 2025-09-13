@@ -31,6 +31,8 @@ import Footer from '../components-invitations/Footer'
 import Playlist from "../components-invitations/Playlist"
 import GaleriaFotos from "../components-invitations/GaleriaFotos"
 import CountDown from "../components-invitations/CountDown"
+import DanielaMedel from '@/assets/images/DanielaMedelXV/VIL_0316.webp'
+import { ImagesCarrusel } from '@/assets/data/DanielaMedel/db'
 
 interface PremiumProps {
     code: ParamValue;
