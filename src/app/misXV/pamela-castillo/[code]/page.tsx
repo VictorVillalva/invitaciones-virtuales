@@ -26,6 +26,7 @@ import BackgroundMusicInvitation from "@/components/components-invitations/Backg
 import Portada from "@/assets/images/PamelaCastilloXV/Portada-Oficial-PamelaCastillo.png";
 import Lugar from "@/assets/images/PamelaCastilloXV/Hacienda-ElJaguey.png";
 import separador from "@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg";
+import etiqueta from "@/assets/images/etiqueta.png";
 import { ephesis } from "@/assets/fonts/fonts";
 //** Data */
 import {
@@ -33,6 +34,7 @@ import {
   evento,
   nombrePadresPadrinos,
 } from "@/assets/data/PamelaCastillo/db";
+import CodigoVestimentaInvitation from "@/components/components-invitations/CodigoVestimenta-Invitation";
 
 export default function PamelaCastillo() {
   const { isMobile } = useIsMobile();
@@ -179,6 +181,16 @@ export default function PamelaCastillo() {
           <section data-aos="fade-dowm" className="separador-invitation">
             <Image src={separador} alt="separador" />
           </section>
+          <section data-aos="fade-dowm" className="vestimenta-regalos">
+            <CodigoVestimentaInvitation
+              classNameTitle="font-bold text-[#435A62]"
+              clawssNameDescription="text-[#435A62]"
+              image={etiqueta}
+            />
+          </section>
+          <section data-aos="fade-dowm" className="separador-invitation">
+            <Image src={separador} alt="separador" />
+          </section>
           <section data-aos="fade-dowm" className="confirmación-invitation">
             {guestsData?.hasConfirmed ? (
               <div className="asistencia flex flex-col gap-10">
@@ -297,7 +309,7 @@ export default function PamelaCastillo() {
           </section>
         </main>
         <FooterRabe className="bg-[#F2D6D6]" />
-        <BackgroundMusicInvitation audioSrc={'/audio/LoveOfMyLife.mp3'} className="bg-pamela-primary hover:bg-pamela-primary text-white "/>
+        <BackgroundMusicInvitation audioSrc={'/audio/LoveOfMyLife.mp3'} className="bg-pamela-primary hover:bg-pamela-primary text-white " />
       </SobreAnimationInvitation>
     </>
   );

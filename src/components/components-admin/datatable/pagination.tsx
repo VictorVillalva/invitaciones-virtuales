@@ -24,14 +24,14 @@ export function Pagination<TData>({
   numberFiles = true,
 }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center justify-between px-4 mt-4">
+    <div className="flex items-center justify-between gap-8 px-4 mt-4 overflow-x-auto">
       {numberFiles && (
-        <div className="hidden flex-1 text-sm text-muted-foreground lg:flex">
+        <div className=" flex-1 text-sm text-muted-foreground flex">
           {table.getFilteredRowModel().rows.length} Invitado(s).
         </div>
       )}
       <div className="flex w-full items-center gap-8 lg:w-fit">
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="items-center gap-2 flex">
           <label htmlFor="rows-per-page" className="text-sm font-medium">
             Filas por página
           </label>
