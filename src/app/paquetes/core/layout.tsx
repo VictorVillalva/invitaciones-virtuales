@@ -1,6 +1,5 @@
 'use client'
 import "../../globals.css";
-import bgImage from "@/assets/images/DanielaMedelXV/bg-blue-flowers.jpg"
 import { useEffect, useState } from "react";
 import { LoaderCircle } from "lucide-react"
 
