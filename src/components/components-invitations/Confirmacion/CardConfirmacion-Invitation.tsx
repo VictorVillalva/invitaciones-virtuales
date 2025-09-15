@@ -111,7 +111,7 @@ export default function ConfirmacionInvitation({
                 Confirma tu asistencia
               </h1>
               <p className="tracking-[-0.02em]">
-                Por favor rellena el siguiente formulario correctamente para
+                <b>{familia}</b>, por favor rellena el siguiente formulario correctamente para
                 obtener tu pase a este gran evento.
               </p>
             </div>
@@ -122,12 +122,14 @@ export default function ConfirmacionInvitation({
                 <h3 className={`${classNameTitle}`}>{title}</h3>
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col gap-2">
-                    <SelectConfirmationInvitation
-                      label="Selecciona los adultos que asistirán:"
-                      selectedOption={selectedOption}
-                      onSelect={handleSelectChange}
-                      persons={datos?.adultsNo}
-                    />
+                    {datos.adultsNo !== null && datos.adultsNo > 0 && (
+                      <SelectConfirmationInvitation
+                        label="Selecciona los adultos que asistirán:"
+                        selectedOption={selectedOption}
+                        onSelect={handleSelectChange}
+                        persons={datos?.adultsNo}
+                      />
+                    )}
                     {hasKids === true && (
                       <SelectConfirmationKidsInvitation
                         label="Selecciona la cantidad de menores que asistirán:"
