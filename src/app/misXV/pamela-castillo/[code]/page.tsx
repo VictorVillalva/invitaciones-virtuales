@@ -264,11 +264,19 @@ export default function PamelaCastillo() {
                         Confirmar
                       </Link>
                     </div>
-                    <ApartaFechaInvitation
-                      date="8 de Noviembre del 2025"
-                      classNameTitle="tracking-[0.16em] text-pamela-primary font-normal"
-                      classNameText="text-[40px] font-bold tracking-[-0.02em] text-[#C4870A]"
-                    />
+                    {/* <ApartaFechaInvitation
+                        date="8 de Noviembre del 2025"
+                        classNameTitle="tracking-[0.16em] text-pamela-primary font-normal"
+                        classNameText="text-[40px] font-bold tracking-[-0.02em] text-[#C4870A]"
+                      /> */}
+                    <div className="flex flex-col gap-2">
+                      <p className="text-center tracking-[-0.06em] text-pamela-primary text-2xl">Fecha limite para confirmar tu asistencia</p>
+                      <CountDownInvitation
+                        showTitle={false}
+                        targetDate={new Date("2025-10-10T00:00:00")}
+                        classNameTitle="text-center text-[40px] font-bold text-pamela-primary tracking-[-0.02em] leading-[40px]"
+                      />
+                    </div>
                   </>
                 ) : (
                   <>
