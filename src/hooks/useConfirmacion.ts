@@ -324,7 +324,7 @@ export const useConfirmacionPamela = ({ params, datos }: ConfirmacionProps) => {
         } else {
             setHasAdults(false);
         }
-    }, [datos?.hasKids]);
+    }, [datos?.adultsNo]);
 
     useEffect(() => {
         if (datos?.hasConfirmed === true) {
