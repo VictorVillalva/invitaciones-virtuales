@@ -173,6 +173,7 @@ export const useConfirmacion = ({ params, datos }: ConfirmacionProps) => {
 
 export const useConfirmacionPamela = ({ params, datos }: ConfirmacionProps) => {
     const [hasKids, setHasKids] = useState(false);
+    const [hasAdults, setHasAdults] = useState(false);
     const [selectedOption, setSelectedOption] = useState("");
     const [selectedKidsOption, setSelectedKidsOption] = useState("")
     const [message, setMessage] = useState("");
@@ -207,22 +208,32 @@ export const useConfirmacionPamela = ({ params, datos }: ConfirmacionProps) => {
         e.preventDefault();
 
         // 1) Normaliza números
-        const adultsNo = Number(selectedOption) || 0;
+        const adultsNo = hasAdults ? (Number(selectedOption) || 0) : 0;
         const kidsNo = hasKids ? (Number(selectedKidsOption) || 0) : 0;
         const total = adultsNo + kidsNo;
 
         // 2) Validaciones de selects
-        if (hasKids) {
+        if (hasAdults && hasKids) {
+            // Caso 1: hay adultos y niños → validar ambos
             if (selectedOption === "" || selectedKidsOption === "") {
                 setHeaderError("Olvidaste confirmar");
                 setError("*Por favor, selecciona una opción para adultos y menores.");
                 setIsModalOpen(true);
                 return;
             }
-        } else {
+        } else if (hasAdults && !hasKids) {
+            // Caso 2: solo adultos
             if (selectedOption === "") {
                 setHeaderError("Olvidaste confirmar");
-                setError("Por favor, selecciona una de la opciones que tienes permitidas.");
+                setError("Por favor, selecciona una de las opciones permitidas para adultos.");
+                setIsModalOpen(true);
+                return;
+            }
+        } else if (!hasAdults && hasKids) {
+            // Caso 3: solo niños
+            if (selectedKidsOption === "") {
+                setHeaderError("Olvidaste confirmar");
+                setError("Por favor, selecciona una de las opciones permitidas para menores.");
                 setIsModalOpen(true);
                 return;
             }
@@ -306,6 +317,14 @@ export const useConfirmacionPamela = ({ params, datos }: ConfirmacionProps) => {
             setHasKids(false);
         }
     }, [datos?.hasKids]);
+    
+    useEffect(() => {
+        if (datos?.adultsNo > 0) {
+            setHasAdults(true);
+        } else {
+            setHasAdults(false);
+        }
+    }, [datos?.adultsNo]);
 
     useEffect(() => {
         if (datos?.hasConfirmed === true) {
@@ -317,6 +336,7 @@ export const useConfirmacionPamela = ({ params, datos }: ConfirmacionProps) => {
 
     return {
         hasKids,
+        hasAdults,
         selectedKidsOption,
         selectedOption,
         message,
