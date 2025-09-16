@@ -40,6 +40,7 @@ export default function ConfirmacionInvitation({
     isModalConfirmationOpen,
     isSubmitted,
     hasKids,
+    hasAdults,
     localDatos,
     handleSelectChange,
     handleSelectKidsChange,
@@ -122,7 +123,7 @@ export default function ConfirmacionInvitation({
                 <h3 className={`${classNameTitle}`}>{title}</h3>
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col gap-2">
-                    {datos.adultsNo !== null && datos.adultsNo > 0 && (
+                    {hasAdults === true && (
                       <SelectConfirmationInvitation
                         label="Selecciona los adultos que asistirán:"
                         selectedOption={selectedOption}
