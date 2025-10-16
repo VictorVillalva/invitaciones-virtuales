@@ -4,9 +4,8 @@ import Image from "next/image";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useParams } from "next/navigation";
 import { useFechaConfirmacionInvitation } from "@/hooks/useFechaConfirmacion";
-import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
+import { useConfirmacionAsistenciaPamela } from "@/hooks/useConfirmacion";
 import Link from "next/link";
-import { useSpotifyInvitation } from "@/hooks/useSpotify";
 //** Components */
 import BlockMobileInvitation from "@/components/components-invitations/BlockMobile-Invitation";
 import HeaderInvitation from "@/components/components-invitations/Header-Invitation";
@@ -22,38 +21,28 @@ import CountDownInvitation from "@/components/components-invitations/CountDown-I
 import LugarEventoInvitation from "@/components/components-invitations/LugarEvento-Invitation";
 import PlaylistInvitation from "@/components/components-invitations/Playlist-Invitation";
 import FooterRabe from "@/components/components-invitations/Footer-Rabe";
-import AlertInvitation from "@/components/components-invitations/Alert-Invitation";
-import DialogInvitation from "@/components/components-invitations/Dialog-Invitation";
+import BackgroundMusicInvitation from "@/components/components-invitations/BackgroundMusic-Invitation";
 //** Assets */
 import Portada from "@/assets/images/PamelaCastilloXV/Portada-Oficial-PamelaCastillo.png";
 import Lugar from "@/assets/images/PamelaCastilloXV/Hacienda-ElJaguey.png";
 import separador from "@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg";
-import { ephesis, zain } from "@/assets/fonts/fonts";
-import LogoPamela from "@/assets/images/PamelaCastilloXV/Logo-Pamela.png";
+import etiqueta from "@/assets/images/etiqueta.png";
+import { ephesis } from "@/assets/fonts/fonts";
 //** Data */
 import {
   ImagesCarrusel,
   evento,
   nombrePadresPadrinos,
 } from "@/assets/data/PamelaCastillo/db";
+import CodigoVestimentaInvitation from "@/components/components-invitations/CodigoVestimenta-Invitation";
 
 export default function PamelaCastillo() {
-  const apiRefreshToken = process.env.NEXT_PUBLIC_API_REFRESH_TOKEN_PAMELA;
-  const spotifyPlaylistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID_PAMELA;
-  const {
-    error,
-    success,
-    isModalOpen,
-    showAlert,
-    handleCloseModal,
-    handleCloseAlert,
-  } = useSpotifyInvitation({ apiRefreshToken, spotifyPlaylistId });
   const { isMobile } = useIsMobile();
   const params = useParams();
   const code = params?.code;
-  const fechaLimite = "2025-09-19T00:00:00";
+  const fechaLimite = "2025-10-31T23:59:00";
   const { puedeConfirmar } = useFechaConfirmacionInvitation({ fechaLimite });
-  const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
+  const { guestsData } = useConfirmacionAsistenciaPamela({ codeParam: code });
 
   return (
     <>
@@ -168,7 +157,7 @@ export default function PamelaCastillo() {
           </section>
           <section data-aos="fade-dowm" className="lugar-evento-invitation">
             <LugarEventoInvitation
-              title="Recepción y Celebración"
+              title="Misa y Recepción"
               classNameTitle="text-center text-[40px] font-bold text-pamela-primary tracking-[-0.02em] leading-[40px]"
               image={Lugar}
               location="Prolongación Hacienda El Jaguey 3402 Cholula, 72828 Heroica Puebla de Zaragoza"
@@ -181,7 +170,7 @@ export default function PamelaCastillo() {
           <section data-aos="fade-dowm" className="separador-invitation">
             <Image src={separador} alt="separador" />
           </section>
-          <section data-aos="fade-dowm" className="spotify-playlist-invitation">
+          <section className="spotify-playlist-invitation">
             <PlaylistInvitation
               title="Mi Playlist"
               description="La música es una hermosa forma de transmitir buenos deseos. Por eso, los invitamos a dedicarle una canción a Pame, que represente todo el cariño y los mejores deseos para ella."
@@ -192,11 +181,21 @@ export default function PamelaCastillo() {
           <section data-aos="fade-dowm" className="separador-invitation">
             <Image src={separador} alt="separador" />
           </section>
+          <section data-aos="fade-dowm" className="vestimenta-regalos">
+            <CodigoVestimentaInvitation
+              classNameTitle="font-bold text-[#435A62]"
+              clawssNameDescription="text-[#435A62]"
+              image={etiqueta}
+            />
+          </section>
+          <section data-aos="fade-dowm" className="separador-invitation">
+            <Image src={separador} alt="separador" />
+          </section>
           <section data-aos="fade-dowm" className="confirmación-invitation">
             {guestsData?.hasConfirmed ? (
               <div className="asistencia flex flex-col gap-10">
                 {(guestsData.adultsNo === null && guestsData.kidsNo === null) ||
-                (guestsData.adultsNo ?? 0) + (guestsData.kidsNo ?? 0) >= 1 ? (
+                  (guestsData.adultsNo ?? 0) + (guestsData.kidsNo ?? 0) >= 1 ? (
                   <>
                     <div className="flex flex-col">
                       <p className="text-[40px] text-center tracking-[-0.06em] font-bold text-pamela-primary">
@@ -265,11 +264,19 @@ export default function PamelaCastillo() {
                         Confirmar
                       </Link>
                     </div>
-                    <ApartaFechaInvitation
-                      date="8 de Noviembre del 2025"
-                      classNameTitle="tracking-[0.16em] text-pamela-primary font-normal"
-                      classNameText="text-[40px] font-bold tracking-[-0.02em] text-[#C4870A]"
-                    />
+                    {/* <ApartaFechaInvitation
+                        date="8 de Noviembre del 2025"
+                        classNameTitle="tracking-[0.16em] text-pamela-primary font-normal"
+                        classNameText="text-[40px] font-bold tracking-[-0.02em] text-[#C4870A]"
+                      /> */}
+                    <div className="flex flex-col gap-2">
+                      <p className="text-center tracking-[-0.06em] text-pamela-primary text-2xl">Fecha limite para confirmar tu asistencia</p>
+                      <CountDownInvitation
+                        showTitle={false}
+                        targetDate={new Date("2025-10-10T00:00:00")}
+                        classNameTitle="text-center text-[40px] font-bold text-pamela-primary tracking-[-0.02em] leading-[40px]"
+                      />
+                    </div>
                   </>
                 ) : (
                   <>
@@ -310,38 +317,7 @@ export default function PamelaCastillo() {
           </section>
         </main>
         <FooterRabe className="bg-[#F2D6D6]" />
-        {/* Mostrar mensaje si no hay canciones */}
-        {showAlert && (
-          <AlertInvitation
-            title="Ocurrio un Error"
-            icon="alert"
-            description={error || ""}
-            variant="destructive"
-            close={handleCloseAlert}
-          />
-        )}
-        {/* Mostrar mensaje si se agrego la cancion */}
-        {success && (
-          <AlertInvitation
-            title="Canción agregada"
-            icon="check"
-            description={success}
-            close={handleCloseAlert}
-          />
-        )}
-        {/* Mostrar mensaje si la cancion ya fue agregada */}
-        {isModalOpen && (
-          <DialogInvitation
-            title="La canción ya esta agregada"
-            classNameTitle="text-[40px] text-pamela-primary tracking-[-0.04em] leading-none"
-            description="La cancion que tratas de seleccionar ya fue agregada a la playlist, intenta agregar otra."
-            classNameDescription="text-pamela-primary text-[18px] leading-none tracking-[-0.02em]"
-            classNameButton="rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]"
-            tipography={zain}
-            logo={LogoPamela}
-            closeModal={handleCloseModal}
-          />
-        )}
+        <BackgroundMusicInvitation audioSrc={'/audio/LoveOfMyLife.mp3'} className="bg-pamela-primary hover:bg-pamela-primary text-white " />
       </SobreAnimationInvitation>
     </>
   );
