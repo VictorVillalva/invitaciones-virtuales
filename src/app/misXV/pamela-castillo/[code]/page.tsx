@@ -273,7 +273,7 @@ export default function PamelaCastillo() {
                       <p className="text-center tracking-[-0.06em] text-pamela-primary text-2xl">Fecha limite para confirmar tu asistencia</p>
                       <CountDownInvitation
                         showTitle={false}
-                        targetDate={new Date("2025-10-10T00:00:00")}
+                        targetDate={new Date("2025-10-31T23:59:00")}
                         classNameTitle="text-center text-[40px] font-bold text-pamela-primary tracking-[-0.02em] leading-[40px]"
                       />
                     </div>
