@@ -13,12 +13,15 @@ export interface Nombres{
     apellido1: string;
     nombre2: string;
     apellido2: string;
+    classNameTitle?: string;
+    classNameNombres?: string;
 }
 
 export interface Sobre{
-    numero: string;
-    nombre: string;
-    banco: string;
+    tarjeta: boolean;
+    numero?: string;
+    nombre?: string;
+    banco?: string;
 }
 
 export interface Ubicacion{
@@ -55,10 +58,8 @@ export interface InputSearchProps{
 }
 
 export interface InvitacionProps{
-    numPersonas: number;
-    familia: string;
-    adultos: number;
-    ninos: number;
+    numPersonas?: number;
+    familia?: string;
 }
 
 export interface RadiusGroupProps {
@@ -74,4 +75,20 @@ export interface MensajeProps {
 
 export interface CountdownProps {
     targetDate: Date;
+    classNameTitle?: string;
+    title?: string;
+    showTitle?: boolean;
+
+} 
+
+export interface Guest {
+    hasKids: boolean;
+    invitationQty: number;
+    name: string;
+    invitationId: string;
+    uuid: string;
+    hasConfirmed: boolean;
+    adultsNo: number;
+    kidsNo: number;
 }
+

@@ -10,7 +10,7 @@ export default function Itinerario() {
     const { activeIndex, progressHeight } = useItinerario(); //Declaramos el Hook personalizado
     
     return (
-        <div className="Itinerario flex flex-col gap-10" data-aos="fade-up">
+        <div className="Itinerario flex flex-col gap-10" >
             <p className="text-center text-[32px]">Itinerario</p>
             <ul
                 aria-label="Activity feed"

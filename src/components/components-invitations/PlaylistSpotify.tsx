@@ -39,7 +39,7 @@ export default function PlaylistSpotify() {
 
     return (
         <div
-            className={`${quicksand.className} bg-[#292929] flex flex-col w-full h-[420px] px-4 py-3 rounded-sm gap-4 `}
+            className={`${quicksand.className} relative bg-[#292929] flex flex-col w-full h-[420px] px-4 py-3 rounded-sm gap-4 `}
         >
             <div className="header flex flex-col">
                 <div className="title flex flex-row justify-between items-center text-2xl font-semibold">

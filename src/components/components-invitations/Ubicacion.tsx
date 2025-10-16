@@ -1,16 +1,24 @@
 import React from 'react'
 import CardSalon from './CardSalon'
-import SalonLuzcina from '@/assets/images/DanielaMedelXV/SalonLuzcina.jpg'
+import { StaticImageData } from 'next/image';
 
-export default function Ubicacion() {
+interface UbicacionProps {
+    label: string;
+    placeName: string;
+    address: string;
+    href: string;
+    img: StaticImageData
+}
+
+export default function Ubicacion({label,placeName,address,href,img }: UbicacionProps) {
     return (
-        <div className="ubicacion-evento flex flex-col text-center gap-10" data-aos="fade-up">
-            <p className="text-[32px]">Ubicación del evento</p>
+        <div className="ubicacion-evento flex flex-col text-center gap-10" >
+            <p className="text-[32px]">{label}</p>
             <CardSalon
-                image={SalonLuzcina}
-                placeName="Salón Luzcina"
-                address="Av. 5 de Mayo 1400, San Juan Aquiahuac, 72810 San Andrés Cholula, Pue."
-                href={"https://maps.app.goo.gl/CpJ4H3AD8HFbJYnK6"}
+                image={img}
+                placeName={placeName}
+                address={address}
+                href={href}
             />
         </div>
     )

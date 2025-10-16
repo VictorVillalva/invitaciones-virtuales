@@ -1,7 +1,6 @@
-import foto1 from '@/assets/images/DanielaMedelXV/foto_prueba_carrusel.png';
-import foto2 from '@/assets/images/DanielaMedelXV/foto_prueba_carrusel.png';
-import foto3 from '@/assets/images/DanielaMedelXV/foto_prueba_carrusel.png';
-import foto4 from '@/assets/images/DanielaMedelXV/foto_prueba_carrusel.png';
+import foto1 from '@/assets/images/DanielaMedelXV/VIL_0316.webp';
+import foto2 from '@/assets/images/DanielaMedelXV/VIL_0289.webp';
+import foto3 from '@/assets/images/DanielaMedelXV/VIL_0410.webp';
 import iglesia from "@/assets/icons/Church.png";
 import bell from "@/assets/icons/ServiceBell.png"
 import dance from "@/assets/icons/Dance.png"
@@ -25,19 +24,14 @@ export const ImagesCarrusel = [
         src: foto3,
         alt: "Daniela Medel 3",
     },
-    {
-        id: 4,
-        src: foto4,
-        alt: "Daniela Medel 4",
-    },
 ];
 
 export const evento = [
     { title: "Iglesia", time: "17:00 pm", icon: iglesia },
     { title: "Recepción", time: "18:30 pm", icon: bell },
-    { title: "Baile", time: "20:00 pm", icon: dance },
-    { title: "Cena", time: "21:00 pm", icon: cena },
-    { title: "Fiesta", time: "22:00 pm", icon: party },
+    { title: "Baile", time: "19:00 pm", icon: dance },
+    { title: "Cena", time: "20:00 pm", icon: cena },
+    { title: "Fiesta", time: "21:00 pm", icon: party },
 ];
 
 export const options = [
@@ -62,12 +56,12 @@ export const nombrePadresPadrinos = [
     {
         id:3,
         nombre: "Lic. Omar",
-        apellido: "Medel Roman",
+        apellido: "Padilla Romero",
     },
     {
         id:4,
-        nombre:"Lic. Maria Teresa",
-        apellido:"Medel Roman"
+        nombre:"Lic. María Teresa",
+        apellido:"Medel Román"
     }
 ]          
 export const Bancos = [

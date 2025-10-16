@@ -1,10 +1,19 @@
 'use client'
 //Assets
 import separador from "@/assets/images/DanielaMedelXV/Separador.png"
+import LogoDanielMedel from "@/assets/images/DanielaMedelXV/Logo_DanielMedel.jpg"
+import Iglesia from '@/assets/images/DanielaMedelXV/ParroquiaSanAndresApostol.jpg'
+import SalonLuzcina from '@/assets/images/DanielaMedelXV/SalonLuzcina.jpg'
+//Hooks
+import { ParamValue } from "next/dist/server/request/params"
+import Link from "next/link"
+import { useFechaConfirmacion } from "@/hooks/useFechaConfirmacion"
+import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion"
+
 //Data
-import { Bancos, nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
+import { nombrePadresPadrinos } from '@/assets/data/DanielaMedel/db'
 //Fonts
-import { inspiration, playwrite } from '@/assets/fonts/fonts'
+import { inspiration, playwrite, quicksand } from '@/assets/fonts/fonts'
 //Components
 import Image from 'next/image'
 import Header from '../components-invitations/Header'
@@ -20,12 +29,21 @@ import Ubicacion from '../components-invitations/Ubicacion'
 import Hoteles from '../components-invitations/Hoteles'
 import BackgroundMusic from '../components-invitations/BackgroundMusic'
 import Footer from '../components-invitations/Footer'
-import Asistencia from '../components-invitations/Asistencia'
 import Playlist from "../components-invitations/Playlist"
+import GaleriaFotos from "../components-invitations/GaleriaFotos"
+import CountDown from "../components-invitations/CountDown"
 
-export default function Premium() {
+interface PremiumProps {
+    code: ParamValue;
+}
+
+export default function Premium({ code }: PremiumProps) {
     const COLORTEXT = '#323C5D'
-    
+    const fechaEvento = new Date('2025-09-06T00:00:00');
+    const fechaCofirmacion = new Date('2025-08-19T00:00:00');
+    const { puedeConfirmar } = useFechaConfirmacion();
+
+    const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
     return (
         <>
             <SobreAnimation>
@@ -35,42 +53,24 @@ export default function Premium() {
                         <section className='ApartaFecha'>
                             <ApartaFecha />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" >
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='TextoInspirador'>
                             <TextoInspirador />
                         </section>
-                        {/* <div className="separador flex" data-aos="fade-up">
-                            <Image src={separador} alt="separador" />
-                        </div> */}
-                        {/* <section className='GaleriaFotos'> 
-                            <GaleriaFotos />
-                        </section> */}
-                        <div className="separador flex" data-aos="fade-up">
-                            <Image src={separador} alt="separador" />
-                        </div>
-                        <section className='Itinerario'>
-                            <Itinerario />
-                        </section>
-                        <div className="separador flex" data-aos="fade-up">
-                            <Image src={separador} alt="separador" />
-                        </div>
-                        <section className='CodigoVestimenta'>
-                            <CodigoVestimenta />
-                        </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" >
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Padres-Padrinos'>
-                            <div className="padres-padrinos flex flex-col gap-10" data-aos="fade-up">
-                                <Padres 
+                            <div className="padres-padrinos flex flex-col gap-10" >
+                                <Padres
                                     nombre1={nombrePadresPadrinos[0].nombre}
                                     apellido1={nombrePadresPadrinos[0].apellido}
                                     nombre2={nombrePadresPadrinos[1].nombre}
                                     apellido2={nombrePadresPadrinos[1].apellido}
                                 />
-                                <Padrinos 
+                                <Padrinos
                                     nombre1={nombrePadresPadrinos[2].nombre}
                                     apellido1={nombrePadresPadrinos[2].apellido}
                                     nombre2={nombrePadresPadrinos[3].nombre}
@@ -78,51 +78,133 @@ export default function Premium() {
                                 />
                             </div>
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex" >
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='GaleriaFotos'>
+                            <GaleriaFotos />
+                        </section>
+                        <div className="separador flex">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='Itinerario'>
+                            <Itinerario />
+                        </section>
+                        <div className="separador flex">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className='CodigoVestimenta'>
+                            <CodigoVestimenta />
+                        </section>
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='LluviaDeSobres'>
-                            <LluviaSobres 
-                                numero={Bancos[0].numero}
-                                nombre={Bancos[0].titular}
-                                banco={Bancos[0].banco}
+                            <LluviaSobres
+                                tarjeta={false}
                             />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className="UbicacionEvento">
-                            <Ubicacion />
+                            <Ubicacion
+                                label="Ubicación del evento"
+                                placeName="Salón Luzcina"
+                                address="Av. 5 de Mayo 1400, San Juan Aquiahuac, 72810 San Andrés Cholula, Pue."
+                                href={"https://maps.app.goo.gl/CpJ4H3AD8HFbJYnK6"}
+                                img={SalonLuzcina}  // Assuming Iglesia is the image for the event location  
+                            />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
+                            <Image src={separador} alt="separador" />
+                        </div>
+                        <section className="UbicacionIglesia">
+                            <Ubicacion
+                                label="Ubicación de la iglesia"
+                                placeName="Parroquia de San Andrés Apóstol"
+                                address="C. 3 Ote. 2, Centro San Andrés Cholula, 72810 San Andrés Cholula, Pue."
+                                href={"https://maps.app.goo.gl/zsZMZDFANsf5CNcB8"}
+                                img={Iglesia}  // Assuming Iglesia is the image for the event location  
+                            />
+                        </section>
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='SugerenciaHospedaje'>
                             <Hoteles />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className='Playlist'>
                             <Playlist />
                         </section>
-                        <div className="separador flex" data-aos="fade-up">
+                        <div className="separador flex">
                             <Image src={separador} alt="separador" />
                         </div>
                         <section className="confirmacionAsistencia">
-                            <Asistencia />
+                            {guestsData?.hasConfirmed ? (
+                                <div className="asistencia flex flex-col gap-10">
+                                    <div className="flex flex-col gap-2">
+                                        <p className="text-[32px] text-center">Fecha del evento</p>
+                                        <small className={`${quicksand.className} text-center`}>Ya haz confirmado tu asistencia al evento, guarda la fecha para este maravilloso momento</small>
+                                    </div>
+                                    <CountDown targetDate={fechaEvento} />
+                                    <div className="flex flex-col gap-4">
+                                        <small className={`${quicksand.className} text-center`}>Da click en el boton para ver tus pases</small>
+                                        <Link
+                                            href={`/misXV/daniela-medel/confirmacion/${code}`}
+                                            className={`${quicksand.className} w-full py-2 bg-[#CBA836] text-white rounded hover:bg-[#d9b12d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#927823] font-semibold text-center`}>
+                                            Ver mis pases
+                                        </Link>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="asistencia flex flex-col gap-10">
+                                    {puedeConfirmar ? (
+                                        <>
+                                            <div className="flex flex-col gap-2">
+                                                <p className="text-[32px] text-center">Confirmación de asistencia</p>
+                                                <small className={`${quicksand.className} text-center`}>Esta es la fecha límite para confirmar tu asistencia al evento</small>
+                                            </div>
+                                            <CountDown targetDate={fechaCofirmacion} />
+                                            <div className="flex flex-col gap-4">
+                                                <small className={`${quicksand.className} text-center`}>Da click en el boton para confirmar tu asistencia al evento</small>
+                                                <Link
+                                                    href={`/misXV/daniela-medel/confirmacion/${code}`}
+                                                    className={`${quicksand.className} w-full py-2 bg-[#CBA836] text-white rounded hover:bg-[#d9b12d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#927823] font-semibold text-center`}>
+                                                    Confirmar asistencia
+                                                </Link>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="flex flex-col gap-4">
+                                                <p className="text-[32px] text-center">Se acabo el tiempo</p>
+                                                <small className={`${quicksand.className} text-center`}>Sabemos que en esta ocasión no podrás acompañarnos, pero esperamos compartir juntos en otra oportunidad.</small>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            )}
                         </section>
-                        <div className="footer flex flex-col" >
-                            <p className={`${inspiration.className} text-[96px] text-center leading-none`}>Mis XV</p>
-                            <div className={`${playwrite.className} text-[20px] text-center`}>
-                                <p>Daniela Medel</p>
-                                <p className="font-light text-[10px]">09.09.2025</p>
+                        <div className="footer flex flex-col justify-center items-center gap-6" >
+                            <div className="relative">
+                                <Image src={LogoDanielMedel} alt="Logo" width={60} />
+                            </div>
+                            <div className="flex flex-col">
+                                <p className={`${inspiration.className} text-[96px] text-center leading-none`}>Mis XV</p>
+                                <div className={`${playwrite.className} text-[20px] text-center`}>
+                                    <p>Daniela Medel Muñiz</p>
+                                    <p className="font-light text-[10px]">06.09.2025</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </main>
                 <Footer />
-                <BackgroundMusic audioSrc={'/audio/TheGreatestShowmanCast-AMillionDreams.mp3'}/>
+                <BackgroundMusic audioSrc={'/audio/Timber.mp3'}/>
             </SobreAnimation>
         </>
     )
