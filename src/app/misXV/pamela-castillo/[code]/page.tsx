@@ -40,7 +40,7 @@ export default function PamelaCastillo() {
   const { isMobile } = useIsMobile();
   const params = useParams();
   const code = params?.code;
-  const fechaLimite = "2025-10-10T00:00:00";
+  const fechaLimite = "2025-10-31T23:59:00";
   const { puedeConfirmar } = useFechaConfirmacionInvitation({ fechaLimite });
   const { guestsData } = useConfirmacionAsistenciaPamela({ codeParam: code });
 
