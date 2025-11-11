@@ -16,8 +16,10 @@ interface HeaderInvitationProps {
     filterImage?: boolean;
     classNameFilterImage?: string;
     classNameHeader?: string;
+    separator?: boolean;
+    srcSeparator?: StaticImageData;
 }
-
+//TODO: Agregar el srcSeparator despues de que termine la invitacion de pamela
 export default function HeaderInvitation({ 
     title, 
     image, 
@@ -30,7 +32,9 @@ export default function HeaderInvitation({
     tipographySubtitle, 
     filterImage = false, 
     classNameFilterImage,
-    classNameHeader
+    classNameHeader,
+    separator = true,
+    srcSeparator,
 }: HeaderInvitationProps) {
     return (
         <header>
@@ -51,7 +55,7 @@ export default function HeaderInvitation({
                     </div>
                 </div>
             </div>
-            <Image src={separador} alt="separador" loading="lazy"/>
+            {separator && <div className='flex justify-center'><Image src={srcSeparator || separador} alt="separador" loading="lazy"/></div>}
         </header>
     )
 }

@@ -1,4 +1,4 @@
-import { Ephesis, Inspiration, Inter, Playwrite_US_Trad, Quicksand, Zain, Libre_Caslon_Text, Fleur_De_Leah} from "next/font/google";
+import { Ephesis, Inspiration, Inter, Playwrite_US_Trad, Quicksand, Zain, Libre_Caslon_Text, Fleur_De_Leah, Lexend, Lobster_Two} from "next/font/google";
 
 // Versión optimizada - solo los pesos y subsets más usados
 export const inter = Inter({
@@ -62,4 +62,20 @@ export const fleurDeLeah = Fleur_De_Leah({
     style: ['normal'],
     display: 'swap',
     variable: '--font-fleurDeLeah'
+})
+
+export const lexend = Lexend({
+    subsets: ['latin', 'latin-ext'],
+    weight: ['100','200','300','400','500','600','700','800','900'],
+    style: ['normal'],
+    display: 'swap',
+    variable: '--font-lexend'
+})
+
+export const lobsterTwo = Lobster_Two({
+    subsets: ['latin'],
+    weight: ['400','700'],
+    style: ['normal', 'italic'],
+    display: 'swap',
+    variable: '--font-lobster'
 })
