@@ -89,7 +89,7 @@ export const useSearch = ({query, setQuery, selectSong, searchSong, songs}:Input
 
     const handleFocus = () => {
         if (query.trim() !== "" && songs.length > 0) {
-            setShowResults(true);
+            setShowResults(false);
         }
     };
 

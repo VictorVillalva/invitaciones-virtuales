@@ -41,7 +41,7 @@ export default function Login() {
                 ¡Bienvenido de nuevo!
               </h1>
               <small className="text-rabe-primary-500">
-                Ingresa tus credenciales para poder entrar al tu panel de
+                Ingresa tus credenciales para poder entrar al panel de
                 invitaciones.
               </small>
             </div>
