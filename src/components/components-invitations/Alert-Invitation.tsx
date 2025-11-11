@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
-import { AlertCircle, CircleCheck, X } from "lucide-react";
+import { AlertCircle, CircleCheck } from "lucide-react";
 
 interface AlertProps{
     title: string;
