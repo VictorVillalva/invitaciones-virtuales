@@ -61,6 +61,8 @@ html {
   --color-rabe-primary-950: var(--rabe-primary-950);
     /* Pamela Colors */
   --color-pamela-primary: var(--pamela-primary);
+    /* Darinka Colors */
+  --color-darinka-primary: var(--darinka-primary);;
 }
 
 /* 
@@ -125,6 +127,8 @@ html {
   --rabe-primary-950: #131f20;
   /* Pamela Colors */
   --pamela-primary: #435A62;
+  /* Darinka Colors */
+  --darinka-primary: #FF9DA5;
 }
 
 /* 
@@ -176,6 +180,8 @@ html {
   --rabe-primary-50: #131f20;
   /* Pamela Colors */
   --pamela-primary: #435A62;
+    /* Darinka Colors */
+  --darinka-primary: #FF9DA5;
 }
 
 /* 

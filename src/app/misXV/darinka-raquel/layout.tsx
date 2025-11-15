@@ -1,7 +1,7 @@
 //** Assets */
-import { zain } from "@/assets/fonts/fonts"
+import { lobsterTwo } from "@/assets/fonts/fonts"
 import "../../globals.css";
-import bgImage from "@/assets/images/PamelaCastilloXV/Background-PamelaCastillo.png"
+import bgImage from "@/assets/images/DarinkaRaquelXV/bg-darinka.png"
 //** Hooks */
 import AOSInit from "@/components/components-invitations/AOSInit";
 
@@ -9,8 +9,8 @@ import AOSInit from "@/components/components-invitations/AOSInit";
 export default function DarinkaLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     return (
         <>
-            <section className={`darinka-raquel-layout ${zain.className} antialiased relative`}>
-                <div className="absolute inset-0 h-auto bg-repeat" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
+            <section className={`darinka-raquel-layout ${lobsterTwo.className} antialiased relative bg-[#FAECEB]`}>
+                <div className="absolute inset-0 h-auto bg-repeat bg-center" style={{ backgroundImage: `url(${bgImage.src})`}}></div>
                 <div className="relative z-10">
                     <AOSInit />
                     {children}
