@@ -2,9 +2,8 @@
 //** Hooks */
 import Image from "next/image";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { useParams } from "next/navigation";
-import { useFechaConfirmacionInvitation } from "@/hooks/useFechaConfirmacion";
-import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";
+//import { useParams } from "next/navigation";
+//import { useFechaConfirmacionInvitation } from "@/hooks/useFechaConfirmacion";
 //** Components */
 import BlockMobileInvitation from "@/components/components-invitations/BlockMobile-Invitation";
 import HeaderInvitation from "@/components/components-invitations/Header-Invitation";
@@ -12,18 +11,12 @@ import SobreAnimationInvitation from "@/components/components-invitations/SobreA
 import ApartaFechaInvitation from "@/components/components-invitations/ApartaFecha-Invitation";
 import FooterRabe from "@/components/components-invitations/Footer-Rabe";
 //** Assets */
+import { inspiration, lexend, lobsterTwo } from "@/assets/fonts/fonts";
 import etiqueta from "@/assets/images/DarinkaRaquelXV/codigo-vestimenta.png";
 import Portada from "@/assets/images/DarinkaRaquelXV/darinka-8.png";
 import separador from "@/assets/images/DarinkaRaquelXV/separator-3-pink.png";
 import Lugar from "@/assets/images/DarinkaRaquelXV/social-d-mary.png";
 import footerImage from "@/assets/images/DarinkaRaquelXV/footer-image.png";
-import { inspiration, inter, lexend, lobsterTwo } from "@/assets/fonts/fonts";
-
-//** Data */
-import {
-  ImagesCarrusel,
-  nombrePadresPadrinos,
-} from "@/assets/data/DarinkaRaquel/dt";
 import TextoInspiradorInvitation from "@/components/components-invitations/TextoInspirador-Invitation";
 import GaleriaFotosInvitation from "@/components/components-invitations/GaleriaFotos-Invitation";
 import PadresInvitation from "@/components/components-invitations/Padres-Invitation";
@@ -31,6 +24,12 @@ import PadrinosInvitation from "@/components/components-invitations/Padrinos-Inv
 import CodigoVestimentaInvitation from "@/components/components-invitations/CodigoVestimenta-Invitation-2";
 import LugarEventoInvitation from "@/components/components-invitations/LugarEvento-Invitation";
 import ConfirmacionWhatsapp from "@/components/components-invitations/Confirmacion/Confirmacion-Whatsapp";
+//** Data */
+import {
+  ImagesCarrusel,
+  nombrePadresPadrinos,
+} from "@/assets/data/DarinkaRaquel/dt";
+import BackgroundMusicInvitation from "@/components/components-invitations/BackgroundMusic-Invitation";
 
 export default function DarinkaRaquel() {
   const { isMobile } = useIsMobile();
@@ -38,7 +37,6 @@ export default function DarinkaRaquel() {
   //   const code = params?.code;
   //   const fechaLimite = "2025-09-19T00:00:00";
   //   const { puedeConfirmar } = useFechaConfirmacionInvitation({ fechaLimite });
-  //   const { guestsData } = useConfirmacionAsistencia({ codeParam: code });
 
   return (
     <>
@@ -175,6 +173,7 @@ export default function DarinkaRaquel() {
           </section>
         </main>
         <FooterRabe className={`${lexend.className} bg-white text-darinka-primary`} />
+        <BackgroundMusicInvitation audioSrc={'/audio/MartaAlbarracin-QuinceAños.mp3'} className="bg-darinka-primary hover:bg-darinka-primary text-white" />
       </SobreAnimationInvitation>
     </>
   );
