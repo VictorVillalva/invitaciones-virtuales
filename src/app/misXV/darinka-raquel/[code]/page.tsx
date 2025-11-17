@@ -39,9 +39,6 @@ export default function DarinkaRaquel() {
   const params = useParams();
   const code = params?.code;
   const { guestsData } = useDatosInvitadoWhatsapp({ codeParam: code });
-
-  console.log('guestsData', guestsData);
-
   return (
     <>
       {!isMobile && <BlockMobileInvitation />}
