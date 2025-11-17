@@ -1,8 +1,11 @@
 'use client'
-import type { Guest } from "@/types";
+import type { Guest, GuestWhatsapp } from "@/types";
 import axios from "axios";
 import { ParamValue } from "next/dist/server/request/params";
 import { useEffect, useState } from "react";
+/**
+ * Hook para manejar la lógica de confirmación de asistencia.
+ */
 interface ConfirmacionProps {
     params: ParamValue;
     datos: Guest
@@ -354,6 +357,9 @@ export const useConfirmacionPamela = ({ params, datos }: ConfirmacionProps) => {
     }
 }
 
+/**
+ * Hook para obtener los datos del invitado.
+ */
 interface UseConfirmacionAsistenciaProps {
     codeParam: ParamValue;
 }
@@ -418,6 +424,43 @@ export const useConfirmacionAsistenciaPamela = ({ codeParam }: UseConfirmacionAs
                 setGuestsData(response.data.data);
                 // Aquí puedes guardar la respuesta en el estado si lo necesitas
             } catch{
+                //console.error("Error al obtener la confirmación:", error);
+            }
+        };
+        if (codeParam) {
+            fetchData();
+        }
+    }, [codeParam]);
+
+    return {
+        codeParam,
+        guestsData
+    }
+}
+
+export const useDatosInvitadoWhatsapp = ({ codeParam }: UseConfirmacionAsistenciaProps) => {
+    const [guestsData, setGuestsData] = useState<GuestWhatsapp | null>(null);
+
+    // ...existing code...
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const token = process.env.NEXT_PUBLIC_TOKEN_ACCESS_API; // Ajusta el nombre si es diferente
+                const urlApi = process.env.NEXT_PUBLIC_BACKEND_URL; // Asegúrate de que esta URL sea correcta
+                //`${urlApi}/api/guests/${codeParam}`
+                const response = await axios.get(
+                    `${urlApi}/api/guests/${codeParam}`,
+                    {
+                        headers: {
+                            Authorization: `${token}`,
+                        },
+                    }
+                );
+                // Guardar la data en el estado
+                // Si tu response.data ya es un arreglo:
+                setGuestsData(response.data.data);
+                // Aquí puedes guardar la respuesta en el estado si lo necesitas
+            } catch {
                 //console.error("Error al obtener la confirmación:", error);
             }
         };
