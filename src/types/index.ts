@@ -40,6 +40,7 @@ export interface Sobre{
     numero?: string;
     nombre?: string;
     banco?: string;
+    titleClassName?: string;
 }
 
 export interface Ubicacion{
@@ -108,5 +109,11 @@ export interface Guest {
     hasConfirmed: boolean;
     adultsNo: number;
     kidsNo: number;
+}
+//TODO: CONFIRMAR SI SERA ASI O VENDRAN MAS DATOS
+export interface GuestWhatsapp {
+    name: string;
+    invitationId: string;
+    uuid: string;
 }
 

@@ -30,13 +30,17 @@ import {
   nombrePadresPadrinos,
 } from "@/assets/data/DarinkaRaquel/dt";
 import BackgroundMusicInvitation from "@/components/components-invitations/BackgroundMusic-Invitation";
+import { useParams } from "next/navigation";
+import { useDatosInvitadoWhatsapp } from "@/hooks/useConfirmacion";
+import LluviaSobres from "@/components/components-invitations/LluviaSobres";
 
 export default function DarinkaRaquel() {
   const { isMobile } = useIsMobile();
-  //   const params = useParams();
-  //   const code = params?.code;
-  //   const fechaLimite = "2025-09-19T00:00:00";
-  //   const { puedeConfirmar } = useFechaConfirmacionInvitation({ fechaLimite });
+  const params = useParams();
+  const code = params?.code;
+  const { guestsData } = useDatosInvitadoWhatsapp({ codeParam: code });
+
+  console.log('guestsData', guestsData);
 
   return (
     <>
@@ -112,6 +116,15 @@ export default function DarinkaRaquel() {
           <section data-aos="fade-dowm" className="separador-invitation flex flex-col justify-center items-center">
             <Image src={separador} alt="separador" />
           </section>
+          <section data-aos="fade-dowm" className="lluvia-sobres">
+            <LluviaSobres
+              titleClassName="font-semibold text-darinka-primary tracking-[-0.06em] !text-[40px]"
+              tarjeta={false}
+            />
+          </section>
+          <section data-aos="fade-dowm" className="separador-invitation flex flex-col justify-center items-center">
+            <Image src={separador} alt="separador" />
+          </section>
           <section data-aos="fade-dowm" className="vestimenta-regalos">
             <CodigoVestimentaInvitation
               classNameTitle="font-semibold text-darinka-primary tracking-[-0.06em]"
@@ -144,7 +157,7 @@ export default function DarinkaRaquel() {
           <section data-aos="fade-dowm" className="confirmacion-whastapp-invitation">
             <ConfirmacionWhatsapp
               phone="522461590418"
-              messageText="¡Hola! Quisiera confirmar mi asistencia a la fiesta de quince años de Darinka Raquel."
+              messageText={`¡Hola! soy ${guestsData?.name} Quisiera confirmar mi asistencia a la fiesta de quince años de Darinka Raquel.`}
               classNameTitle="text-darinka-primary tracking-[-0.06em] font-semibold text-center"
               classNameMessage="text-darinka-primary tracking-[-0.06em] font-regular text-center"
               classNameButton="rounded-[16px] text-[18px] text-white bg-darinka-primary hover:scale-105 transition-transform duration-300"
