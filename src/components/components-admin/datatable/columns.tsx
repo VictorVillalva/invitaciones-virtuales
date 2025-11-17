@@ -57,7 +57,9 @@ export const columnasInvitados: ColumnDef<ColumnaInvitados>[] = [
   {
     accessorKey: "name",
     header: "Nombre",
-    cell: ({ row }) => <div className="font-medium">{row.getValue("name")}</div>,
+    cell: ({ row }) => (
+      <div className="font-medium">{row.getValue("name")}</div>
+    ),
   },
   {
     accessorKey: "hasConfirmed",
@@ -70,37 +72,53 @@ export const columnasInvitados: ColumnDef<ColumnaInvitados>[] = [
           Confirmación
           <ArrowUpDown />
         </Button>
-      )
+      );
     },
     cell: ({ row }) =>
       row.getValue("hasConfirmed") ? (
-        <Badge variant="default" className="w-[60px] bg-rabe-primary-600">Sí</Badge>
+        <Badge variant="default" className="w-[60px] bg-rabe-primary-600">
+          Sí
+        </Badge>
       ) : (
-        <Badge variant="destructive" className="w-[60px] bg-neutral-300">No</Badge>
+        <Badge variant="destructive" className="w-[60px] bg-neutral-300">
+          No
+        </Badge>
       ),
   },
   {
     accessorKey: "invitationQty",
     header: "No. Invitados",
+    cell: ({ row }) => {
+      return <span>{row.getValue("invitationQty") || 0}</span>;
+    },
   },
   {
     accessorKey: "kidsNo",
     header: "No. Menores",
+    cell: ({ row }) => {
+      return <span>{row.getValue("kidsNo") || 0}</span>;
+    },
   },
   {
     accessorKey: "adultsNo",
     header: "No. Adultos",
+    cell: ({ row }) => {
+      return <span>{row.getValue("adultsNo") || 0}</span>;
+    },
   },
   {
     id: "pasesConfirmados",
     header: "Pases confirmados",
     cell: ({ row }) => {
-      const kids = Number(row.getValue("kidsNo")) || 0
-      const adults = Number(row.getValue("adultsNo")) || 0
-      return (
+      const confirmed = row.getValue("hasConfirmed") as boolean;
+      const kids = Number(row.getValue("kidsNo")) || 0;
+      const adults = Number(row.getValue("adultsNo")) || 0;
+      return confirmed ? (
         <span className="font-semibold">{kids + adults}</span>
-      )
-    }
+      ) : (
+        <span className="text-neutral-400">-</span>
+      );
+    },
   },
   {
     accessorKey: "phoneNumber",
@@ -112,13 +130,15 @@ export const columnasInvitados: ColumnDef<ColumnaInvitados>[] = [
   {
     accessorKey: "message",
     header: "Mensaje",
-    cell: ({ row }) => (
-      <span className="whitespace-pre-line break-words">
-        {row.getValue("message") || "-"}
-      </span>
-    ),
+    cell: ({ row }) => {
+      const rawMessage = String(row.getValue("message") || "");
+      // Decodifica entidades HTML (como &quot;)
+      const decoded = new DOMParser().parseFromString(rawMessage, "text/html").body.textContent || "";
+
+      return <span className="whitespace-pre-line break-words">{decoded || "-"}</span>;
+    },
   },
-]
+];
 export const columnasInvitadosBase: ColumnDef<ColumnaInvitados>[] = [
   {
     accessorKey: "id",
