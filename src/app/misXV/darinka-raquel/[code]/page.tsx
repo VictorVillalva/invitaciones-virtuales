@@ -39,6 +39,7 @@ export default function DarinkaRaquel() {
   const params = useParams();
   const code = params?.code;
   const { guestsData } = useDatosInvitadoWhatsapp({ codeParam: code });
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER_DARINKA_RAQUEL;
   return (
     <>
       {!isMobile && <BlockMobileInvitation />}
@@ -153,7 +154,7 @@ export default function DarinkaRaquel() {
           </section>
           <section data-aos="fade-dowm" className="confirmacion-whastapp-invitation">
             <ConfirmacionWhatsapp
-              phone={`${guestsData?.contactPhoneNumber}`}
+              phone={`${number}`}
               messageText={`¡Hola! soy ${guestsData?.name} Quisiera confirmar mi asistencia a la fiesta de quince años de Darinka Raquel.`}
               classNameTitle="text-darinka-primary tracking-[-0.06em] font-semibold text-center"
               classNameMessage="text-darinka-primary tracking-[-0.06em] font-regular text-center"
