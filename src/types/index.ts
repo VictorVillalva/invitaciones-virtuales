@@ -40,6 +40,7 @@ export interface Sobre{
     numero?: string;
     nombre?: string;
     banco?: string;
+    titleClassName?: string;
 }
 
 export interface Ubicacion{
@@ -109,3 +110,9 @@ export interface Guest {
     adultsNo: number;
     kidsNo: number;
 }
+export interface GuestWhatsapp {
+    name: string;
+    invitationId: string;
+    uuid: string;
+}
+
