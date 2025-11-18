@@ -110,9 +110,9 @@ export interface Guest {
     adultsNo: number;
     kidsNo: number;
 }
-//TODO: CONFIRMAR SI SERA ASI O VENDRAN MAS DATOS
 export interface GuestWhatsapp {
     name: string;
+    contactPhoneNumber: string;
     invitationId: string;
     uuid: string;
 }
