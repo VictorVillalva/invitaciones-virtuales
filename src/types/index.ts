@@ -109,4 +109,3 @@ export interface Guest {
     adultsNo: number;
     kidsNo: number;
 }
-

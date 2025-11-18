@@ -19,7 +19,6 @@ interface HeaderInvitationProps {
     separator?: boolean;
     srcSeparator?: StaticImageData;
 }
-//TODO: Agregar el srcSeparator despues de que termine la invitacion de pamela
 export default function HeaderInvitation({ 
     title, 
     image, 

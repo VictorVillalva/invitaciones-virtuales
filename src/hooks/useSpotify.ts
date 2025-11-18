@@ -150,7 +150,6 @@ export const useSpotify = () => {
 
     // Obtener canciones de una playlist
     const getPlaylistSongs = useCallback(async () => {
-        //TODO: Verificar si el ID de la playlist está definido
         const playlistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID;
         if (!playlistId) {
             //console.error("No se encontró el ID de la playlist en las variables de entorno.");
@@ -409,7 +408,6 @@ export const useSpotifyPamela = () => {
 
     // Obtener canciones de una playlist
     const getPlaylistSongs = useCallback(async () => {
-        //TODO: Verificar si el ID de la playlist está definido
         const playlistId = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID_PAMELA;
         if (!playlistId) {
             //console.error("No se encontró el ID de la playlist en las variables de entorno.");
