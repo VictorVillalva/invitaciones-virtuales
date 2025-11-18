@@ -112,6 +112,7 @@ export interface Guest {
 }
 export interface GuestWhatsapp {
     name: string;
+    contactPhoneNumber: string;
     invitationId: string;
     uuid: string;
 }
