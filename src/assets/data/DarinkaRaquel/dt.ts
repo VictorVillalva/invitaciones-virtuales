@@ -1,10 +1,10 @@
-import foto1 from '@/assets/images/DarinkaRaquelXV/darinka-7.jpg';
-import foto2 from '@/assets/images/DarinkaRaquelXV/darinka-2.jpg';
-import foto3 from '@/assets/images/DarinkaRaquelXV/darinka-3.jpg';
-import foto4 from '@/assets/images/DarinkaRaquelXV/darinka-4.jpg';
-import foto5 from '@/assets/images/DarinkaRaquelXV/darinka-5.jpg';
-import foto6 from '@/assets/images/DarinkaRaquelXV/darinka-6.jpg';
-import foto7 from '@/assets/images/DarinkaRaquelXV/darinka-1.jpg';
+import foto1 from '@/assets/images/DarinkaRaquelXV/darinka-1.png';
+import foto2 from '@/assets/images/DarinkaRaquelXV/darinka-2.png';
+import foto3 from '@/assets/images/DarinkaRaquelXV/darinka-3.png';
+import foto4 from '@/assets/images/DarinkaRaquelXV/darinka-4.png';
+import foto5 from '@/assets/images/DarinkaRaquelXV/darinka-5.png';
+import foto6 from '@/assets/images/DarinkaRaquelXV/darinka-6.png';
+import foto7 from '@/assets/images/DarinkaRaquelXV/darinka-7.png';
 
 export const ImagesCarrusel = [
     {
