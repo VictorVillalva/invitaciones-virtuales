@@ -2,8 +2,6 @@
 //** Hooks */
 import Image from "next/image";
 import { useIsMobile } from "@/hooks/useIsMobile";
-//import { useParams } from "next/navigation";
-//import { useFechaConfirmacionInvitation } from "@/hooks/useFechaConfirmacion";
 //** Components */
 import BlockMobileInvitation from "@/components/components-invitations/BlockMobile-Invitation";
 import HeaderInvitation from "@/components/components-invitations/Header-Invitation";
@@ -24,21 +22,16 @@ import PadrinosInvitation from "@/components/components-invitations/Padrinos-Inv
 import CodigoVestimentaInvitation from "@/components/components-invitations/CodigoVestimenta-Invitation-2";
 import LugarEventoInvitation from "@/components/components-invitations/LugarEvento-Invitation";
 import ConfirmacionWhatsapp from "@/components/components-invitations/Confirmacion/Confirmacion-Whatsapp";
+import BackgroundMusicInvitation from "@/components/components-invitations/BackgroundMusic-Invitation";
+import LluviaSobres from "@/components/components-invitations/LluviaSobres";
 //** Data */
 import {
   ImagesCarrusel,
   nombrePadresPadrinos,
 } from "@/assets/data/DarinkaRaquel/dt";
-import BackgroundMusicInvitation from "@/components/components-invitations/BackgroundMusic-Invitation";
-import { useParams } from "next/navigation";
-import { useDatosInvitadoWhatsapp } from "@/hooks/useConfirmacion";
-import LluviaSobres from "@/components/components-invitations/LluviaSobres";
 
 export default function DarinkaRaquel() {
   const { isMobile } = useIsMobile();
-  const params = useParams();
-  const code = params?.code;
-  const { guestsData } = useDatosInvitadoWhatsapp({ codeParam: code });
   const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER_DARINKA_RAQUEL;
   return (
     <>
@@ -155,7 +148,7 @@ export default function DarinkaRaquel() {
           <section data-aos="fade-dowm" className="confirmacion-whastapp-invitation">
             <ConfirmacionWhatsapp
               phone={`${number}`}
-              messageText={`¡Hola! soy ${guestsData?.name} Quisiera confirmar mi asistencia a la fiesta de quince años de Darinka Raquel.`}
+              messageText={`¡Hola! Quisiera confirmar mi asistencia a la fiesta de quince años de Darinka Raquel.`}
               classNameTitle="text-darinka-primary tracking-[-0.06em] font-semibold text-center"
               classNameMessage="text-darinka-primary tracking-[-0.06em] font-regular text-center"
               classNameButton="rounded-[16px] text-[18px] text-white bg-darinka-primary hover:scale-105 transition-transform duration-300"
