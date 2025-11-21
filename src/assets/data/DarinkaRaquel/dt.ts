@@ -63,6 +63,6 @@ export const nombrePadresPadrinos = [
     {
         id:4,
         nombre:"Raquel",
-        apellido:"Galacia"
+        apellido:"Galicia"
     }
 ];  
