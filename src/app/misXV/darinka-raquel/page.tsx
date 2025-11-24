@@ -14,6 +14,7 @@ import etiqueta from "@/assets/images/DarinkaRaquelXV/codigo-vestimenta.png";
 import Portada from "@/assets/images/DarinkaRaquelXV/darinka-8.png";
 import separador from "@/assets/images/DarinkaRaquelXV/separator-3-pink.png";
 import Lugar from "@/assets/images/DarinkaRaquelXV/social-d-mary.png";
+import LugarIglesia from "@/assets/images/DarinkaRaquelXV/iglesia-san-miguel-xaltipan.png";
 import footerImage from "@/assets/images/DarinkaRaquelXV/footer-image.png";
 import TextoInspiradorInvitation from "@/components/components-invitations/TextoInspirador-Invitation";
 import GaleriaFotosInvitation from "@/components/components-invitations/GaleriaFotos-Invitation";
@@ -24,6 +25,7 @@ import LugarEventoInvitation from "@/components/components-invitations/LugarEven
 import ConfirmacionWhatsapp from "@/components/components-invitations/Confirmacion/Confirmacion-Whatsapp";
 import BackgroundMusicInvitation from "@/components/components-invitations/BackgroundMusic-Invitation";
 import LluviaSobres from "@/components/components-invitations/LluviaSobres";
+import CountDownInvitation from "@/components/components-invitations/CountDown-Invitation2";
 //** Data */
 import {
   ImagesCarrusel,
@@ -126,10 +128,40 @@ export default function DarinkaRaquel() {
           <section data-aos="fade-dowm" className="separador-invitation flex flex-col justify-center items-center">
             <Image src={separador} alt="separador" />
           </section>
+          <section data-aos="fade-dowm" className="countdown-invitation">
+            <CountDownInvitation
+              targetDate={new Date("2025-12-21T13:40:00")}
+              classNameTitle="text-center text-[40px] font-semibold text-darinka-primary tracking-[-0.06em] leading-[40px]"
+              classNameText="text-darinka-primary"
+              classNameContainer="bg-darinka-primary"
+            />
+          </section>
+          <section data-aos="fade-dowm" className="separador-invitation flex flex-col justify-center items-center">
+            <Image src={separador} alt="separador" />
+          </section>
+          <section data-aos="fade-dowm" className="iglesia-evento-invitation">
+            <LugarEventoInvitation
+              variant="v2"
+              title="Misa de acción de gracias"
+              classNameTitle="text-center text-[40px] font-bold text-darinka-primary tracking-[-0.02em] leading-[40px]"
+              image={LugarIglesia}
+              location="C. 20 de Noviembre, Tercera Secc, 90680 Contla, Tlax."
+              urlLocation="https://maps.app.goo.gl/5WqBHJKmxgdvRHKb9"
+              titleCard="Iglesia de San Miguel Xaltipan"
+              haveTime={true}
+              time="21 Diciembre 2025 - 13:40 p.m."
+              classNameTitleCard="text-[32px] tracking-[-0.06em] text-darinka-primary font-semibold"
+              classNameSubtitle="text-[16px] !text-darinka-primary"
+              classNameButton="rounded-[16px] text-[18px] text-white bg-darinka-primary hover:scale-105 transition-transform duration-300"
+            />
+          </section>
+          <section data-aos="fade-dowm" className="separador-invitation flex flex-col justify-center items-center">
+            <Image src={separador} alt="separador" />
+          </section>
           <section data-aos="fade-dowm" className="lugar-evento-invitation">
             <LugarEventoInvitation
               variant="v2"
-              title="Misa y Recepción"
+              title="Recepción"
               classNameTitle="text-center text-[40px] font-bold text-darinka-primary tracking-[-0.02em] leading-[40px]"
               image={Lugar}
               location="Felipe Santiago Xicohtencatl 22, San Sebastián, Tepetlapa, 90805 Santa Ana Chiautempan, Tlax."

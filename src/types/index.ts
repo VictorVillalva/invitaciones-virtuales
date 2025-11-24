@@ -97,7 +97,9 @@ export interface CountdownProps {
     classNameTitle?: string;
     title?: string;
     showTitle?: boolean;
-
+    classNameContainer?: string;
+    classNameDaysContainer?: string;
+    classNameText?: string;
 } 
 
 export interface Guest {
