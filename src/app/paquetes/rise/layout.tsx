@@ -1,6 +1,5 @@
 'use client'
 import "../../globals.css";
-import bgImage from "@/assets/images/DanielaMedelXV/bg-blue-flowers.jpg"
 import { useEffect, useState } from "react";
 import { LoaderCircle } from "lucide-react"
 
@@ -27,7 +26,7 @@ export default function RiseLayout({ children }: Readonly<{ children: React.Reac
     return (
         <>
             <section className={`rise-layout antialiased relative`}>
-                <div className="absolute inset-0 opacity-5 h-auto" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
+                <div className="absolute inset-0 opacity-5 h-auto"></div>
                 <div className="relative z-10">
                     {children}
                 </div>
