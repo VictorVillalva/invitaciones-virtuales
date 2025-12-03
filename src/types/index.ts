@@ -12,7 +12,6 @@ export interface NavItem {
     }[]
 }
 
-
 export interface BreadcrumbItem {
     title: string;
     href: string;
