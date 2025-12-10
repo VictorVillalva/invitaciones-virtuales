@@ -2,12 +2,14 @@
 import Image from "next/image";
 import BlockMobileInvitation from "@/components/components-invitations/BlockMobile-Invitation";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import separador from "@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg";
-import { ephesis } from "@/assets/fonts/fonts";
+import separador from "@/assets/images/AimeeSabbaghXV/Separator-4.png";
+import { fleurDeLeah } from "@/assets/fonts/fonts";
 import FooterRabe from "@/components/components-invitations/Footer-Rabe";
 import { useParams } from "next/navigation";
 import { useConfirmacionAsistenciaPamela } from "@/hooks/useConfirmacion";
-import ConfirmacionInvitation from "@/components/components-invitations/Confirmacion/CardConfirmacion-Invitation";
+import ConfirmacionInvitation from "@/components/components-invitations/Confirmacion/CardConfirmacion-Invitation2";
+import footerImage from "@/assets/images/AimeeSabbaghXV/flower-footer.png";
+
 
 export default function PamelaConfirmacion() {
   const { isMobile } = useIsMobile();
@@ -28,7 +30,7 @@ export default function PamelaConfirmacion() {
         <section data-aos="fade-dowm" className="confirmacion">
           <div className="flex flex-col gap-10">
             {noPass ? (
-              <div className=" flex flex-col justify-center py-50 gap-4 items-center text-center text-pamela-primary">
+              <div className=" flex flex-col justify-center py-50 gap-4 items-center text-center text-aimee-primary">
                 <p className="font-bold text-[40px] tracking-tighter leading-none">
                   Lo sentimos pero creemos que no tienes pase
                 </p>
@@ -40,11 +42,11 @@ export default function PamelaConfirmacion() {
             ) : (
               <>
                 {(guestsData.adultsNo === null && guestsData.kidsNo === null) ||
-                (guestsData.adultsNo ?? 0) + (guestsData.kidsNo ?? 0) >= 1 ? (
+                  (guestsData.adultsNo ?? 0) + (guestsData.kidsNo ?? 0) >= 1 ? (
                   <>
                     <ConfirmacionInvitation
                       title="Completa la confirmación de asistencia"
-                      className="text-pamela-primary"
+                      className="text-aimee-primary"
                       classNameTitle="font-bold text-[24px] tracking-[-0.06em] text-center"
                       params={codeParam}
                       datos={guestsData}
@@ -52,7 +54,7 @@ export default function PamelaConfirmacion() {
                     />
                   </>
                 ) : (
-                  <div className=" flex flex-col justify-center py-50 gap-4 items-center text-center text-pamela-primary">
+                  <div className=" flex flex-col justify-center py-50 gap-4 items-center text-center text-aimee-primary">
                     <p className="font-bold text-[40px] tracking-[-0.02em] leading-none">
                       Lamentamos que no puedas asistir
                     </p>
@@ -67,26 +69,30 @@ export default function PamelaConfirmacion() {
             )}
           </div>
         </section>
-        <section data-aos="fade-dowm" className="separador-invitation">
+        <section data-aos="fade-dowm" className="separador-invitation flex flex-col justify-center items-center">
           <Image src={separador} alt="separador" />
         </section>
-        <section className="footer-invitation">
+        <section data-aos="fade-dowm" className="footer-invitation">
           <div className="footer flex flex-col items-center gap-2">
+            <Image
+              src={footerImage}
+              alt='Mis XV Invitation'
+            />
             <span
-              className={`${ephesis.className} text-[32px] text-[#C4870A] text-center`}
+              className={`${fleurDeLeah.className} text-[70px] text-aimee-primary`}
             >
               Mis XV
             </span>
             <span
-              className={`${ephesis.className} text-[64px] bg-gradient-to-r from-[#EFB810] via-[#D99F0D] to-[#C4870A] bg-clip-text text-transparent leading-[100%] text-center drop-shadow-[0_4px_6px_rgba(0,0,0,0.25)]`}
+              className={`text-[20px] text-aimee-primary text-center drop-shadow-[0_4px_6px_rgba(0,0,0,0.25)]`}
             >
-              Pamela Castillo Monterrosas
+              Aimee Lizeth Sabbagh Martínez
             </span>
-            <span className="tracking-[1em] text-[#9C610C]">08.11.2025</span>
+            <span className="tracking-[1em] text-aimee-primary">27.12.2025</span>
           </div>
         </section>
       </main>
-      <FooterRabe className="bg-[#F2D6D6]" />
+      <FooterRabe className={`bg-white text-darinka-primary`} />
     </>
   );
 }

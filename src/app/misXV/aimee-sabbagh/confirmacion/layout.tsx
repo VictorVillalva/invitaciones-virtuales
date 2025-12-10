@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import AOSInit from "@/components/components-invitations/AOSInit";
 //** Assets */
-import { zain } from "@/assets/fonts/fonts"
+import { literata } from "@/assets/fonts/fonts"
 import "../../../globals.css";
-import bgImage from "@/assets/images/PamelaCastilloXV/Background-PamelaCastillo.png"
+import bgImage from "@/assets/images/AimeeSabbaghXV/bg-aimee.png"
+import logo from "@/assets/images/AimeeSabbaghXV/logo.png"
 
 //Nota: El body solo se modifica en el layout de la app, no en el de la pagina
 export default function PamelaLayoutConfirmacion({ children }: Readonly<{ children: React.ReactNode; }>) {
@@ -24,8 +25,8 @@ export default function PamelaLayoutConfirmacion({ children }: Readonly<{ childr
                 {/* Aquí tu spinner o animación */}
                 <span className="animate-pulse">
                     <Image
-                        src="/assets/pamela-castillo/logos/Logo-Pamela.png"
-                        alt="Logo de Pamela Castillo Monterrosas"
+                        src={logo}
+                        alt="Logo de Aimee Sabbagh XV"
                         width={361}
                         height={185}
                         className="w-[361px] h-auto"
@@ -37,8 +38,8 @@ export default function PamelaLayoutConfirmacion({ children }: Readonly<{ childr
     }
     return (
         <>
-            <section className={`pamela-medel-layout ${zain.className} antialiased relative`}>
-                <div className="absolute inset-0 h-auto bg-repeat" style={{ backgroundImage: `url(${bgImage.src})` }}></div>
+            <section className={`aimee-sabbagh-layout ${literata.className} antialiased relative bg-[#FAECEB]`}>
+                <div className="absolute inset-0 h-auto bg-repeat bg-center" style={{ backgroundImage: `url(${bgImage.src})`}}></div>
                 <div className="relative z-10">
                     <AOSInit />
                     {children}

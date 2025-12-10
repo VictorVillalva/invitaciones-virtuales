@@ -1,4 +1,4 @@
-import { Ephesis, Inspiration, Inter, Playwrite_US_Trad, Quicksand, Zain, Libre_Caslon_Text, Fleur_De_Leah, Lexend, Lobster_Two} from "next/font/google";
+import { Ephesis, Inspiration, Inter, Playwrite_US_Trad, Quicksand, Zain, Libre_Caslon_Text, Fleur_De_Leah, Lexend, Lobster_Two, Literata} from "next/font/google";
 
 // Versión optimizada - solo los pesos y subsets más usados
 export const inter = Inter({
@@ -78,4 +78,12 @@ export const lobsterTwo = Lobster_Two({
     style: ['normal', 'italic'],
     display: 'swap',
     variable: '--font-lobster'
+})
+
+export const literata = Literata({
+    subsets: ['latin', 'latin-ext'],
+    weight: ['200','300','400','500','600','700','800','900'],
+    style: ['normal', 'italic'],
+    display: 'swap',
+    variable: '--font-literata'
 })

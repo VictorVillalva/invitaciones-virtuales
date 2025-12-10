@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import LogoPamela from "@/assets/images/PamelaCastilloXV/Logo-Pamela2.png";
-import separador from "@/assets/images/PamelaCastilloXV/Separator-8-PamelaCastillo.svg";
+import LogoPamela from "@/assets/images/AimeeSabbaghXV/logo.png";
+import separador from "@/assets/images/AimeeSabbaghXV/Separator-4.png";
 
 
 interface InvitationProps {
@@ -24,8 +24,8 @@ export default function InvitationOne({
       <div className="informacion flex flex-col items-center gap-6">
         <Image src={LogoPamela} alt="Logo-Invitacion" />
         <div className="cantidad-familia flex flex-col text-center">
-          <p className="text-pamela-primary">Pase para {numPer} personas</p>
-          <p className=" text-pamela-primary tracking-[-0.06em] text-[36px] font-bold">
+          <p className="text-aimee-primary">Pase para {numPer} personas</p>
+          <p className="text-aimee-primary tracking-[-0.06em] text-[36px] font-bold">
             {family}
           </p>
         </div>

@@ -12,7 +12,6 @@ export interface NavItem {
     }[]
 }
 
-
 export interface BreadcrumbItem {
     title: string;
     href: string;
@@ -89,6 +88,7 @@ export interface RadiusGroupProps {
 export interface MensajeProps {
     persona: string;
     message: string;
+    classNameTextarea?: string;
     onMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 

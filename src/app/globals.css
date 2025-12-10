@@ -1,11 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
 /* 
 ---break--- */
 /** Personal Configuration*/
 html {
   scroll-behavior: smooth;
 }
+
 /** Shadcui */
 @custom-variant dark (&:is(.dark *));
 
@@ -59,10 +61,12 @@ html {
   --color-rabe-primary-800: var(--rabe-primary-800);
   --color-rabe-primary-900: var(--rabe-primary-900);
   --color-rabe-primary-950: var(--rabe-primary-950);
-    /* Pamela Colors */
+  /* Pamela Colors */
   --color-pamela-primary: var(--pamela-primary);
-    /* Darinka Colors */
-  --color-darinka-primary: var(--darinka-primary);;
+  /* Darinka Colors */
+  --color-darinka-primary: var(--darinka-primary);
+  /* Aimee Colors */
+  --color-aimee-primary: var(--aimee-primary);
 }
 
 /* 
@@ -129,6 +133,8 @@ html {
   --pamela-primary: #435A62;
   /* Darinka Colors */
   --darinka-primary: #FF9DA5;
+  /* Aimee Colors */
+  --aimee-primary: #FF9DA5;
 }
 
 /* 
@@ -180,8 +186,10 @@ html {
   --rabe-primary-50: #131f20;
   /* Pamela Colors */
   --pamela-primary: #435A62;
-    /* Darinka Colors */
+  /* Darinka Colors */
   --darinka-primary: #FF9DA5;
+  /* Aimee Colors */
+  --aimee-primary: #FF9DA5;
 }
 
 /* 
