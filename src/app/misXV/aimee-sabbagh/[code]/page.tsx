@@ -8,13 +8,10 @@ import HeaderInvitation from "@/components/components-invitations/Header-Invitat
 import SobreAnimationInvitation from "@/components/components-invitations/SobreAnimation-Invitation";
 import ApartaFechaInvitation from "@/components/components-invitations/ApartaFecha-Invitation";
 import TextoInspiradorInvitation from "@/components/components-invitations/TextoInspirador-Invitation";
-import GaleriaFotosInvitation from "@/components/components-invitations/GaleriaFotos-Invitation";
 import PadresInvitation from "@/components/components-invitations/Padres-Invitation";
 import PadrinosInvitation from "@/components/components-invitations/Padrinos-Invitation";
 import CodigoVestimentaInvitation from "@/components/components-invitations/CodigoVestimenta-Invitation-2";
 import LugarEventoInvitation from "@/components/components-invitations/LugarEvento-Invitation";
-import ConfirmacionWhatsapp from "@/components/components-invitations/Confirmacion/Confirmacion-Whatsapp";
-import BackgroundMusicInvitation from "@/components/components-invitations/BackgroundMusic-Invitation";
 import LluviaSobres from "@/components/components-invitations/LluviaSobres";
 import CountDownInvitation from "@/components/components-invitations/CountDown-Invitation3";
 import FooterRabe from "@/components/components-invitations/Footer-Rabe";
@@ -29,7 +26,6 @@ import footerImage from "@/assets/images/AimeeSabbaghXV/flower-footer.png";
 import {
   nombrePadresPadrinos,
 } from "@/assets/data/AimeeSabbagh/dt";
-import { use } from "react";
 import { useParams } from "next/navigation";
 import { useFechaConfirmacionInvitation } from "@/hooks/useFechaConfirmacion";
 import { useConfirmacionAsistencia } from "@/hooks/useConfirmacion";

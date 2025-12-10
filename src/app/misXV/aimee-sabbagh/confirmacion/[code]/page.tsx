@@ -3,7 +3,7 @@ import Image from "next/image";
 import BlockMobileInvitation from "@/components/components-invitations/BlockMobile-Invitation";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import separador from "@/assets/images/AimeeSabbaghXV/Separator-4.png";
-import { ephesis, fleurDeLeah } from "@/assets/fonts/fonts";
+import { fleurDeLeah } from "@/assets/fonts/fonts";
 import FooterRabe from "@/components/components-invitations/Footer-Rabe";
 import { useParams } from "next/navigation";
 import { useConfirmacionAsistenciaPamela } from "@/hooks/useConfirmacion";
