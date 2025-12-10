@@ -7,7 +7,7 @@ import { ephesis, fleurDeLeah } from "@/assets/fonts/fonts";
 import FooterRabe from "@/components/components-invitations/Footer-Rabe";
 import { useParams } from "next/navigation";
 import { useConfirmacionAsistenciaPamela } from "@/hooks/useConfirmacion";
-import ConfirmacionInvitation from "@/components/components-invitations/Confirmacion/CardConfirmacion-Invitation";
+import ConfirmacionInvitation from "@/components/components-invitations/Confirmacion/CardConfirmacion-Invitation2";
 import footerImage from "@/assets/images/AimeeSabbaghXV/flower-footer.png";
 
 
