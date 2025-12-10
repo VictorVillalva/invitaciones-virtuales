@@ -37,7 +37,7 @@ export default function HeaderInvitation({
 }: HeaderInvitationProps) {
     return (
         <header>
-            <div className={`${classNameHeader ? classNameHeader : 'h-[900px]'} relative w-full max-w-[768px] mx-auto flex flex-col justify-center items-center `}>
+            <div className={`${classNameHeader ? classNameHeader : 'h-[900px]'} relative w-full max-w-[768px] mx-auto flex flex-col justify-center items-center`}>
                 {filterImage && <div className={`h-full w-full absolute ${classNameFilterImage ? classNameFilterImage : 'bg-black/20'} z-10`}></div>}
                 <Image
                     src={image}

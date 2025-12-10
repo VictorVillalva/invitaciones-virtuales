@@ -15,7 +15,7 @@ interface DialogProps {
   classNameTitle?: string;
   description: string;
   classNameDescription?: string;
-  tipography: { className: string };
+  tipography?: { className: string };
   logo?: StaticImageData;
   classNameButton?: string;
   closeModal: () => void;
@@ -33,12 +33,12 @@ export default function DialogInvitation({
 }: DialogProps) {
   return (
     <AlertDialog open onOpenChange={closeModal}>
-      <AlertDialogContent className={`${tipography.className} rounded-sm`}>
+      <AlertDialogContent className={`${tipography?.className} rounded-sm`}>
         <AlertDialogHeader>
           <AlertDialogTitle
             className={`flex flex-col justify-center items-center gap-2 ${classNameTitle}`}
           >
-            {logo && <Image src={logo || ""} alt="Logo-Evento" />}
+            {logo && <Image className="object-contain h-30" src={logo || ""} alt="Logo-Evento" />}
             {title}
           </AlertDialogTitle>
           <AlertDialogDescription className={`${classNameDescription}`}>

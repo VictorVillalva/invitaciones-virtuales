@@ -88,6 +88,7 @@ export interface RadiusGroupProps {
 export interface MensajeProps {
     persona: string;
     message: string;
+    classNameTextarea?: string;
     onMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 

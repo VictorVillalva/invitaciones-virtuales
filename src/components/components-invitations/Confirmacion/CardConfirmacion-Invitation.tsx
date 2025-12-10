@@ -146,7 +146,7 @@ export default function ConfirmacionInvitation({
                     )}
                   </div>
                   <Mensaje
-                    persona="Pamela Castillo Monterrosas"
+                    persona="Aimee Lizeth Sabbagh Martínez"
                     message={message}
                     onMessageChange={handleMessageChange}
                   />
