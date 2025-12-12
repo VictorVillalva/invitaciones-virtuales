@@ -165,11 +165,11 @@ export default function AimeeSabbagh() {
                   (guestsData.adultsNo ?? 0) + (guestsData.kidsNo ?? 0) >= 1 ? (
                   <>
                     <div className="flex flex-col">
-                      <p className="text-[40px] text-center tracking-[-0.06em] font-bold text-pamela-primary">
+                      <p className="text-[40px] text-center tracking-[-0.06em] font-bold text-aimee-primary">
                         Fecha del evento
                       </p>
                       <p
-                        className={`text-center text-[24px] tracking-[-0.06em] text-pamela-primary leading-none`}
+                        className={`text-center text-[24px] tracking-[-0.06em] text-aimee-primary leading-none`}
                       >
                         Ya haz confirmado tu asistencia al evento, guarda la
                         fecha para este maravilloso momento
@@ -177,20 +177,20 @@ export default function AimeeSabbagh() {
                     </div>
                     <div className="flex flex-col gap-4">
                       <p
-                        className={`text-center tracking-[-0.06em] text-pamela-primary`}
+                        className={`text-center tracking-[-0.06em] text-aimee-primary`}
                       >
                         Da click en el boton para ver tus pases
                       </p>
                       <Link
                         href={`/misXV/aimee-sabbagh/confirmacion/${code}`}
-                        className={`py-2 px-3 flex justify-center items-center rounded-[16px] text-[18px] text-white bg-[linear-gradient(to_right,#435A62_0%,#668995_34%,#77A0AF_68%,#89B8C8_100%)]`}
+                        className={`py-2 px-3 flex justify-center items-center rounded-[16px] text-[18px] text-white bg-aimee-primary`}
                       >
                         Ver mis pases
                       </Link>
                     </div>
                   </>
                 ) : (
-                  <div className=" flex flex-col justify-center py-50 gap-4 items-center text-center text-pamela-primary">
+                  <div className=" flex flex-col justify-center py-50 gap-4 items-center text-center text-aimee-primary">
                     <p className="font-bold text-[40px] tracking-[-0.02em] leading-none">
                       Lamentamos que no puedas asistir
                     </p>
@@ -229,15 +229,22 @@ export default function AimeeSabbagh() {
                         Confirmar
                       </Link>
                     </div>
+                    <CountDownInvitation
+                      targetDate={new Date("2025-12-27T14:00:00")}
+                      title=""
+                      classNameTitle="text-center text-[24px] font-bold text-aimee-primary tracking-[-0.06em]"
+                      classNameText="text-aimee-primary text-[16px]"
+                      classNameDaysContainer="!text-aimee-primary text-[24px] "
+                    />
                   </>
                 ) : (
                   <>
                     <div className="flex flex-col gap-4">
-                      <p className="text-[40px] tracking-[-0.06em] text-pamela-primary font-bold leading-10 text-center">
+                      <p className="text-[40px] tracking-[-0.06em] text-aimee-primary font-bold leading-10 text-center">
                         Lo sentimos pero el tiempo ha terminado
                       </p>
                       <p
-                        className={`text-center text-pamela-primary tracking-[-0.02em] leading-none`}
+                        className={`text-center text-aimee-primary tracking-[-0.02em] leading-none`}
                       >
                         El tiempo para confirmar tu asistencia al evento ha
                         terminado, lamentamos que no hayas podido confirmar tu
