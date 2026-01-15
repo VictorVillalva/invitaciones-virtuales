@@ -36,10 +36,14 @@ export interface Nombres{
 
 export interface Sobre{
     tarjeta: boolean;
+    description?: boolean;
+    textDescription?: string;
+    classNameDescription?: string;
     numero?: string;
     nombre?: string;
     banco?: string;
     titleClassName?: string;
+    className?: string;
 }
 
 export interface Ubicacion{

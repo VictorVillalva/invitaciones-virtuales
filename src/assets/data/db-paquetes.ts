@@ -13,3 +13,16 @@ export const ImagesCarrusel = [
         alt: "Paquete",
     },
 ];
+
+export const nombrePadrinosCore = [
+    {
+        id:3,
+        nombre: "Ronald",
+        apellido: "Richard",
+    },
+    {
+        id:4,
+        nombre:"Annette",
+        apellido:"Black"
+    }
+];  
